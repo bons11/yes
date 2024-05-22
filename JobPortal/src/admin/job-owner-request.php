@@ -138,12 +138,12 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
-                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
-                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
-                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
+                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
+                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
+                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
                                 echo "<td>";
-                                echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
-                                echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['uid'] . ")'><i class='fas fa-trash-alt'></i></button>";
+                                echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['id'] . ")'><i class='fas fa-edit'></i></button>";
+                                echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-trash-alt'></i></button>";
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -164,12 +164,12 @@ include 'date_end.php';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     // Function to redirect to the edit page with user ID
-    function editUser(uid) {
-        window.location.href = "page-edit-user.php?uid=" + uid;
+    function editUser(id) {
+        window.location.href = "page-edit-user.php?id=" + id;
     }
 
     // Function to delete a user
-    function deleteUser(uid) {
+    function deleteUser(id) {
         Swal.fire({
             title: 'Are you sure you want to delete?',
             text: 'This action cannot be undone.',
@@ -194,7 +194,7 @@ include 'date_end.php';
                         });
                     }
                 };
-                xhr.send("uid=" + uid);
+                xhr.send("id=" + id);
             }
         });
     }
