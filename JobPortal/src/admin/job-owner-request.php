@@ -11,7 +11,6 @@ include 'date_end.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>Admin Dashboard</title>
-    <link href="img/bugallon-seal.png" rel="icon">
 </head>
 <body>
 
@@ -139,19 +138,20 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
-                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
-                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
-                                echo "<td>  <button class='btn btn-primary btn-sm me-1' onclick=''><i class='fas fa-eye'></i></button> </td>";
+                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_permit']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_picture']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                 echo "<td>";
-                                echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['id'] . ")'><i class='fas fa-edit'></i></button>";
+                                echo "<button class='btn btn-outline-success btn-sm me-1' onclick='editUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
                                 echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-trash-alt'></i></button>";
                                 echo "</td>";
                                 echo "</tr>";
-                            }
+                            }                            
 
                             // Close database connection
                             mysqli_close($con);
                             ?>
+                           
                         </tbody>
                     </table>
                 </div>
@@ -161,12 +161,43 @@ include 'date_end.php';
     <!-- /#page-content-wrapper -->
 </div>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    // Function to redirect to the edit page with user ID
+    function openModal(imageUrl) {
+    var modalImage = document.getElementById("modalImage");
+    modalImage.src = imageUrl;
+    var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+    imageModal.show();
+}
+</script>
+<script>
+    function openModal(imageUrl) {
+        var modalImage = document.getElementById("modalImage");
+        modalImage.src = imageUrl;
+        var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        imageModal.show();
+    }
+    // Function to fetch and display user details in the modal
     function editUser(id) {
-        window.location.href = "page-edit-user.php?id=" + id;
+        // Send an AJAX request to fetch user details
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "fetch-user-details.php?id=" + id, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var user = JSON.parse(xhr.responseText);
+                document.getElementById("userName").innerText = user.name;
+                document.getElementById("userEmail").innerText = user.email;
+                document.getElementById("userBirthday").innerText = user.birthday;
+                document.getElementById("userContact").innerText = user.contact;
+                document.getElementById("userAddress").innerText = user.address;
+                var userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+                userDetailsModal.show();
+            }
+        };
+        xhr.send();
     }
 
     // Function to delete a user
@@ -232,4 +263,38 @@ include 'date_end.php';
     };
 </script>
 </body>
+
+<!-- User Details Modal -->
+<div class="modal fade" id="userDetailsModal" tabindex="-1" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> <span id="userName"></span></p>
+                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Birthday:</strong> <span id="userBirthday"></span></p>
+                <p><strong>Contact:</strong> <span id="userContact"></span></p>
+                <p><strong>Address:</strong> <span id="userAddress"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="#" alt="Image Preview" style="max-width: 100%; max-height: 80vh;">
+            </div>
+        </div>
+    </div>
+</div>
 </html>
