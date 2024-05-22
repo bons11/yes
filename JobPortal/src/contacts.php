@@ -137,7 +137,7 @@ session_start(); // Start the session
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Contact us for any queries</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Send Us Feedback and any Queries!</h1>
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="row gy-4">
@@ -181,7 +181,7 @@ session_start(); // Start the session
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-                                                <label for="name">Business Name</label>
+                                                <label for="name">Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -190,18 +190,26 @@ session_start(); // Start the session
                                                 <label for="email">Email</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" >
                                                 <label for="subject">Subject</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="(Optional)" pattern="\d{11}" maxlength="11" minlength="11" required>
+                                                <label for="subject">Contact Number</label>
+                                                <small id="contactNumberError" class="form-text text-danger" style="display: none;">Please enter a valid 11-digit number.</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 150px"></textarea>
-                                                <label for="message">Job Details/Qualifications</label>
+                                                <label for="message">Message</label>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-12">
                                             <select class="form-select" name="role" id="role">
                                                 <option value="" selected disabled>Choose</option>
@@ -326,6 +334,23 @@ session_start(); // Start the session
         });
     });
 </script>
+
+<script>
+        function validateContactNumber() {
+            var contactNumber = document.getElementById("contact_number").value;
+            var errorElement = document.getElementById("contactNumberError");
+            var isValid = /^\d{11}$/.test(contactNumber);
+
+            if (!isValid) {
+                errorElement.style.display = "block";
+                return false;
+            }
+
+            errorElement.style.display = "none";
+            return true;
+        }
+    </script>
+
 </body>
 
 </html>

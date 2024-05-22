@@ -151,6 +151,7 @@ session_start(); // Start the session
                         <select class="form-select" id="town" name="town" required>
                             <option>Aguilar </option>
                             <option>Binmaley</option>
+                            <option>Bugallon</option>
                             <option>Lingayen</option>
                             <option>Mangatarem</option>
                             <option>Labrador</option>

@@ -214,7 +214,8 @@ session_start(); // Start the session
             <?php
 
             include 'auth/php/config.php';
-            $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name WHERE v.job_nature = 'Full Time'";
+            $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name WHERE v.job_nature = 'Full Time' ORDER BY v.uid DESC 
+            LIMIT 10";
             $result = mysqli_query($con, $sql);
 
             if (!$result) {

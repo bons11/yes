@@ -166,6 +166,19 @@ session_start(); // Start the session
                                 <input type="text" class="form-control" id="location" name="location" value="<?php echo htmlspecialchars($vacancy['location']); ?>" required>
                             </div>
                             <div class="mb-3">
+                                <div class="mb-3">
+                                <label for="town" class="form-label">Town</label>
+                              <select class="form-select" id="town" name="town" value="<?php echo htmlspecialchars($vacancy['town']); ?>" required>
+                                <option <?php if($vacancy['town'] == 'Aguilar') echo 'selected'; ?>>Aguilar </option>
+                                <option <?php if($vacancy['town'] == 'Binmaley') echo 'selected'; ?>>Binmaley</option>
+                                <option <?php if($vacancy['town'] == 'Bugallon') echo 'selected'; ?>>Bugallon</option>
+                                <option <?php if($vacancy['town'] == 'Lingayen') echo 'selected'; ?>>Lingayen</option>
+                                <option <?php if($vacancy['town'] == 'Mangatarem') echo 'selected'; ?>>Mangatarem</option>
+                                <option <?php if($vacancy['town'] == 'Labrador') echo 'selected'; ?>>Labrador</option>
+                              </select>
+                            </div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="qualification_detail" class="form-label">Qualifications</label>
                                 <input type="text" class="form-control" id="qualification_detail" name="qualification_detail" value="<?php echo htmlspecialchars($qualification['qualification_detail']); ?>" required>
                             </div>

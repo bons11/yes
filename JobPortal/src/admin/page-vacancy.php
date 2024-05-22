@@ -106,6 +106,7 @@ include 'date_end.php';
                                 <th scope="col">Salary</th>
                                 <th scope="col">Nature</th>
                                 <th scope="col">Location</th>
+                                <th scope="col">Municipality</th>
                                 <th scope="col">Date Created</th>
                                 <th scope="col">Date End</th>
                                 <th scope="col">Action</th>
@@ -131,6 +132,7 @@ include 'date_end.php';
                                         job_salary LIKE '%$search%' OR
                                         job_nature LIKE '%$search%' OR
                                         location LIKE '%$search%' OR
+                                        town LIKE '%$search%' OR
                                         date_created LIKE '%$search%' OR
                                         date_end LIKE '%$search%'";
                             } else {
@@ -160,6 +162,7 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['job_salary']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['job_nature']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['town']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_created']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_end']) . "</td>";
                                 echo "<td>";

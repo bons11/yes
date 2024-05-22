@@ -224,18 +224,7 @@
         </div>
         <!-- Gallery end -->
 
-        <!-- GPS -->
-        <div class="container text-center">
-          <h1 class="center">Location</h1>
-            <div class="d-flex justify-content-center">
-              <iframe class="position-relative rounded w-75" 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
-                frameborder="0" style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0">
-              </iframe>
-            </div>
-        </div>
-        <!-- GPS -->
+        
 
         <!-- Video Player Start -->
         <div class="video-container">
@@ -245,6 +234,24 @@
             </video>
         </div>
         <!-- Video Player End -->
+
+
+        <!-- GPS -->
+        <div class="container text-center p-3">
+            <br>
+            <br>
+          <h1 class="center">Location</h1>
+          <br>
+            <br>
+            <div class="d-flex justify-content-center">
+              <iframe class="position-relative rounded w-75 p-5" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
+                frameborder="0" style="min-height: 500px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0">
+              </iframe>
+            </div>
+        </div>
+        <!-- GPS -->
 
 
  <!-- Footer Start -->

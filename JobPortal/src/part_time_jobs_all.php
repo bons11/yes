@@ -212,7 +212,7 @@ session_start(); // Start the session
             <?php
 
             include 'auth/php/config.php';
-            $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name WHERE v.job_nature = 'Part Time'";
+            $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name WHERE v.job_nature = 'Part Time' ORDER BY v.uid DESC LIMIT 10";
             $result = mysqli_query($con, $sql);
 
             if (!$result) {
@@ -226,11 +226,11 @@ session_start(); // Start the session
                                 <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                     <!-- Fetch company logo dynamically -->
                                     <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
+                                    <div class="text-start ps-5">
                                         <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
                                         <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
                                         <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
-                                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                                        <span class="text-truncate me-3"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
                                         <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                                     </div>
                                 </div>
