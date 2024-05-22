@@ -47,10 +47,10 @@ include 'date_end.php';
                 <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
                 </a>
-                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold active">
                     <i class="fas fa-users me-2"></i>Owner Requests
                 </a>
-                <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text active">
+                <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
                 </a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="confirmLogout()">
@@ -89,11 +89,12 @@ include 'date_end.php';
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Birthday</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
+                                <th scope="col">Occupation</th>
+                                <th scope="col">Business</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Permit</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col">Valid-Id</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -117,7 +118,7 @@ include 'date_end.php';
                                         email LIKE '%$search%' OR 
                                         role LIKE '%$search%'";
                             } else {
-                                $query = "SELECT * FROM tbl_user";
+                                $query = "SELECT * FROM tbl_job_owner_apply";
                             }
 
                             $result = mysqli_query($con, $query);
@@ -134,11 +135,12 @@ include 'date_end.php';
                                 echo "<tr>";
                                 echo "<th scope='row'>" . $count++ . "</th>";
                                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['address']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['contact']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['birthday']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['role']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
+                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
+                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
+                                echo "<td>  <button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button> </td>";
                                 echo "<td>";
                                 echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
                                 echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['uid'] . ")'><i class='fas fa-trash-alt'></i></button>";
