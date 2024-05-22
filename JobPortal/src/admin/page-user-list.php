@@ -11,6 +11,7 @@ include 'date_end.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>Admin Dashboard</title>
+    <link href="img/bugallon-seal.png" rel="icon">
 </head>
 <body>
 
