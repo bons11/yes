@@ -1,3 +1,27 @@
+<?php
+include 'auth/php/config.php';
+
+// Fetch the current user's data
+$user_id = $_SESSION['id'];
+$sql = "SELECT name, address, contact, birthday, email FROM tbl_user WHERE uid = '$user_id'";
+$result = mysqli_query($con, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+} else {
+    // Handle error or set default values
+    $user = [
+        'name' => '',
+        'address' => '',
+        'contact' => '',
+        'birthday' => '',
+        'email' => ''
+    ];
+}
+
+mysqli_close($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +36,6 @@
     </style>
 </head>
 <body>
-
-<!-- Button to Open the Modal -->
-
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -32,27 +53,27 @@
         <form action="process_form.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="fullname">Full Name:</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" required>
+                <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo htmlspecialchars($user['name']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
-                <input type="date" class="form-control" id="dob" name="dob" required>
+                <input type="text" class="form-control" id="dob" name="dob" value="<?php echo htmlspecialchars($user['birthday']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="occupation">Occupation:</label>
-                <input type="text" class="form-control" id="occupation" name="occupation" required>
+                <input type="text" class="form-control" id="occupation" placeholder="(Optional)" name="occupation">
             </div>
             <div class="form-group">
                 <label for="contact">Contact Number:</label>
-                <input type="text" class="form-control" id="contact" name="contact" required>
+                <input type="text" class="form-control" id="contact" name="contact" value="<?php echo htmlspecialchars($user['contact']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <textarea class="form-control" id="address" name="address" required></textarea>
+                <textarea class="form-control" id="address" name="address" required><?php echo htmlspecialchars($user['address']); ?></textarea>
             </div>
             <div class="form-group">
                 <label for="business_name">Business Name:</label>
