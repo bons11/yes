@@ -72,56 +72,52 @@ include 'date_end.php';
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Users</h2>
-                </div>
-            </nav>
-            <div class="container-fluid px-4">
-                <div class="row my-5">
-                    <div class="col">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <!-- Add User button -->
-                                <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add
-                                    User</a>
-                            </div>
-                            <div class="d-flex">
-                                <!-- Search form -->
-                                <form class="d-flex me-3" method="GET"
-                                    action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <input class="form-control me-2" type="search" name="search" placeholder="Search..."
-                                        aria-label="Search" onchange="clearSearch()">
-                                    <button class="btn btn-outline-primary" type="submit"><i
-                                            class="fas fa-search"></i></button>
-                                </form>
-                            </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                <h2 class="fs-2 m-0">Request</h2>
+            </div>
+        </nav>
+        <div class="container-fluid px-4">
+            <div class="row my-5">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <!-- Add User button -->
+                            <!-- <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a> -->
                         </div>
-                        <table class="table bg-white rounded shadow-sm  table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Occupation</th>
-                                    <th scope="col">Business</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Permit</th>
-                                    <th scope="col">Picture</th>
-                                    <th scope="col">Valid-Id</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                include '../auth/php/config.php'; // Include config.php file
-                                
-                                // Check if $con variable is defined and valid
-                                if (!$con) {
-                                    die("Connection failed: " . mysqli_connect_error());
-                                }
+                        <div class="d-flex">
+                            <!-- Search form -->
+                            <form class="d-flex me-3" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                <input class="form-control me-2" type="search" name="search" placeholder="Search..." aria-label="Search" onchange="clearSearch()">
+                                <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table bg-white rounded shadow-sm  table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Occupation</th>
+                                <th scope="col">Business</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Permit</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col">Valid-Id</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include '../auth/php/config.php'; // Include config.php file
+
+                            // Check if $con variable is defined and valid
+                            if (!$con) {
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
 
                                 // Fetch data from tbl_users
                                 if (isset($_GET['search'])) {
