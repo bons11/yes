@@ -48,6 +48,7 @@ session_start();
 
 
         <!-- Navbar Start -->
+       
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">Job Portal</h1>
@@ -93,11 +94,18 @@ session_start();
                         ?>
                     </div>
                    </div>
-                   <a href="mission.php" class="nav-item nav-link">Penis</a>
+                   <?php
+                if (isset($_SESSION['name'])) {
+                    ?>
+                   <a href="mission.php" class="nav-item nav-link">Apply as job owner</a>
+                   <?php
+                }
+                ?>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+        
         <!-- Navbar End -->
 
 
