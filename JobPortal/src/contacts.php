@@ -49,7 +49,7 @@ session_start(); // Start the session
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
+                <h1 class="m-0 text-primary">MBB</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -168,10 +168,9 @@ session_start(); // Start the session
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <iframe class="position-relative rounded w-100 h-100"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
-                            frameborder="0" style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
-                            tabindex="0"></iframe>
+                        <h2 class="position-relative rounded w-100 h-100" style="min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; background-color: #f8f9fa; padding: 20px;">
+                          Municipality Of Bugallon Bulletin Board: Connecting for Hiring and Growth. "Your hub for Jobs and Progress!"
+                        </h2>
                     </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp d-flex justify-content-center" data-wow-delay="0.5s">
@@ -182,13 +181,13 @@ session_start(); // Start the session
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-                                                <label for="name">Your Name</label>
+                                                <label for="name">Business Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
-                                                <label for="email">Your Email</label>
+                                                <label for="email">Email</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -200,7 +199,7 @@ session_start(); // Start the session
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 150px"></textarea>
-                                                <label for="message">Message</label>
+                                                <label for="message">Job Details/Qualifications</label>
                                             </div>
                                         </div>
                                         <div class="col-12">

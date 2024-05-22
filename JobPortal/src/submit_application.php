@@ -52,17 +52,17 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
                     $message = "Application submitted successfully.";
                     $status = "success";
 
-                    // Insert inquiry data into tbl_inquiry
-                    $sql_inquiry = "INSERT INTO tbl_inquiry (job_number, name, email, portfolio, cover_letter) 
-                                    VALUES (?, ?, ?, ?, ?)";
-                    $stmt_inquiry = mysqli_prepare($con, $sql_inquiry);
-                    if ($stmt_inquiry) { // Check if statement is prepared successfully
-                        mysqli_stmt_bind_param($stmt_inquiry, "sssss", $job_number, $name, $email, $portfolio, $cover_letter);
-                        mysqli_stmt_execute($stmt_inquiry);
-                    } else {
-                        $message = "Error preparing inquiry SQL statement: " . mysqli_error($con); // Capture MySQL error
-                        $status = "error";
-                    }
+                    // // Insert inquiry data into tbl_inquiry
+                    // $sql_applicant = "INSERT INTO tbl_applicant (job_number, name, email, portfolio, cover_letter) 
+                    //                 VALUES (?, ?, ?, ?, ?)";
+                    // $stmt_applicant = mysqli_prepare($con, $sql_applicant);
+                    // if ($stmt_applicant) { // Check if statement is prepared successfully
+                    //     mysqli_stmt_bind_param($stmt_applicant, "sssss", $job_number, $name, $email, $portfolio, $cover_letter);
+                    //     mysqli_stmt_execute($stmt_applicant);
+                    // } else {
+                    //     $message = "Error preparing inquiry SQL statement: " . mysqli_error($con); // Capture MySQL error
+                    //     $status = "error";
+                    // }
 
                     // Fetch receiver's email from tbl_company
                     $sql_company_email = "SELECT company_email FROM tbl_company WHERE company_name = ?";

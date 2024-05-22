@@ -14,7 +14,7 @@ session_start();
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/bugallon-seal.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@ session_start();
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Tite Ni Jason</h1>
+                <h1 class="m-0 text-primary">Job Portal</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -88,6 +88,7 @@ session_start();
                         } else {
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
+                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
@@ -289,7 +290,7 @@ session_start();
 
                     include 'auth/php/config.php';
 
-                    $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name LIMIT 10";
+                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY date_created DESC LIMIT 10";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {
@@ -308,6 +309,7 @@ session_start();
                                                 <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
                                                 <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
                                                 <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                                                <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">

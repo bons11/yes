@@ -47,7 +47,7 @@ session_start(); // Start the session
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">Job Portal</h1>
             </a>
@@ -56,13 +56,13 @@ session_start(); // Start the session
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Jobs</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item active">Job List</a>
+                            <a href="job-list.php" class="dropdown-item">Job List</a>
                         </div>
                     </div>
                     <a href="contacts.php" class="nav-item nav-link">Contact</a>
@@ -87,6 +87,7 @@ session_start(); // Start the session
                         } else {
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
+                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
@@ -231,6 +232,7 @@ session_start(); // Start the session
                                             <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">

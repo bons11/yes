@@ -56,8 +56,8 @@ session_start(); // Start the session
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link active">About</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -87,6 +87,7 @@ session_start(); // Start the session
                         } else {
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
+                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
