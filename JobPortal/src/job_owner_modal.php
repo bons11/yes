@@ -18,7 +18,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         'email' => ''
     ];
 }
-
+//nword
 mysqli_close($con);
 ?>
 
