@@ -47,7 +47,8 @@ session_start(); // Start the session
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+       
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">MBB</h1>
             </a>
@@ -56,12 +57,12 @@ session_start(); // Start the session
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
                     <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Jobs</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item active">Job Category</a>
+                            <a href="category.php" class="dropdown-item">Job Category</a>
                             <a href="job-list.php" class="dropdown-item">Job List</a>
                         </div>
                     </div>
@@ -91,11 +92,21 @@ session_start(); // Start the session
                         }
                         ?>
                     </div>
-                    </div>
+                   </div>
+                   <?php
+                if (isset($_SESSION['name'])) {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
+                   <?php
+                }
+                ?>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+
+        <?php include 'job_owner_modal.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -126,7 +137,7 @@ session_start(); // Start the session
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Category</li>
+                        <li class="breadcrumb-item active" aria-current="page">Category</li>
                     </ol>
                 </nav>
             </div>

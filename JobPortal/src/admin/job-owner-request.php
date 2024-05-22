@@ -249,7 +249,7 @@ include 'date_end.php';
             }).then((result) => {
                 if (result.isConfirmed) {
                     var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "delete-user.php", true);
+                    xhr.open("POST", "delete-request.php", true);
                     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4 && xhr.status === 200) {

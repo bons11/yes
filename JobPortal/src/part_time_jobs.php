@@ -47,6 +47,7 @@ session_start(); // Start the session
 
 
 <!-- Navbar Start -->
+       
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">MBB</h1>
@@ -88,15 +89,24 @@ session_start(); // Start the session
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
                     </div>
-                    </div>
+                   </div>
+                   <?php
+                if (isset($_SESSION['name'])) {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
+                   <?php
+                }
+                ?>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+
+        <?php include 'job_owner_modal.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -127,7 +137,7 @@ session_start(); // Start the session
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Job List</li>
+                        <li class="breadcrumb-item active" aria-current="page">Job List</li>
                     </ol>
                 </nav>
             </div>

@@ -1,3 +1,8 @@
+<?php
+session_start(); // Start the session
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,6 +109,7 @@
 
 
         <!-- Navbar Start -->
+       
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">MBB</h1>
@@ -113,8 +119,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="mission.php" class="nav-item nav-link active">About</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -148,11 +154,21 @@
                         }
                         ?>
                     </div>
-                    </div>
+                   </div>
+                   <?php
+                if (isset($_SESSION['name'])) {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
+                   <?php
+                }
+                ?>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+
+        <?php include 'job_owner_modal.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -238,7 +254,7 @@
                         <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a>
+                        <!-- <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a> -->
                     </div>
                 </div>
             </div>
@@ -253,12 +269,12 @@
 
         <!-- Gallery start-->
         
-        <div class="container text-center">
+        <!-- <div class="container text-center">
           <h1 class="center">Gallery</h1>
             <div class="d-flex justify-content-center">
               <p>-----?gridgallery?-----</p>
             </div>
-        </div>
+        </div> -->
         <!-- Gallery end -->
 
         
