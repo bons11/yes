@@ -2,7 +2,6 @@
 session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +50,7 @@ session_start();
        
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
+                <h1 class="m-0 text-primary">MBB</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -97,7 +96,7 @@ session_start();
                    <?php
                 if (isset($_SESSION['name'])) {
                     ?>
-                   <a href="mission.php" class="nav-item nav-link">Apply as job owner</a>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
                    <?php
                 }
                 ?>
@@ -105,11 +104,21 @@ session_start();
                 </div>
             </div>
         </nav>
+
+        <?php include 'job_owner_modal.php'; ?>
         
         <!-- Navbar End -->
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+        $(document).ready(function(){
+            $("#applyJobOwner").click(function(event){
+            event.preventDefault();
+            $("#jobOwnerModal").modal('show');
+            });
+        });
+        </script>
         <script>
         function confirmLogout() {
             Swal.fire({
