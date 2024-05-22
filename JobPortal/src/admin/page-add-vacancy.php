@@ -147,6 +147,16 @@ session_start(); // Start the session
                         </select>
                 </div>
                 <div class="mb-3">
+                    <label for="town" class="form-label">Town</label>
+                        <select class="form-select" id="town" name="town" required>
+                            <option>Aguilar </option>
+                            <option>Binmaley</option>
+                            <option>Lingayen</option>
+                            <option>Mangatarem</option>
+                            <option>Labrador</option>
+                        </select>
+                </div>
+                <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
                     <input type="text" class="form-control" id="location" name="location" required>
                 </div>

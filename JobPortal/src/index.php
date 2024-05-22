@@ -8,7 +8,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board Sherwin Lopez</title>
+    <title>Bugallon Municipal Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -290,7 +290,7 @@ session_start();
 
                     include 'auth/php/config.php';
 
-                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY date_created DESC LIMIT 10";
+                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY date_created DESC LIMIT 2";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {
