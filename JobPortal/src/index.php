@@ -89,11 +89,11 @@ session_start();
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
                     </div>
-                    </div>
+                   </div>
+                   <a href="mission.php" class="nav-item nav-link">Penis</a>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
