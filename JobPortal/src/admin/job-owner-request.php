@@ -143,7 +143,8 @@ include 'date_end.php';
                                 echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                 echo "<td>";
                                 echo "<button class='btn btn-outline-success btn-sm me-1' onclick='editUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
-                                echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-trash-alt'></i></button>";
+                                echo "<button class='btn btn-outline-success btn-sm me-1' onclick='approveUser(" . $row['id'] . ")'><i class='fas fa-check'></i></button>";
+                                echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-block'></i></button>";
                                 echo "</td>";
                                 echo "</tr>";
                             }                            

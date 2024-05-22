@@ -1,6 +1,11 @@
 <?php
 include 'auth/php/config.php';
 
+
+if (!isset($_SESSION['id'])) {
+
+    return;
+}
 // Fetch the current user's data
 $user_id = $_SESSION['id'];
 $sql = "SELECT name, address, contact, birthday, email FROM tbl_user WHERE uid = '$user_id'";
