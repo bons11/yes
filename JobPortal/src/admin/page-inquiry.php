@@ -53,7 +53,7 @@ session_start(); // Start the session
                 <i class="fas fa-layer-group me-2"></i>Category
             </a>
             <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                <i class="fas fa-users me-2"></i>Owner Requests
+                <i class="fas fa-envelope me-2"></i>Owner Requests
             </a>
             <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-users me-2"></i>Manage Users

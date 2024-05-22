@@ -65,7 +65,7 @@ include 'date_end.php';
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
             <div class="d-flex align-items-center">
                 <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Users</h2>
+                <h2 class="fs-2 m-0">Request</h2>
             </div>
         </nav>
         <div class="container-fluid px-4">
@@ -74,7 +74,7 @@ include 'date_end.php';
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
                             <!-- Add User button -->
-                            <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a>
+                            <!-- <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a> -->
                         </div>
                         <div class="d-flex">
                             <!-- Search form -->
