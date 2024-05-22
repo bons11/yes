@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job_description = validate_input($_POST["job_description"]);
     $job_salary = $_POST["job_salary"]; 
     $job_nature = validate_input($_POST["job_nature"]);
+    $town = validate_input($_POST["town"]);
     $location = validate_input($_POST["location"]);
     $date_created = $_POST["date_created"];
     $date_end = validate_input($_POST["date_end"]);
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $qualification_sub5 = validate_input($_POST["qualification_sub5"]);
 
     // Check if any field is empty
-    if (empty($company_category) || empty($company_name) || empty($job_title) || empty($job_description) || empty($job_nature) || empty($location) || empty($date_created) || empty($date_end) || empty($responsibility_detail) || empty($qualification_detail)) {
+    if (empty($company_category) || empty($company_name) || empty($job_title) || empty($job_description) || empty($job_nature) || empty($town) || empty($location) || empty($date_created) || empty($date_end) || empty($responsibility_detail) || empty($qualification_detail)) {
         $errors[] = "All fields are required.";
     }
 
@@ -43,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $job_number = generate_job_number();
 
         // Insert into tbl_vacancy
-        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, company_category, company_name, job_title, job_description, job_salary, job_nature, location, date_created, date_end) VALUES ('$job_number', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$location', '$date_created', '$date_end')";
+        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, company_category, company_name, job_title, job_description, job_salary, job_nature, town, location, date_created, date_end) VALUES ('$job_number', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$town', '$location', '$date_created', '$date_end')";
         // Insert into tbl_responsibility
         $query_responsibility = "INSERT INTO tbl_responsibility (job_number, responsibility_detail, responsibility_sub1, responsibility_sub2, responsibility_sub3, responsibility_sub4, responsibility_sub5) VALUES ('$job_number', '$responsibility_detail', '$responsibility_sub1' , '$responsibility_sub2' , '$responsibility_sub3' , '$responsibility_sub4' , '$responsibility_sub5')";
         // Insert into tbl_qualification

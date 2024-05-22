@@ -8,7 +8,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board Sherwin Lopez</title>
+    <title>Bugallon Municipal Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -48,6 +48,7 @@ session_start();
 
 
         <!-- Navbar Start -->
+       
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">Job Portal</h1>
@@ -89,15 +90,22 @@ session_start();
                             // If user is not logged in, show regular signin options
                             echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
                             echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
                         }
                         ?>
                     </div>
-                    </div>
+                   </div>
+                   <?php
+                if (isset($_SESSION['name'])) {
+                    ?>
+                   <a href="mission.php" class="nav-item nav-link">Apply as job owner</a>
+                   <?php
+                }
+                ?>
                     <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+        
         <!-- Navbar End -->
 
 
@@ -290,7 +298,7 @@ session_start();
 
                     include 'auth/php/config.php';
 
-                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY date_created DESC LIMIT 10";
+                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY uid DESC LIMIT 10";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {
