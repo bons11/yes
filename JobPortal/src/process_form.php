@@ -30,13 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($_FILES['business_picture']['tmp_name'], $business_picture_path);
     move_uploaded_file($_FILES['valid_id']['tmp_name'], $valid_id_path);
 
-    // Insert data into tbl_job_owner_apply
-    $sql = "INSERT INTO tbl_job_owner_apply (name, email, birthday, contact, occupation, address, business_name, business_location, business_permit, business_picture, valid_id) 
-            VALUES ('$name', '$email', '$birthday', '$contact', '$occupation', '$address', '$business_name', '$business_location', '$business_permit_path', '$business_picture_path', '$valid_id_path')";
+    // Insert data into tbl_job_owner_apply including the user ID
+    $sql = "INSERT INTO tbl_job_owner_apply (uid, name, email, birthday, contact, occupation, address, business_name, business_location, business_permit, business_picture, valid_id) 
+            VALUES ('$user_id', '$name', '$email', '$birthday', '$contact', '$occupation', '$address', '$business_name', '$business_location', '$business_permit_path', '$business_picture_path', '$valid_id_path')";
 
     if (mysqli_query($con, $sql)) {
-        echo "Data inserted successfully.";
-        // Redirect or show a success message
+        echo "<script>alert('Vacancy updated successfully');</script>";
+        header("Location: index.php");
+        exit();
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
         // Handle the error

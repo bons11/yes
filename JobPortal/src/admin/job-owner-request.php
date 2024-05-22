@@ -3,6 +3,7 @@ include 'date_end.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,257 +13,295 @@ include 'date_end.php';
     <link rel="stylesheet" href="style/styles.css" />
     <title>Admin Dashboard</title>
 </head>
+
 <body>
 
     <style>
         /* Add custom styles for the scrollable content area */
         #page-content-wrapper {
             overflow-y: auto;
-            max-height: calc(100vh - 56px); /* Adjust according to your header's height */
+            max-height: calc(100vh - 56px);
+            /* Adjust according to your header's height */
         }
     </style>
-<div class="d-flex" id="wrapper">
-   <!-- Sidebar -->
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
                 <i class="fas fa-user-secret me-2"></i>Admin Panel
             </div>
             <div class="list-group list-group-flush my-3">
-                <a href="page-dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-dashboard.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                 </a>
-                <a href="page-company.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-company.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-building me-2"></i>Company
                 </a>
-                <a href="page-vacancy.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-vacancy.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-clipboard me-2"></i>Vacancy
                 </a>
-                <a href="page-inquiry.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-inquiry.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-address-card me-2"></i>Inquiry
                 </a>
-                <a href="page-applicants.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-applicants.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-file me-2"></i>Applicants
                 </a>
-                <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-category.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
                 </a>
-                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold active">
+                <a href="job-owner-request.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold active">
                     <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
-                <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="page-user-list.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="confirmLogout()">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                    onclick="confirmLogout()">
                     <i class="fas fa-power-off me-2"></i>Logout
                 </a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Users</h2>
-            </div>
-        </nav>
-        <div class="container-fluid px-4">
-            <div class="row my-5">
-                <div class="col">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <!-- Add User button -->
-                            <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Users</h2>
+                </div>
+            </nav>
+            <div class="container-fluid px-4">
+                <div class="row my-5">
+                    <div class="col">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <!-- Add User button -->
+                                <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add
+                                    User</a>
+                            </div>
+                            <div class="d-flex">
+                                <!-- Search form -->
+                                <form class="d-flex me-3" method="GET"
+                                    action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                    <input class="form-control me-2" type="search" name="search" placeholder="Search..."
+                                        aria-label="Search" onchange="clearSearch()">
+                                    <button class="btn btn-outline-primary" type="submit"><i
+                                            class="fas fa-search"></i></button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="d-flex">
-                            <!-- Search form -->
-                            <form class="d-flex me-3" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                <input class="form-control me-2" type="search" name="search" placeholder="Search..." aria-label="Search" onchange="clearSearch()">
-                                <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <table class="table bg-white rounded shadow-sm  table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Occupation</th>
-                                <th scope="col">Business</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">Permit</th>
-                                <th scope="col">Picture</th>
-                                <th scope="col">Valid-Id</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include '../auth/php/config.php'; // Include config.php file
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Occupation</th>
+                                    <th scope="col">Business</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Permit</th>
+                                    <th scope="col">Picture</th>
+                                    <th scope="col">Valid-Id</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                include '../auth/php/config.php'; // Include config.php file
+                                
+                                // Check if $con variable is defined and valid
+                                if (!$con) {
+                                    die("Connection failed: " . mysqli_connect_error());
+                                }
 
-                            // Check if $con variable is defined and valid
-                            if (!$con) {
-                                die("Connection failed: " . mysqli_connect_error());
-                            }
-
-                            // Fetch data from tbl_users
-                            if (isset($_GET['search'])) {
-                                $search = mysqli_real_escape_string($con, $_GET['search']);
-                                $query = "SELECT * FROM tbl_user WHERE 
+                                // Fetch data from tbl_users
+                                if (isset($_GET['search'])) {
+                                    $search = mysqli_real_escape_string($con, $_GET['search']);
+                                    $query = "SELECT * FROM tbl_user WHERE 
                                         name LIKE '%$search%' OR 
                                         address LIKE '%$search%' OR 
                                         contact LIKE '%$search%' OR 
                                         birthday LIKE '%$search%' OR 
                                         email LIKE '%$search%' OR 
                                         role LIKE '%$search%'";
-                            } else {
-                                $query = "SELECT * FROM tbl_job_owner_apply";
-                            }
+                                } else {
+                                    $query = "SELECT * FROM tbl_job_owner_apply";
+                                }
 
-                            $result = mysqli_query($con, $query);
+                                $result = mysqli_query($con, $query);
 
-                            // Check if query was successful
-                            if (!$result) {
-                                echo "Error: " . mysqli_error($con);
-                                exit();
-                            }
+                                // Check if query was successful
+                                if (!$result) {
+                                    echo "Error: " . mysqli_error($con);
+                                    exit();
+                                }
 
-                            // Loop through the fetched data and display in the table
-                            $count = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<th scope='row'>" . $count++ . "</th>";
-                                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
-                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_permit']) . "\")'><i class='fas fa-eye'></i></button> </td>";
-                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_picture']) . "\")'><i class='fas fa-eye'></i></button> </td>";
-                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
-                                echo "<td>";
-                                echo "<button class='btn btn-outline-dark btn-sm me-1' onclick='editUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
-                                echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['id'] . ")'><i class='fas fa-check'></i></button>";
-                                echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }                            
+                                // Loop through the fetched data and display in the table
+                                $count = 1;
+                                // In the loop where you generate table rows
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<th scope='row'>" . $count++ . "</th>";
+                                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
+                                    echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_permit']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                    echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['business_picture']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                    echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                    echo "<td>";
+                                    echo "<button class='btn btn-outline-dark btn-sm me-1' onclick='showUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
+                                    echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['uid'] . ")'><i class='fas fa-check'></i></button>";
+                                    echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
 
-                            // Close database connection
-                            mysqli_close($con);
-                            ?>
-                           
-                        </tbody>
-                    </table>
+
+                                // Close database connection
+                                mysqli_close($con);
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#page-content-wrapper -->
-</div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    function openModal(imageUrl) {
-    var modalImage = document.getElementById("modalImage");
-    modalImage.src = imageUrl;
-    var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-    imageModal.show();
-}
-</script>
-<script>
-    function openModal(imageUrl) {
-        var modalImage = document.getElementById("modalImage");
-        modalImage.src = imageUrl;
-        var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-        imageModal.show();
-    }
-    // Function to fetch and display user details in the modal
-    function editUser(id) {
-        // Send an AJAX request to fetch user details
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "fetch-user-details.php?id=" + id, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var user = JSON.parse(xhr.responseText);
-                document.getElementById("userName").innerText = user.name;
-                document.getElementById("userEmail").innerText = user.email;
-                document.getElementById("userBirthday").innerText = user.birthday;
-                document.getElementById("userContact").innerText = user.contact;
-                document.getElementById("userAddress").innerText = user.address;
-                var userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
-                userDetailsModal.show();
-            }
-        };
-        xhr.send();
-    }
-
-    // Function to delete a user
-    function deleteUser(id) {
-        Swal.fire({
-            title: 'Are you sure you want to delete?',
-            text: 'This action cannot be undone.',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            confirmButtonColor: '#d33', // Reddish color
-            cancelButtonText: 'No'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "delete-user.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        Swal.fire({
-                            title: 'Success',
-                            text: xhr.responseText,
-                            icon: 'success'
-                        }).then(() => {
-                            window.location.reload();
-                        });
-                    }
-                };
-                xhr.send("id=" + id);
-            }
-        });
-    }
-
-    // Function to reload overall table data when search field is cleared
-    function clearSearch() {
-        var searchInput = document.querySelector('input[name="search"]');
-        if (searchInput.value === "" && event.target.type !== 'submit') {
-            window.location.href = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>";
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function approveUser(uid) {
+            Swal.fire({
+                title: 'Are you sure you want to approve?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#28a745', // Greenish color
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "approve-user.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: xhr.responseText,
+                                icon: 'success'
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                    };
+                    xhr.send("uid=" + uid);
+                }
+            });
         }
-    }
 
-    function confirmLogout() {
-        Swal.fire({
-            title: 'Are you sure you want to logout?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            confirmButtonColor: '#d33', // Reddish color
-            cancelButtonText: 'No'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "log-off.php";
+        function openModal(imageUrl) {
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = imageUrl;
+            var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show();
+        }
+        // Function to fetch and display user details in the modal
+        function showUser(id) {
+            // Send an AJAX request to fetch user details
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "fetch-user-details.php?id=" + id, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var user = JSON.parse(xhr.responseText);
+                    document.getElementById("userName").innerText = user.name;
+                    document.getElementById("userEmail").innerText = user.email;
+                    document.getElementById("userBirthday").innerText = user.birthday;
+                    document.getElementById("userContact").innerText = user.contact;
+                    document.getElementById("userAddress").innerText = user.address;
+                    var userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+                    userDetailsModal.show();
+                }
+            };
+            xhr.send();
+        }
+
+        // Function to delete a user
+        function deleteUser(id) {
+            Swal.fire({
+                title: 'Are you sure you want to delete?',
+                text: 'This action cannot be undone.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#d33', // Reddish color
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "delete-user.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: xhr.responseText,
+                                icon: 'success'
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        }
+                    };
+                    xhr.send("id=" + id);
+                }
+            });
+        }
+
+        // Function to reload overall table data when search field is cleared
+        function clearSearch() {
+            var searchInput = document.querySelector('input[name="search"]');
+            if (searchInput.value === "" && event.target.type !== 'submit') {
+                window.location.href = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>";
             }
-        });
-    }
+        }
 
-    // Toggle sidebar
-    var el = document.getElementById("wrapper");
-    var toggleButton = document.getElementById("menu-toggle");
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Are you sure you want to logout?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                confirmButtonColor: '#d33', // Reddish color
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "log-off.php";
+                }
+            });
+        }
 
-    toggleButton.onclick = function () {
-        el.classList.toggle("toggled");
-    };
-</script>
+        // Toggle sidebar
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
 </body>
 
 <!-- User Details Modal -->
@@ -298,4 +337,5 @@ include 'date_end.php';
         </div>
     </div>
 </div>
+
 </html>
