@@ -57,7 +57,7 @@ session_start(); // Start the session
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -197,7 +197,7 @@ session_start(); // Start the session
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>

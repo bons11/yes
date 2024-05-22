@@ -307,7 +307,7 @@ session_start();
 
                     include 'auth/php/config.php';
 
-                    $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY uid DESC LIMIT 10";
+                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY uid DESC LIMIT 10";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {
@@ -321,11 +321,11 @@ session_start();
                                         <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                             <!-- Fetch company logo dynamically -->
                                             <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
-                                            <div class="text-start ps-5">
+                                            <div class="text-start ps-4">
                                                 <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
                                                 <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
                                                 <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
-                                                <span class="text-truncate me-3"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
                                                 <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                                             </div>
                                         </div>
@@ -354,42 +354,6 @@ session_start();
             </div>
         </div>
 
-
-        <!-- About Start -->
-        <div class="container-xxl py-5 p-5">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="row g-0 about-bg rounded overflow-hidden">
-                            <div class="col-6 text-start">
-                                <img class="img-fluid w-100" src="images/20130907_094226.png">
-                            </div>
-                            <div class="col-6 text-start">
-                                <img class="img-fluid" src="images/ourladyoflourdesparish.jpg" style="width: 85%; margin-top: 15%;">
-                            </div>
-                            <div class="col-6 text-end">
-                                <img class="img-fluid" src="images/4053406072_f14e79cd12_z.jpg" style="width: 85%;">
-                            </div>
-                            <div class="col-6 text-end">
-                                <img class="img-fluid w-100" src="images/mtzionpilgrimage.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">We help to get the best job suited for the people of Bugallon</h1>
-                        <p><i class="fa fa-check text-primary me-3"></i>Professionalism and expertise guide our exceptional client services.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Innovation and creativity fuel our continuous improvement and problem-solving.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
-
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
@@ -400,7 +364,7 @@ session_start();
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>

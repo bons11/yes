@@ -114,7 +114,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link active">About</a>
+                    <a href="mission.php" class="nav-item nav-link active">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -210,12 +210,49 @@
         <div class="container text-center">
           <h1 class="center">About MBB</h1>
             <div class="d-flex justify-content-center">
-              <p>-----?aboutthesystem?-----</p>
+
+ <!-- About Start -->
+            <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="row g-0 about-bg rounded overflow-hidden">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-100" src="images/20130907_094226.png">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid" src="images/ourladyoflourdesparish.jpg" style="width: 85%; margin-top: 15%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid" src="images/4053406072_f14e79cd12_z.jpg" style="width: 85%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-100" src="images/mtzionpilgrimage.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="mb-4">We help to get the best job suited for the people of Bugallon</h1>
+                        <p><i class="fa fa-check text-primary me-3"></i>Professionalism and expertise guide our exceptional client services.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Innovation and creativity fuel our continuous improvement and problem-solving.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
+                        <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- About End -->
+
+            </div>
+
+        </div>
+
         <!-- Gallery end -->
 
         <!-- Gallery start-->
+        
         <div class="container text-center">
           <h1 class="center">Gallery</h1>
             <div class="d-flex justify-content-center">
@@ -264,7 +301,7 @@
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>
