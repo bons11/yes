@@ -148,7 +148,7 @@ session_start();
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-3 text-white animated slideInDown mb-4">Welcome to the Bugallon Municipal Bulletin Board</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Find The Perfect Job That You Deserved</p>
-                                    <a href="job-search.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                                    <a href="job-search.php" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@ session_start();
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-3 text-white animated slideInDown mb-4">Bugallon Municipal Bulletin Board </h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Find the best startup job that fit you</p>
-                                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a>
+                                    <a href="" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
                                 </div>
                             </div>
                         </div>
