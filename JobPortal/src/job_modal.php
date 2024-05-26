@@ -41,7 +41,9 @@ mysqli_close($con);
     </style>
 </head>
 <body>
-
+    <?php
+if (isset ($_SESSION['name'])) {
+                    ?>
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
@@ -107,6 +109,81 @@ mysqli_close($con);
     </div>
   </div>
 </div>
+
+
+<!-- post a job modal below vvvvvvv -->
+
+
+<?php
+} elseif(isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
+    ?>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Registration Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form action="process_form.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo htmlspecialchars($user['name']); ?>" required style="display:none">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required style="display:none">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="dob" name="dob" value="<?php echo htmlspecialchars($user['birthday']); ?>" required style="display:none">
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <input type="text" class="form-control" id="occupation" placeholder="(Optional)" name="occupation">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="contact" name="contact" value="<?php echo htmlspecialchars($user['contact']); ?>" required style="display:none">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" style="display:none" id="address" name="address" required><?php echo htmlspecialchars($user['address']); ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="business_name">Business Name:</label>
+                <input type="text" class="form-control" id="business_name" name="business_name" required>
+            </div>
+            <div class="form-group">
+                <label for="business_location">Business Location:</label>
+                <input type="text" class="form-control" id="business_location" name="business_location" required>
+            </div>
+            <div class="form-group">
+                <label for="business_permit">Business Permit:</label>
+                <input type="file" class="form-control" id="business_permit" name="business_permit" required>
+            </div>
+            <div class="form-group">
+                <label for="business_picture">Business Picture:</label>
+                <input type="file" class="form-control" id="business_picture" name="business_picture" required>
+            </div>
+            <div class="form-group">
+                <label for="valid_id">Valid ID:</label>
+                <input type="file" class="form-control" id="valid_id" name="valid_id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<?php
+}
+?>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

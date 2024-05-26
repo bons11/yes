@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 04:38 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: May 26, 2024 at 04:45 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_bugallon`
+-- Database: `mbb_db`
 --
 
 -- --------------------------------------------------------
@@ -157,6 +157,28 @@ INSERT INTO `tbl_inquiry` (`uid`, `name`, `email`, `subject`, `message`, `role`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_job_owner_apply`
+--
+
+CREATE TABLE `tbl_job_owner_apply` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `email` varchar(500) NOT NULL,
+  `birthday` varchar(45) NOT NULL,
+  `contact` varchar(500) NOT NULL,
+  `occupation` varchar(500) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `business_name` varchar(500) NOT NULL,
+  `business_location` varchar(500) NOT NULL,
+  `business_permit` varchar(500) NOT NULL,
+  `business_picture` varchar(500) NOT NULL,
+  `valid_id` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_qualification`
 --
 
@@ -180,7 +202,9 @@ INSERT INTO `tbl_qualification` (`uid`, `job_number`, `qualification_detail`, `q
 (62, '789145', 'Male/Female', 'High School Graduate', '', '', '', ''),
 (63, '285505', 'Male/Female', 'High School Graduate', '', '', '', ''),
 (64, '567040', 'Male/Female', 'High School Graduate', '', '', '', ''),
-(65, '122235', 'Male/Female', 'College Graduate', '', '', '', '');
+(65, '122235', 'Male/Female', 'College Graduate', '', '', '', ''),
+(68, '969858', 'HK', 'JH', 'KJH', 'KJH', 'KJ', 'HK'),
+(69, '247911', 'lkjh', 'lkjh', 'lkj', 'hlk', 'jh', 'kjh');
 
 -- --------------------------------------------------------
 
@@ -208,7 +232,9 @@ INSERT INTO `tbl_responsibility` (`uid`, `job_number`, `responsibility_detail`, 
 (65, '789145', 'Greet customers.', 'Help customers find items in the store.', 'Check for stock at other branches or order request', 'Provide customers with information about items.', 'Elevate complaints to management.', 'Keep track of inventory.'),
 (66, '285505', 'Greet customers.', 'Help customers find items in the store.', 'Check for stock at other branches or order request', 'Provide customers with information about items.', 'Elevate complaints to management.', 'Keep track of inventory.'),
 (67, '567040', 'Greet customers.', 'Help customers find items in the store.', 'Check for stock at other branches or order request', 'Provide customers with information about items.', 'Elevate complaints to management.', 'Keep track of inventory.'),
-(68, '122235', 'Design', 'Develop', 'Test', 'Supervise the manufacture of electrical equipment', '', '');
+(68, '122235', 'Design', 'Develop', 'Test', 'Supervise the manufacture of electrical equipment', '', ''),
+(71, '969858', 'JHKjhkJHK', 'JH', 'KJH', 'KJ', 'HK', 'JH'),
+(72, '247911', 'lkjh', 'lkjh', 'klj', 'hlk', 'jh', 'lkjh');
 
 -- --------------------------------------------------------
 
@@ -234,7 +260,7 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`uid`, `name`, `address`, `contact`, `birthday`, `email`, `password`, `role`) VALUES
 (38, 'Admin', 'Admin', 'Admin', '2024-02-25', 'admin@gmail.com', 'admin', 'admin'),
 (43, 'Arturo Yparraguirre', 'Bangkal', '09099366481', '2001-11-30', 'arturoyparraguirre01@gmail.com', '1234', 'user'),
-(46, 'Charles', '1273 Sitio Cocaoc Poblacion Bugallon Pangasin', '12345678901', 'June 8 2003', 'user1@gmail.com', '123', 'user');
+(46, 'Charles', '1273 Sitio Cocaoc Poblacion Bugallon Pangasin', '12345678901', 'June 8 2003', 'user1@gmail.com', '123', 'representative');
 
 -- --------------------------------------------------------
 
@@ -253,18 +279,21 @@ CREATE TABLE `tbl_vacancy` (
   `job_nature` varchar(100) NOT NULL,
   `location` varchar(100) NOT NULL,
   `date_created` varchar(100) NOT NULL,
-  `date_end` varchar(100) NOT NULL
+  `date_end` varchar(100) NOT NULL,
+  `town` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_vacancy`
 --
 
-INSERT INTO `tbl_vacancy` (`uid`, `job_number`, `company_category`, `company_name`, `job_title`, `job_description`, `job_salary`, `job_nature`, `location`, `date_created`, `date_end`) VALUES
-(237, '789145', 'Retail', 'Pr Gaz Haus', 'Salesperson', 'We need Sales Man that can handle our customer with care.', '2040', 'Full Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2024-05-31'),
-(238, '285505', 'Retail', 'Pr Gaz Haus', 'Salesperson', 'We need Sales Man that can handle our customer with care.', '2040', 'Part Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2024-05-31'),
-(239, '567040', 'Retail', 'Chooks To Go', 'Cook', 'We need Sales Man that can handle our customer with care.', '1000', 'Full Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2034-05-31'),
-(240, '122235', 'Engineering', 'Central Pangasinan Electric Cooperative, Inc.', 'Electrical Engineering', ':)', '20000', 'Full Time', '382 Socony Street, Bugallon, Pangasinan', '2024-05-22', '2024-05-31');
+INSERT INTO `tbl_vacancy` (`uid`, `job_number`, `company_category`, `company_name`, `job_title`, `job_description`, `job_salary`, `job_nature`, `location`, `date_created`, `date_end`, `town`) VALUES
+(237, '789145', 'Retail', 'Pr Gaz Haus', 'Salesperson', 'We need Sales Man that can handle our customer with care.', '2040', 'Full Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2024-05-31', ''),
+(238, '285505', 'Retail', 'Pr Gaz Haus', 'Salesperson', 'We need Sales Man that can handle our customer with care.', '2040', 'Part Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2024-05-31', ''),
+(239, '567040', 'Retail', 'Chooks To Go', 'Cook', 'We need Sales Man that can handle our customer with care.', '1000', 'Full Time', 'Commercial Building, Romulo Highway, Bugallon, Pangasinan', '2024-05-22', '2034-05-31', ''),
+(240, '122235', 'Engineering', 'Central Pangasinan Electric Cooperative, Inc.', 'Electrical Engineering', ':)', '20000', 'Full Time', '382 Socony Street, Bugallon, Pangasinan', '2024-05-22', '2024-05-31', ''),
+(243, '969858', 'Household Work', 'Pr Gaz Haus', 'kJHKjhkJHK', 'JHK', '123213', 'Full Time', 'KJ', '23123-12-31', '2311-12-31', ''),
+(244, '247911', 'Household Work', 'Pr Gaz Haus', 'asdkfjhasdfkljh', 'kh', '20000', 'Full Time', 'jh', '2024-11-11', '2080-11-11', 'Binmaley');
 
 --
 -- Indexes for dumped tables
@@ -293,6 +322,12 @@ ALTER TABLE `tbl_company`
 --
 ALTER TABLE `tbl_inquiry`
   ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `tbl_job_owner_apply`
+--
+ALTER TABLE `tbl_job_owner_apply`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_qualification`
@@ -347,16 +382,22 @@ ALTER TABLE `tbl_inquiry`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `tbl_job_owner_apply`
+--
+ALTER TABLE `tbl_job_owner_apply`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `tbl_qualification`
 --
 ALTER TABLE `tbl_qualification`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `tbl_responsibility`
 --
 ALTER TABLE `tbl_responsibility`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
@@ -368,7 +409,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_vacancy`
 --
 ALTER TABLE `tbl_vacancy`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
