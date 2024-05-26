@@ -42,7 +42,7 @@ mysqli_close($con);
 </head>
 <body>
     <?php
-if (isset ($_SESSION['name'])) {
+if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                     ?>
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -68,7 +68,7 @@ if (isset ($_SESSION['name'])) {
                 <input type="text" class="form-control" id="dob" name="dob" value="<?php echo htmlspecialchars($user['birthday']); ?>" required style="display:none">
             </div>
             <div class="form-group">
-                <label for="occupation">Occupation:</label>
+                <label for="occupation">Nword:</label>
                 <input type="text" class="form-control" id="occupation" placeholder="(Optional)" name="occupation">
             </div>
             <div class="form-group">
@@ -115,7 +115,7 @@ if (isset ($_SESSION['name'])) {
 
 
 <?php
-} elseif(isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
+} elseif(isset ($_SESSION['name'])) {
     ?>
 <div class="modal" id="myModal">
   <div class="modal-dialog">
