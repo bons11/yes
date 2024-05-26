@@ -87,6 +87,17 @@ session_start(); // Start the session
                               <i class="fas fa-user-plus"></i> Descending
                             </a>
                         </div>
+                        <!-- Dropdown-->
+                        <div class="dropdown me-2">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter by
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="page-company.php">Default</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('Company Alphabetical')">Company Alphabetical</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('Owner Alphabetical')">Owner Alphabetical</a></li>
+                            </ul>
+                        </div>
                         <div class="d-flex">
                             <!-- Search form -->
                             <form class="d-flex me-3" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -247,6 +258,73 @@ session_start(); // Start the session
     </script>
 
     <script>
+        function applyFilter(filter) {
+    // Get the table body
+    var tableBody = document.querySelector('tbody');
+
+    // Get all table rows
+    var rows = tableBody.querySelectorAll('tr');
+
+    // Retrieve the default order of rows by their initial index
+    var defaultOrder = Array.from(rows).sort(function(rowA, rowB) {
+        return Array.from(rowA.parentNode.children).indexOf(rowA) - Array.from(rowB.parentNode.children).indexOf(rowB);
+    });
+
+    // Check if the selected filter is "Default"
+    if (filter === 'Default') {
+        // Clear the table body
+        tableBody.innerHTML = '';
+
+        // Append the default order of rows back to the table body
+        defaultOrder.forEach(function(row) {
+            tableBody.appendChild(row.cloneNode(true)); // Clone the node to preserve event listeners
+        });
+    } else {
+        // Sort the rows based on the selected filter
+        var rowsArray = Array.from(rows);
+        rowsArray.sort(function(rowA, rowB) {
+            var valueA, valueB;
+
+            // Adjust the index based on the column you want to sort by
+            switch (filter) {
+                case 'Company Alphabetical':
+                    valueA = rowA.querySelector('td:nth-child(2)').textContent.trim(); // Category column
+                    valueB = rowB.querySelector('td:nth-child(2)').textContent.trim(); // Category column
+                    break;
+                case 'Owner Alphabetical':
+                    valueA = rowA.querySelector('td:nth-child(7)').textContent.trim(); // Company Name column
+                    valueB = rowB.querySelector('td:nth-child(7)').textContent.trim(); // Company Name column
+                    break;
+                // case 'Category Date Created':
+                //     valueA = rowA.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                //     valueB = rowB.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                //     break;
+                default:
+                    return 0; // For other cases, return 0 to maintain the order
+            }
+
+            // Perform sorting based on the values
+            if (filter === 'Category Alphabetical' || filter === 'Company Alphabetical') {
+                return valueA.localeCompare(valueB);
+            } else if (filter === 'Category Date Created') {
+                var dateA = new Date(valueA);
+                var dateB = new Date(valueB);
+                return dateA - dateB;
+            }
+        });
+
+        // Clear the table body
+        tableBody.innerHTML = '';
+
+        // Append sorted rows back to the table body
+        rowsArray.forEach(function(row) {
+            tableBody.appendChild(row);
+        });
+       }
+    }
+    </script>
+
+    <!-- <script>
       function toggleSortOrder() {
         const urlParams = new URLSearchParams(window.location.search);
         const currentOrder = urlParams.get('order');
@@ -268,7 +346,7 @@ session_start(); // Start the session
         const sortButton = document.getElementById('sortButton');
         sortButton.innerHTML = currentOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Alphabetical (A-Z)' : '<i class="fas fa-user-plus"></i> Alphabetical (Z-A)';
     };
-    </script>
+    </script> -->
 </body>
 
 </html>
