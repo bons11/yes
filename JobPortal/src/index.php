@@ -104,12 +104,12 @@ session_start();
                    <?php
                 }
                 ?>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply as Job owner<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply for a Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
 
-        <?php include 'job_owner_modal.php'; ?>
+        <?php include 'job_modal.php'; ?>
         
         <!-- Navbar End -->
 
