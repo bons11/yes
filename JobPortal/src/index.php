@@ -78,12 +78,12 @@ session_start();
                             echo "Login";
                         }
                         ?>
+                        
                     </a>
 
                     <div class="dropdown-menu rounded-0 m-0">
                         <?php
                         if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
                             echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
                         } else {
                             // If user is not logged in, show regular signin options
@@ -94,13 +94,17 @@ session_start();
                     </div>
                    </div>
                    <?php
-                if (isset($_SESSION['name'])) {
+                if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Post a job</a>
+                   <?php
+                 } elseif (isset ($_SESSION['name'])) {
                     ?>
                     <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
                    <?php
                 }
                 ?>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply as Job owner<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>

@@ -26,10 +26,10 @@ include("php/config.php");
                 $query = "SELECT * FROM tbl_user WHERE email='$email' AND password='$password'";
                 $result = mysqli_query($con, $query);
 
-                // Check if the user exists and has the role of 'user'
+                // Check if the user exists
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
-                    if ($row['role'] == 'user') {
+                    if ($row['role'] == 'user' || $row['role'] == 'representative') {
                         // Set session variables
                         $_SESSION['valid'] = $row['email'];
                         $_SESSION['name'] = $row['name'];
@@ -38,6 +38,7 @@ include("php/config.php");
                         $_SESSION['birthday'] = $row['birthday'];
                         $_SESSION['password'] = $row['password'];
                         $_SESSION['id'] = $row['uid'];
+                        $_SESSION['role'] = $row['role']; // Store the user's role in the session
 
                         // Remember Me functionality
                         if(isset($_POST['remember'])) {
@@ -56,7 +57,7 @@ include("php/config.php");
                         header("Location: ../index.php");
                         exit();
                     } else {
-                        // If the user exists but does not have the role 'user', show error
+                        // If the user exists but does not have the role 'user' or 'representative', show error
                         echo "<script>alert('Invalid Username or Password');</script>";
                     }
                 } else {
@@ -81,7 +82,7 @@ include("php/config.php");
                     echo "<script>alert('Passwords do not match');</script>";
                 } else {
                     // Check if the email is already registered
-                    $verify_query = mysqli_query($con,"SELECT Email FROM tbl_user WHERE Email='$email'");
+                    $verify_query = mysqli_query($con,"SELECT email FROM tbl_user WHERE email='$email'");
                     if(mysqli_num_rows($verify_query) != 0 ){
                         // Email already exists, show error message as a pop-up
                         echo "<script>alert('This email is already in use, please try another one.');</script>";
