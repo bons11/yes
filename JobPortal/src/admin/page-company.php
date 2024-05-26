@@ -83,9 +83,7 @@ session_start(); // Start the session
                         <div>
                             <!-- Add User button -->
                             <a href="page-add-company.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Company</a>
-                            <a id="sortButton" class="btn btn-primary" onclick="toggleSortOrder()">
-                              <i class="fas fa-user-plus"></i> Descending
-                            </a>
+                            
                         </div>
                         <!-- Dropdown-->
                         <div class="dropdown me-2">
@@ -304,7 +302,7 @@ session_start(); // Start the session
             }
 
             // Perform sorting based on the values
-            if (filter === 'Category Alphabetical' || filter === 'Company Alphabetical') {
+            if (filter === 'Owner Alphabetical' || filter === 'Company Alphabetical') {
                 return valueA.localeCompare(valueB);
             } else if (filter === 'Category Date Created') {
                 var dateA = new Date(valueA);

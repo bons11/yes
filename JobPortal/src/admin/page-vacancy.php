@@ -297,8 +297,8 @@ include 'date_end.php';
                     valueB = rowB.querySelector('td:nth-child(3)').textContent.trim(); // Company Name column
                     break;
                 case 'Category Date Created':
-                    valueA = rowA.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
-                    valueB = rowB.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                    valueA = rowA.querySelector('td:nth-child(10)').textContent.trim(); // Date Created column
+                    valueB = rowB.querySelector('td:nth-child(10)').textContent.trim(); // Date Created column
                     break;
                 default:
                     return 0; // For other cases, return 0 to maintain the order
