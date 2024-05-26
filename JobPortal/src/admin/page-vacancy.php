@@ -141,7 +141,7 @@ include 'date_end.php';
                             } else {
                                 // Define what to do if search parameter is not set
                                 // For example, you might want to provide a default query or handle it differently
-                                $query = "SELECT * FROM tbl_vacancy";
+                                 $query = "SELECT * FROM tbl_vacancy ORDER BY date_created DESC";
                             }
 
                             $result = mysqli_query($con, $query);

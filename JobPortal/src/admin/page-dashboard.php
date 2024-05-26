@@ -183,6 +183,7 @@ mysqli_close($con);
                             </div>
                         </a>
                     </div>
+                    
 
                     <div class="col-md-3">
                         <a href="page-user-list.php" class="text-decoration-none text-dark">
@@ -196,10 +197,14 @@ mysqli_close($con);
                             </div>
                         </a>
                     </div>
+                    
                 </div>
+                <a id="sortButton" class="btn btn-primary" onclick="toggleSortOrder()">
+                   <i class="fas fa-user-plus"></i> Recent
+                </a>
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Recent Applicants</h3>
+                    <h2 class="fs-1 mb-3 "><b>Applicants</b></h2>
                         <div class="col">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                             </div>
@@ -238,7 +243,11 @@ mysqli_close($con);
                                             cover_letter LIKE '%$search%' OR 
                                             status LIKE '%$search%'";
                                 } else {
-                                    $query = "SELECT * FROM tbl_applicant";
+                                  // Fetch the current sort order from URL parameters, default to DESC
+                                  $order = isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'ASC' : 'DESC';
+
+                                  // Fetch data from tbl_company
+                                  $query = "SELECT * FROM tbl_applicant ORDER BY date_apply $order"; 
                                 }
 
                                 $result = mysqli_query($con, $query);
@@ -259,7 +268,10 @@ mysqli_close($con);
                                     echo "<td>" . htmlspecialchars($row['portfolio']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['resume']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['cover_letter']) . "</td>";
+                                    // Limit cover_letter to 30 characters
+            $cover_letter = htmlspecialchars($row['cover_letter']);
+            $short_cover_letter = strlen($cover_letter) > 30 ? substr($cover_letter, 0, 30) . '...' : $cover_letter;
+            echo "<td><span title='" . $cover_letter . "'>" . $short_cover_letter . "</span></td>";
                                     echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                                     echo "<td>";
                                     echo "<button class='btn btn-success btn-sm me-1' onclick='editApplicant(" . $row['uid'] . ")'><i class='fas fa-eye'></i></button>";
@@ -346,6 +358,29 @@ mysqli_close($con);
             });
         }
 
+    </script>
+    <script>
+      function toggleSortOrder() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order');
+        const newOrder = currentOrder === 'ASC' ? 'DESC' : 'ASC';
+        urlParams.set('order', newOrder);
+
+        // Update the button text
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = newOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Most Recent' : '<i class="fas fa-user-plus"></i> Past Applicants';
+
+        // Redirect to the new URL with updated order parameter
+        window.location.search = urlParams.toString();
+    }
+
+    // Update button text on page load based on the current order
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order') || 'DESC'; // Default to DESC if not set
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = currentOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Past Applicants' : '<i class="fas fa-user-plus"></i> Most Recent';
+    };
     </script>
 </body>
 

@@ -83,6 +83,9 @@ session_start(); // Start the session
                         <div>
                             <!-- Add User button -->
                             <a href="page-add-company.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Company</a>
+                            <a id="sortButton" class="btn btn-primary" onclick="toggleSortOrder()">
+                              <i class="fas fa-user-plus"></i> Descending
+                            </a>
                         </div>
                         <div class="d-flex">
                             <!-- Search form -->
@@ -125,7 +128,11 @@ session_start(); // Start the session
                                     company_contact LIKE '%$search%' OR 
                                     company_owner LIKE '%$search%'";
                         } else {
-                            $query = "SELECT * FROM tbl_company";
+                          // Fetch the current sort order from URL parameters, default to DESC
+                          $order = isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'ASC' : 'DESC';
+
+                          // Fetch data from tbl_company
+                          $query = "SELECT * FROM tbl_company ORDER BY company_name $order"; // Replace 'some_column' with the column you want to sort by
                         }
 
                         $result = mysqli_query($con, $query);
@@ -237,6 +244,30 @@ session_start(); // Start the session
             }
         });
     }
+    </script>
+
+    <script>
+      function toggleSortOrder() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order');
+        const newOrder = currentOrder === 'ASC' ? 'DESC' : 'ASC';
+        urlParams.set('order', newOrder);
+
+        // Update the button text
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = newOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Alphabetical (Z-A)' : '<i class="fas fa-user-plus"></i> Alphabetical (A-Z)';
+
+        // Redirect to the new URL with updated order parameter
+        window.location.search = urlParams.toString();
+    }
+
+    // Update button text on page load based on the current order
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order') || 'DESC'; // Default to DESC if not set
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = currentOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Alphabetical (A-Z)' : '<i class="fas fa-user-plus"></i> Alphabetical (Z-A)';
+    };
     </script>
 </body>
 
