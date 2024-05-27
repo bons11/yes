@@ -156,7 +156,11 @@ session_start(); // Start the session
                     </div>
                    </div>
                    <?php
-                if (isset($_SESSION['name'])) {
+                if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Post a job</a>
+                   <?php
+                 } elseif (isset ($_SESSION['name'])) {
                     ?>
                     <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
                    <?php
@@ -167,7 +171,7 @@ session_start(); // Start the session
             </div>
         </nav>
 
-        <?php include 'job_owner_modal.php'; ?>
+        <?php include 'job_modal.php'; ?>
         
         <!-- Navbar End -->
 
