@@ -230,6 +230,22 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 <input type="text" class="form-control" id="business_location" name="business_location" required>
             </div>
             <div class="form-group">
+                <label for="company_detail">Company Detail:</label>
+                <input type="text" class="form-control" id="company_detail" name="company_detail" required>
+            </div>
+            <div class="form-group">
+                <label for="company_email">Company Email:</label>
+                <input type="email" class="form-control" id="company_email" name="company_email" required>
+            </div>
+            <div class="form-group">
+                <label for="company_contact">Company Contact:</label>
+                <input type="text" class="form-control" id="company_contact" name="company_contact" required>
+            </div>
+            <div class="form-group">
+                <label for="valid_id">Company Logo:</label>
+                <input type="file" class="form-control" id="logo" name="logo">
+            </div>
+            <div class="form-group">
                 <label for="business_permit">Business Permit:</label>
                 <input type="file" class="form-control" id="business_permit" name="business_permit" required>
             </div>
@@ -241,6 +257,8 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 <label for="valid_id">Valid ID:</label>
                 <input type="file" class="form-control" id="valid_id" name="valid_id" required>
             </div>
+            <!-- Additional Fields for Company Details -->
+            <!-- End of Additional Fields -->
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -256,6 +274,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
 <?php
 }
 ?>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

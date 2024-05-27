@@ -97,6 +97,7 @@ include 'date_end.php';
                                     <th scope="col">Location</th>
                                     <th scope="col">Permit</th>
                                     <th scope="col">Picture</th>
+                                    <th scope="col">Logo</th>
                                     <th scope="col">Valid-Id</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -143,6 +144,7 @@ include 'date_end.php';
                                     echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
                                     echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['business_permit']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                     echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['business_picture']) . "\")'><i class='fas fa-eye'></i></button> </td>";
+                                    echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['logo']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                     echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
 
                                     echo "<td>";
