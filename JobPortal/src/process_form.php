@@ -32,13 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$user_id', '$name', '$email', '$birthday', '$contact', '$occupation', '$address', '$business_name', '$business_location', '$business_permit_path', '$business_picture_path', '$valid_id_path')";
 
         if (mysqli_query($con, $sql)) {
-            // Return the image paths as JSON
-            $response = array(
-                'business_permit_path' => $business_permit_path,
-                'business_picture_path' => $business_picture_path,
-                'valid_id_path' => $valid_id_path
-            );
-            echo json_encode($response);
+            echo "<script>window.location.href='index.php';</script>";
+                // Show success message in popup alert
+                echo "<script>alert('Vacancy added successfully.');</script>";
+                exit();
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($con);
         }

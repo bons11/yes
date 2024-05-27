@@ -105,7 +105,7 @@ session_start(); // Start the session
             </div>
         </nav>
 
-        <?php include 'job_owner_modal.php'; ?>
+        <?php include 'job_modal.php'; ?>
         
         <!-- Navbar End -->
 
