@@ -228,6 +228,13 @@ session_start();
         </div>
         <!-- Search End -->
 
+        <!-- Bulletin Board Carousel Start -->
+
+        <div class="container mt-5">
+        <?php include 'carousel.php'; ?>
+         </div>
+
+         <!-- Bulletin Board Carousel End -->
 
         <!-- Category Start -->
         <div class="container-xxl py-5">
