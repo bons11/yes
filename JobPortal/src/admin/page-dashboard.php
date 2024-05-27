@@ -199,12 +199,9 @@ mysqli_close($con);
                     </div>
                     
                     <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Request</h2>
+                    <h2 class="fs-1 mb-3 "><b>Request</b></h2>
                 </div>
-            </nav>
                 <!-- <a id="" class="btn btn-primary">
                    <i class="fas fa-user-plus"></i>Create Announcement
                 </a> -->
@@ -237,7 +234,8 @@ mysqli_close($con);
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">image</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -266,7 +264,7 @@ mysqli_close($con);
                                     echo "Error: " . mysqli_error($con);
                                     exit();
                                 }
-                                $basePath = '../'; // Path to the uploads folder relative to your PHP file
+                                $basePath = '../uploads/'; // Path to the uploads folder relative to your PHP file
                                 // Loop through the fetched data and display in the table
                                 $count = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -277,9 +275,9 @@ mysqli_close($con);
                                     echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['event_image']) . "\")'><i class='fas fa-eye'></i></button> </td>";
 
                                     echo "<td>";
-                                    echo "<button class='btn btn-outline-dark btn-sm me-1' onclick='showUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
-                                    echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['uid'] . ")'><i class='fas fa-check'></i></button>";
-                                    echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
+                                    
+                                    echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['id'] . ")'><i class='fas fa-user-edit'></i></button>";
+                                    echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-trash-alt'></i></button>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
@@ -500,8 +498,30 @@ $(document).ready(function() {
         });
     });
 });
+
+function openModal(imagePath) {
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = imagePath; // Set the image source to the fetched image path
+            var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show(); // Show the modal
+        }
+
 </script>
 
 </body>
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="#" alt="Image Preview" style="max-width: 100%; max-height: 80vh;">
+            </div>
+        </div>
+    </div>
+</div>
 
 </html>
