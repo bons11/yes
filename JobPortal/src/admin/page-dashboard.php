@@ -205,14 +205,24 @@ mysqli_close($con);
                     <h2 class="fs-2 m-0">Request</h2>
                 </div>
             </nav>
+                <!-- <a id="" class="btn btn-primary">
+                   <i class="fas fa-user-plus"></i>Create Announcement
+                </a> -->
             <div class="container-fluid px-4">
                 <div class="row my-5">
                     <div class="col">
+   <a id="createEventButton" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">
+    <i class="fas fa-user-plus m-1"></i>Create Announcement
+</a>
+
+                        <?php include 'event-modal.php'; ?>
+
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
                                 <!-- Add User button -->
                                 <!-- <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a> -->
                             </div>
+                            
                             <div class="d-flex">
                                 <!-- Search form -->
                                 <form class="d-flex me-3" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -243,8 +253,8 @@ mysqli_close($con);
                                 if (isset($_GET['search'])) {
                                     $search = mysqli_real_escape_string($con, $_GET['search']);
                                     $query = "SELECT * FROM tbl_announcement WHERE 
-            event_name LIKE '%$search%' OR 
-            evet_details LIKE '%$search%' OR ";
+                                    event_name LIKE '%$search%' OR 
+                                    event_details LIKE '%$search%' OR ";
                                 } else {
                                     $query = "SELECT * FROM tbl_announcement";
                                 }
@@ -468,6 +478,30 @@ mysqli_close($con);
         sortButton.innerHTML = currentOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Past Applicants' : '<i class="fas fa-user-plus"></i> Most Recent';
     };
     </script>
+
+    <script>
+$(document).ready(function() {
+    $('#createEventForm').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'add-announcement.php',
+            type: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                alert('Event created successfully!');
+                $('#createEventModal').modal('hide');
+                // Optionally, you can refresh the page or update the UI to reflect the new event
+            },
+            error: function(response) {
+                alert('Failed to create event.');
+            }
+        });
+    });
+});
+</script>
+
 </body>
 
 </html>
