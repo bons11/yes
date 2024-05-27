@@ -211,9 +211,9 @@ mysqli_close($con);
             <div class="container-fluid px-4">
                 <div class="row my-5">
                     <div class="col">
-   <a id="createEventButton" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">
-    <i class="fas fa-user-plus m-1"></i>Create Announcement
-</a>
+   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEventModal">
+        <i class="fas fa-user-plus me-1"></i>Create Announcement
+    </button>
 
                         <?php include 'event-modal.php'; ?>
 
