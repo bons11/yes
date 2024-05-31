@@ -11,7 +11,7 @@ include('../auth/php/config.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="img/bugallon-seal.png" rel="icon">
   <link rel="stylesheet" href="style/admin-style.css">
-  <title>Admin Login</title>
+  <title>Bugallon Municipal Bulletin Board</title>
 </head>
 <body>
   
