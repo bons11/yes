@@ -326,7 +326,6 @@ mysqli_close($con);
                                 <th scope="col">Name</th>
                                 <th scope="col">Portfolio</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Resume</th>
                                 <th scope="col">Cover Letter</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th> <!-- New column for Action buttons -->
