@@ -12,7 +12,6 @@ include('../auth/php/config.php');
   <link href="img/bugallon-seal.png" rel="icon">
   <link rel="stylesheet" href="style/admin-style.css">
   <title>Admin Login</title>
-  <link href="img/bugallon-seal.png" rel="icon">
 </head>
 <body>
   
