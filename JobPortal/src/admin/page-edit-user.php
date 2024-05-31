@@ -92,7 +92,7 @@ session_start(); // Start the session
                 ?>
                         <form action="edit-user.php" method="POST">
 
-                            <input type="hidden" name="uid" value="<?php echo $uid; ?>"> <!-- Hidden input to hold uid -->
+                            <input name="uid" value="<?php echo $uid; ?>"> <!-- Hidden input to hold uid -->
                             <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
