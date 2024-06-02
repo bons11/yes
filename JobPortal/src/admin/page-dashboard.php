@@ -287,7 +287,10 @@ mysqli_close($con);
                                             echo "<tr>";
                                             echo "<th scope='row'>" . $count++ . "</th>";
                                             echo "<td>" . htmlspecialchars($row['event_name']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($row['event_details']) . "</td>";
+                                            // Limit cover_letter to specified amount of characters
+                                            $event_details = htmlspecialchars($row['event_details']);
+                                            $short_event_details = strlen($event_details) > 80 ? substr($event_details, 0, 80) . '...' : $event_details;
+                                            echo "<td><span title='" . $event_details . "'>" . $short_event_details . "</span></td>";
                                             echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['event_image']) . "\")'><i class='fas fa-eye'></i></button> </td>";
 
                                             echo "<td>";

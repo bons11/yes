@@ -144,7 +144,9 @@ session_start(); // Start the session
                             echo "<td>" . htmlspecialchars($row['portfolio']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['resume']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['cover_letter']) . "</td>";
+                            $cover_letter = htmlspecialchars($row['cover_letter']);
+                            $short_cover_letter = strlen($cover_letter) > 35 ? substr($cover_letter, 0, 35) . '...' : $cover_letter;
+                            echo "<td><span title='" . $cover_letter . "'>" . $short_cover_letter . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>";
                             echo "<button class='btn btn-success btn-sm me-1' onclick='viewApplicant(" . $row['uid'] . ")'><i class='fas fa-eye'></i></button>";

@@ -134,7 +134,9 @@ session_start(); // Start the session
                             echo "<th scope='row'>" . $count++ . "</th>";
                             echo "<td>" . htmlspecialchars($row['date']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['category']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                            $description = htmlspecialchars($row['description']);
+                            $short_description = strlen($description) > 35 ? substr($description, 0, 35) . '...' : $description;
+                            echo "<td><span title='" . $description . "'>" . $short_description . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>";
                             echo "<button class='btn btn-success btn-sm me-1' onclick='editCategory(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";

@@ -140,7 +140,9 @@ session_start(); // Start the session
                             echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['subject']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+                            $message = htmlspecialchars($row['message']);
+                            $short_message = strlen($message) > 25 ? substr($message, 0, 25) . '...' : $message;
+                            echo "<td><span title='" . $message . "'>" . $short_message . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>";

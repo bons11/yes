@@ -6,6 +6,7 @@
     <title>PHP Bootstrap Carousel</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link  rel="stylesheet" href="css/carousel.css">
 </head>
 <body>
     <!-- Your carousel will be inserted here -->
@@ -50,9 +51,9 @@
                 <?php foreach ($announcements as $index => $announcement): ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                         <img src="<?php echo $basePath . $announcement['event_image']; ?>" class="d-block w-100" alt="<?php echo $announcement['event_name']; ?>">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5><?php echo $announcement['event_name']; ?></h5>
-                            <p><?php echo $announcement['event_details']; ?></p>
+                        <div class="carousel-caption d-none d-md-block custom-carousel-caption">
+                            <h5 class="text-white px-2="><?php echo $announcement['event_name']; ?></h5>
+                            <p class="text-white"><?php echo $announcement['event_details']; ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>
