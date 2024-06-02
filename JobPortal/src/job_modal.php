@@ -212,8 +212,8 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 <input type="text" class="form-control" id="dob" name="dob" value="<?php echo htmlspecialchars($user['birthday']); ?>" required style="display:none">
             </div>
             <div class="form-group">
-                <label for="occupation">Occupation:</label>
-                <input type="text" class="form-control" id="occupation" placeholder="(Optional)" name="occupation">
+                <label for="occupation">Job Role:</label>
+                <input type="text" class="form-control" id="occupation"  name="occupation">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="contact" name="contact" value="<?php echo htmlspecialchars($user['contact']); ?>" required style="display:none">
