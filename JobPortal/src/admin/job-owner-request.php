@@ -93,6 +93,7 @@ include 'date_end.php';
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Occupation</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Business</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Permit</th>
@@ -140,6 +141,7 @@ include 'date_end.php';
                                     echo "<th scope='row'>" . $count++ . "</th>";
                                     echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['company_email']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";
                                     echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['business_permit']) . "\")'><i class='fas fa-eye'></i></button> </td>";
