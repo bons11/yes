@@ -55,7 +55,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <form action="admin/add-vacancy.php" method="post" enctype="multipart/form-data">
+        <form action="add-vacancy.php" method="post" enctype="multipart/form-data">
             <!-- Company Name -->
             <div class="form-group">
                 <label for="job_title">Company Name:</label>

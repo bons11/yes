@@ -1,6 +1,6 @@
 <?php
 // Include config.php file
-include '../auth/php/config.php';
+include 'auth/php/config.php';
 
 // Initialize an empty array to store validation errors
 $errors = [];
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Perform the queries
         if (mysqli_query($con, $query_vacancy) && mysqli_query($con, $query_responsibility) && mysqli_query($con, $query_qualification)) {
             // Redirect back to page-vacancy.php
-            echo "<script>window.location.href='page-vacancy.php';</script>";
+            echo "<script>window.location.href='index.php';</script>";
             // Show success message in popup alert
             echo "<script>alert('Vacancy added successfully.');</script>";
             // Exit the script
