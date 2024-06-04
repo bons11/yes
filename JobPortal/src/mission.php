@@ -34,10 +34,65 @@ session_start(); // Start the session
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/about.css" rel="stylesheet">
 
     <style>
-        
+        /* Internal CSS */
+        .services {
+            text-align: center;
+        }
+
+        .service {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: calc(100% / 3);
+        }
+
+        .service i {
+            font-family: "Font Awesome 5 Free";
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .cen {
+            display: flex;
+            justify-content: flex;
+            align-items: flex;
+            flex-wrap: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Style for video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Style for video */
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Style for icon */
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            width: 2000px;
+        }
     </style>
 </head>
 
@@ -85,12 +140,12 @@ session_start(); // Start the session
                             echo "Login";
                         }
                         ?>
-                        
                     </a>
 
                     <div class="dropdown-menu rounded-0 m-0">
                         <?php
                         if (isset($_SESSION['name'])) {
+                            // If user is logged in, show profile, settings, and logout options
                             echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
                         } else {
                             // If user is not logged in, show regular signin options
@@ -111,7 +166,7 @@ session_start(); // Start the session
                    <?php
                 }
                 ?>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply for a Job<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
@@ -119,7 +174,6 @@ session_start(); // Start the session
         <?php include 'job_modal.php'; ?>
         
         <!-- Navbar End -->
-
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -144,37 +198,33 @@ session_start(); // Start the session
 
 
         <!-- Mission, Vision, and Values Start -->
-        <div class="container py-5">
-          <!-- <h1 class="text-center">Our Mission, Vision, and Values</h1> -->
-          <div class="row mt-4 ">
-            <div class="col-md-4 mb-4">
-              <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Mission</h2>
-                    <p class="card-text">The Municipal Government of Bugallon exists to provide quality services and upholds the general welfare of its people through sustainable development, social responsibility, environmental protection, and economic progress in strong partnership with the private sectors.</p>
+        <div class="services">
+            <br>
+            <br>
+            <h1 style="text-align: center;">Our Mission Vision and Values</h1>
+            <br>
+            <br>
+            <div class="cen">
+                <div class="service">
+                    <h2>Mission</h2>
+                    <br>
+                    <p>The Municipal Government of Bugallon exists to provide quality services and upholds the general welfare of its people through sustainable development, social responsibility, environmental protection and economic progress in strong partnership with the private sectors.</p>
+                </div>
+
+                <div class="service">
+                    <h2>Vision</h2>
+                    <br>
+                    <p>Bugallon: A Top-Class Municipality in the field of Governance, Information Technology, Health, Tourism and Commerce, governed by God-centered and People-oriented Leaders, Home of Globally-competitive and Locally-anchored constituents living in a Sustainable and conducive environment for an Organized, Nurtured and Empowered Community.</p>
+                </div>
+
+                <div class="service">
+                    <h2>Values</h2>
+                    <br>
+                    <p>Our values revolve around integrity, respect, and commitment. We foster inclusivity, embracing diverse perspectives. Pursuing excellence through innovation, we meet evolving community needs. Committed to sustainability and social responsibility, we aim for a lasting positive impact.</p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Vision</h2>
-                    <p class="card-text">Bugallon: A Top-Class Municipality in the field of Governance, Information Technology, Health, Tourism, and Commerce, governed by God-centered and People-oriented Leaders, Home of Globally-competitive and Locally-anchored constituents living in a Sustainable and conducive environment for an Organized, Nurtured and Empowered Community.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                      <h2 class="card-title">Values</h2>
-                      <p class="card-text">Our values revolve around integrity, respect, and commitment. We foster inclusivity, embracing diverse perspectives. Pursuing excellence through innovation, we meet evolving community needs. Committed to sustainability and social responsibility, we aim for a lasting positive impact.</p>
-                  </div>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- Mission, Vision, and Values End -->
-
 
         <!-- Gallery start-->
         <div class="container text-center">
@@ -235,7 +285,7 @@ session_start(); // Start the session
 
         <!-- Video Player Start -->
         <div class="video-container">
-            <video controls loop>
+            <video controls autoplay loop>
                 <source src="images/video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
