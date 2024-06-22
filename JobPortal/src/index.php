@@ -9,7 +9,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -52,7 +52,7 @@ session_start();
        
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">MBB</h1>
+                <h1 class="m-0 text-primary">EBB</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -152,7 +152,7 @@ session_start();
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-3 text-white animated slideInDown mb-4">Welcome to the Bugallon Municipal Bulletin Board</h1>
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Welcome to Employment Bulletin Board</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Find The Perfect Job That You Deserved</p>
                                     <a href="job-search.php" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
                                 </div>
@@ -166,7 +166,7 @@ session_start();
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-3 text-white animated slideInDown mb-4">Bugallon Municipal Bulletin Board </h1>
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Employment Bulletin Board</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Find the best startup job that fit you</p>
                                     <a href="" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
                                 </div>
@@ -230,18 +230,7 @@ session_start();
         </div>
         <!-- Search End -->
 
-        <div class="container-xxl py-5">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Announcements & Events</h1>
-                <div class="row g-4"></div>
-
-        <!-- Bulletin Board Carousel Start -->
-
-        <div class="container mt-5">
-        <?php include 'carousel.php'; ?>
-         </div>
-
-         <!-- Bulletin Board Carousel End -->
+ 
 
         <!-- Category Start -->
         <div class="container-xxl py-5">
@@ -349,7 +338,6 @@ session_start();
                                         </div>
                                         <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                             <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
                                                 <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
                                             </div>
                                             <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: <?php echo $row['date_end']; ?></small>

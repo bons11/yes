@@ -19,7 +19,7 @@ include("php/config.php");
 
 </head>
 <body>
-    
+
     <div class="container py-3 px-4">
         <div class="forms">
         <?php 
@@ -147,7 +147,7 @@ include("php/config.php");
             </div>
 
       
-            <div class="form signup">
+            <div class="form signup" style="overflow: auto;">
             <span class="title">Registration</span>
 
             <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
@@ -160,12 +160,48 @@ include("php/config.php");
                     <i class="uil uil-map"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="contact" placeholder="Contact" required>
+                    <input type="number" name="contact" placeholder="Contact" required>
                     <i class="uil uil-phone"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="birthday" placeholder="Birthday" required>
+                    <input type="date" name="birthday" placeholder="Birthday" required>
                     <i class="uil uil-calender"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Job Role" placeholder="Job Role" required>
+                    <i class="uil uil-suitcase"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Business Name" placeholder="Business Name" required>
+                    <i class="uil uil-usd-circle"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Business Location" placeholder="Business Location" required>
+                    <i class="uil uil-map-marker"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Business Type" placeholder="Business Type" required>
+                    <i class="uil uil-question-circle"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Company Details" placeholder="Company Details" required>
+                    <i class="uil uil-file-info-alt"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Company Email" placeholder="Company Email" required>
+                    <i class="uil uil-envelope icon"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Company Number" placeholder="Company Number" required>
+                    <i class="uil uil-phone"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Company Req" placeholder="Provide all the requirements" required readonly>
+                    <i class="uil uil-file"></i>
+                </div>
+                <div class="input-field">
+                    <input type="file" id="company_logo" name="company_logo" accept="image/*" required>
+                    <i class="uil uil-image"></i>
                 </div>
                 <div class="input-field">
                     <input type="email" name="email" placeholder="Email" required>
