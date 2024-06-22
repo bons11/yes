@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 ?>
 
@@ -96,11 +98,11 @@ session_start();
                    <?php
                 if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                     ?>
-                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Post a job</a>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal" >Post a job</a>
                    <?php
                  } elseif (isset ($_SESSION['name'])) {
                     ?>
-                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal" >Apply as job owner</a>
                    <?php
                 }
                 ?>
@@ -115,7 +117,7 @@ session_start();
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script>
+        <script>
         $(document).ready(function(){
             $("#applyJobOwner").click(function(event){
             event.preventDefault();
@@ -339,7 +341,7 @@ session_start();
                                             <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
                                             <div class="text-start ps-4">
                                                 <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
-                                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
+                                                <span class="text-truncate me-3 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
                                                 <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
                                                 <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
                                                 <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
@@ -425,13 +427,18 @@ session_start();
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Other libraries -->
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

@@ -277,7 +277,7 @@ if(isset($_GET['job_number'])) {
                         <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($logo); ?>" alt="Company Logo" style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
                             <h3 class="mb-3"><?php echo $job_title; ?></h3> <!-- it should fetch in mysql table "tbl_vacancy" in column job_title -->
-                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column location -->
+                            <span class="text-truncate me-3 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column location -->
                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $job_nature; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column job_nature -->
                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $job_salary; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column job_salary -->
                         </div>
@@ -294,7 +294,7 @@ if(isset($_GET['job_number'])) {
                             <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub4; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub4 -->
                             <p><i class="fa fa-angle-right text-primary me-2"></i>: <?php echo $responsibility_sub5; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub5 -->
 
-                        <h4 class="mb-3">Qaulifications</h4>
+                        <h4 class="mb-3">Qualifications</h4>
                         <p><?php echo $qualification_detail; ?></p> <!-- it should fetch in mysql table "tbl_qualification" in column qualification_detail -->
                         <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub1; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub1 -->
                             <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub2; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub2 -->

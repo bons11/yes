@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Redirect back to page-vacancy.php
                 echo "<script>window.location.href='page-vacancy.php';</script>";
                 // Show success message in popup alert
-                echo "<script>alert('Vacancy added successfully.');</script>";
+                echo "<script>alert('Vacancy added successfully');</script>";
                 // Exit the script
                 exit();
             } else {

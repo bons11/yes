@@ -1,0 +1,20 @@
+body {
+  background-image: url("../src/images/pexels-leo-pixie-14987238.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+.myform {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 50px;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  text-align: center; /* Center the content inside myform */
+}
+.myform img {
+  width: 150px; /* Adjust the width of the image */
+  margin-bottom: 20px; /* Add some space between the image and the form */
+}

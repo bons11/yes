@@ -13,6 +13,8 @@ include("php/config.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/employer-page.css">
+         
     <title>Bugallon Municipal Bulletin Board</title>
 
 </head>
@@ -133,13 +135,13 @@ include("php/config.php");
                 </form>
 
                 <div class="login-signup mt-3">
-                    <span class="text">Not a member?
+                    <span class="text">Register here!
                         <a href="#" class="text signup-link">Signup now</a>
                     </span>
                 </div>
                 <div class="login-signup mb-3">
-                    <span class="text">Are you an Employer?
-                        <a href="employer-login.php" class="text">Click Here</a>
+                    <span class="text">Are you an Job seeker?
+                        <a href="login.php" class="text">Click here</a>
                     </span>
                 </div>
             </div>
@@ -191,8 +193,8 @@ include("php/config.php");
                 </div>
             </form>
 
-            <div class="login-signup mt-3">
-                <span class="text ">Already a member?
+            <div class="login-signup">
+                <span class="text">Already a member?
                     <a href="#" class="text login-link">Login now</a>
                 </span>
             </div>

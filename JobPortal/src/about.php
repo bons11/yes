@@ -2,6 +2,7 @@
 session_start(); // Start the session
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,65 +34,10 @@ session_start(); // Start the session
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
 
     <style>
-        /* Internal CSS */
-        .services {
-            text-align: center;
-        }
-
-        .service {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            width: calc(100% / 3);
-        }
-
-        .service i {
-            font-family: "Font Awesome 5 Free";
-            font-size: 30px;
-            font-weight: 600;
-        }
-
-        .cen {
-            display: flex;
-            justify-content: flex;
-            align-items: flex;
-            flex-wrap: flex;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        /* Style for video container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        /* Style for video */
-        video {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Style for icon */
-        .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .responsive-image {
-            max-width: 100%;
-            width: 2000px;
-        }
+        
     </style>
 </head>
 
@@ -108,6 +54,7 @@ session_start(); // Start the session
 
 
         <!-- Navbar Start -->
+       
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">MBB</h1>
@@ -117,8 +64,8 @@ session_start(); // Start the session
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="mission.php" class="nav-item nav-link active">About</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="mission.php" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -138,12 +85,12 @@ session_start(); // Start the session
                             echo "Login";
                         }
                         ?>
+                        
                     </a>
 
                     <div class="dropdown-menu rounded-0 m-0">
                         <?php
                         if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
                             echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
                         } else {
                             // If user is not logged in, show regular signin options
@@ -152,12 +99,27 @@ session_start(); // Start the session
                         }
                         ?>
                     </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
+                   </div>
+                   <?php
+                if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Post a job</a>
+                   <?php
+                 } elseif (isset ($_SESSION['name'])) {
+                    ?>
+                    <a href="#" id="applyJobOwner" class="nav-link" data-toggle="modal" data-target="#myModal" >Apply as job owner</a>
+                   <?php
+                }
+                ?>
+                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply for a Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </nav>
+
+        <?php include 'job_modal.php'; ?>
+        
         <!-- Navbar End -->
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -182,33 +144,37 @@ session_start(); // Start the session
 
 
         <!-- Mission, Vision, and Values Start -->
-        <div class="services">
-            <br>
-            <br>
-            <h1 style="text-align: center;">Our Mission Vision and Values</h1>
-            <br>
-            <br>
-            <div class="cen">
-                <div class="service">
-                    <h2>Mission</h2>
-                    <br>
-                    <p>The Municipal Government of Bugallon exists to provide quality services and upholds the general welfare of its people through sustainable development, social responsibility, environmental protection and economic progress in strong partnership with the private sectors.</p>
-                </div>
-
-                <div class="service">
-                    <h2>Vision</h2>
-                    <br>
-                    <p>Bugallon: A Top-Class Municipality in the field of Governance, Information Technology, Health, Tourism and Commerce, governed by God-centered and People-oriented Leaders, Home of Globally-competitive and Locally-anchored constituents living in a Sustainable and conducive environment for an Organized, Nurtured and Empowered Community.</p>
-                </div>
-
-                <div class="service">
-                    <h2>Values</h2>
-                    <br>
-                    <p>Our values revolve around integrity, respect, and commitment. We foster inclusivity, embracing diverse perspectives. Pursuing excellence through innovation, we meet evolving community needs. Committed to sustainability and social responsibility, we aim for a lasting positive impact.</p>
+        <div class="container py-5">
+          <!-- <h1 class="text-center">Our Mission, Vision, and Values</h1> -->
+          <div class="row mt-4 ">
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Mission</h2>
+                    <p class="card-text">The Municipal Government of Bugallon exists to provide quality services and upholds the general welfare of its people through sustainable development, social responsibility, environmental protection, and economic progress in strong partnership with the private sectors.</p>
                 </div>
             </div>
         </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Vision</h2>
+                    <p class="card-text">Bugallon: A Top-Class Municipality in the field of Governance, Information Technology, Health, Tourism, and Commerce, governed by God-centered and People-oriented Leaders, Home of Globally-competitive and Locally-anchored constituents living in a Sustainable and conducive environment for an Organized, Nurtured and Empowered Community.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                      <h2 class="card-title">Values</h2>
+                      <p class="card-text">Our values revolve around integrity, respect, and commitment. We foster inclusivity, embracing diverse perspectives. Pursuing excellence through innovation, we meet evolving community needs. Committed to sustainability and social responsibility, we aim for a lasting positive impact.</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Mission, Vision, and Values End -->
+
 
         <!-- Gallery start-->
         <div class="container text-center">
@@ -242,7 +208,7 @@ session_start(); // Start the session
                         <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a>
+                        <!-- <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a> -->
                     </div>
                 </div>
             </div>
@@ -257,19 +223,19 @@ session_start(); // Start the session
 
         <!-- Gallery start-->
         
-        <div class="container text-center">
+        <!-- <div class="container text-center">
           <h1 class="center">Gallery</h1>
             <div class="d-flex justify-content-center">
               <p>-----?gridgallery?-----</p>
             </div>
-        </div>
+        </div> -->
         <!-- Gallery end -->
 
         
 
         <!-- Video Player Start -->
         <div class="video-container">
-            <video controls autoplay loop>
+            <video controls loop>
                 <source src="images/video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>

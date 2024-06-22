@@ -1,8 +1,3 @@
-<?php
-session_start(); // Start the session
-include('../auth/php/config.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +5,32 @@ include('../auth/php/config.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="img/bugallon-seal.png" rel="icon">
-  <link rel="stylesheet" href="style/admin-style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/index.css">
+  <style>
+    
+  </style>
   <title>Bugallon Admin</title>
 </head>
 <body>
-  
+
   <div class="container">
     <div class="myform">
+      <img src="style/images/image.png" alt="Bugallon Seal">
       <form method="post">
-        <h2>Admin Login</h2>
-        <input type="text" placeholder="Username or email" name="email" required>
-        <input type="password" placeholder="Password" name="password" required>
-        <button type="submit" name="login">Login</button>
+        <h2 class="text-center">Admin Login</h2>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username or email" name="email" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" name="login">Login</button>
+        </div>
+        <a href="../index.php">Back to Home</a>
+
       </form>
-    </div>
-    <div class="image">
-      <img src="style/images/image.png">
     </div>
   </div>
 
