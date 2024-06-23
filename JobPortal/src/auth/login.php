@@ -108,7 +108,7 @@ include("php/config.php");
             }
             ?>
             <div class="form login">
-                <span class="title">Job Seeker Login</span>
+                <span class="title">Job <b style="color:#0275d8;">Seeker</b> Login</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="input-field">
                         <input type="email" name="email" placeholder="Email" required>
@@ -152,7 +152,7 @@ include("php/config.php");
 
       
             <div class="form signup">
-            <span class="title">Job Seeker Registration</span>
+            <span class="title">Job <b style="color:#0275d8;">Seeker</b> Registration</span>
 
             <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
                 <div class="input-field">
