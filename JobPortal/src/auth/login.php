@@ -164,11 +164,11 @@ include("php/config.php");
                     <i class="uil uil-map"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="contact" placeholder="Contact" required>
+                    <input type="number" name="contact" placeholder="Contact" required>
                     <i class="uil uil-phone"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="birthday" placeholder="Birthday" required>
+                    <input type="date" name="birthday" placeholder="Birthday" required>
                     <i class="uil uil-calender"></i>
                 </div>
                 <div class="input-field">
