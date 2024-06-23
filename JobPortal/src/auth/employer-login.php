@@ -180,10 +180,6 @@ include("php/config.php");
                     <i class="uil uil-calender"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="Job Role" placeholder="Job Role" required>
-                    <i class="uil uil-suitcase"></i>
-                </div>
-                <div class="input-field">
                     <input type="text" name="Business Name" placeholder="Business Name" required>
                     <i class="uil uil-usd-circle"></i>
                 </div>
@@ -208,11 +204,78 @@ include("php/config.php");
                     <i class="uil uil-phone"></i>
                 </div>
                 <div class="label-box p-2 my-4">
+                <div class="input-field">
+                <label for="company_logo">Job Role</label>
+                <select name="Job Role" required>
+                    <option value="" disabled selected>Select Job Role</option>
+                    <option value="ceo">CEO</option>
+                    <option value="coo">COO</option>
+                    <option value="cfo">CFO</option>
+                    <option value="cto">CTO</option>
+                    <option value="president">President</option>
+                    <option value="vice_president">Vice President</option>
+                    <option value="senior_director">Senior Director</option>
+                    <option value="assistant_director">Assistant Director</option>
+                    <option value="manger">Manager</option>
+                    <!-- Add more options as needed -->
+                </select>
+                </div>
+                </div>
+                <div class="label-box p-2 my-4">
+                <div class="input-field">
+                <label for="company_logo">Business Type</label>
+                <select name="Job Role" required>
+                    <option value="" disabled selected>Select Business Type</option>
+                    <option value="llc">Limited Liability Company</option>
+                    <option value="nonprofit">Nonprofit</option>
+                    <option value="corporation">Corporation</option>
+                    <option value="cooperative">Cooperative</option>
+                    <option value="public_benifit_corporation">Public-benefit corporation</option>
+                    <option value="joint_venture">Joint venture</option>
+                    <option value="sole_proprietorship">Sole proprietorship</option>
+                    <option value="manufacturers">Manufacturers</option>
+                    <option value="franchise">Franchise</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="large_business">Large business</option>
+                    <option value="small_industry">Small Industry</option>
+                    <option value="other_business_structures">Other business structures</option>
+                    <!-- Add more options as needed -->
+                </select>
+                </div>
+                </div>
+                <div class="label-box p-2 my-4">
                   <div class="input-field">
-                      <label for="company_logo">Logo</label>
+                      <label for="company_logo">Company Logo</label>
                   </div>
                   <div class="input-field">
                       <input type="file" id="company_logo" name="company_logo" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
+                </div>
+                <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="business_permit">DTI Permit</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="dti_permit" name="dti_permit" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
+             </div>
+                <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="business_permit">SSS Permit</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="sss" name="sss" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
+                  </div>
+                  <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="business_permit">DIR Permit</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="dir" name="dir" accept="image/*" required>
                       <i class="uil uil-image"></i>
                   </div>
                 </div>
@@ -222,6 +285,15 @@ include("php/config.php");
                   </div>
                   <div class="input-field">
                       <input type="file" id="business_permit" name="business_permit" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
+                </div>
+                <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="business_permit">Valid ID</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="valid_id" name="valid_id" accept="image/*" required>
                       <i class="uil uil-image"></i>
                   </div>
                 </div>
@@ -238,7 +310,6 @@ include("php/config.php");
                     <i class="uil uil-lock icon"></i>
                     <i class="uil uil-eye-slash showHidePw"></i>
                 </div>
-
                 <div class="checkbox-text">
                     <div class="checkbox-content">
                         <input type="checkbox" id="agreeCheck" name="agree" required>
