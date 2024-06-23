@@ -26,3 +26,8 @@ body {
 .input-field input:is(:focus, :valid) {
   border-bottom-color: rgb(52, 149, 187);
 }
+
+.label-box {
+  border: 1.5px solid rgb(168, 168, 168);
+  border-radius: 10px;
+}

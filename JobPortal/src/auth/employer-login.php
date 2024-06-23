@@ -14,7 +14,6 @@ include("php/config.php");
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/employer-page.css">
-         
     <title>Bugallon Municipal Bulletin Board</title>
 
 </head>
@@ -208,19 +207,23 @@ include("php/config.php");
                     <input type="text" name="Company Number" placeholder="Company Number" required>
                     <i class="uil uil-phone"></i>
                 </div>
-                <div class="input-field">
-                    <label for="company_logo">Logo</label>
+                <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="company_logo">Logo</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="company_logo" name="company_logo" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
                 </div>
-                <div class="input-field">
-                    <input type="file" id="company_logo" name="company_logo" accept="image/*" required>
-                    <i class="uil uil-image"></i>
-                </div>
-                <div class="input-field">
-                    <label for="business_permit">Business Permit</label>
-                </div>
-                <div class="input-field">
-                    <input type="file" id="business_permit" name="business_permit" accept="image/*" required>
-                    <i class="uil uil-image"></i>
+                <div class="label-box p-2 my-4">
+                  <div class="input-field">
+                      <label for="business_permit">Business Permit</label>
+                  </div>
+                  <div class="input-field">
+                      <input type="file" id="business_permit" name="business_permit" accept="image/*" required>
+                      <i class="uil uil-image"></i>
+                  </div>
                 </div>
                 <div class="input-field">
                     <input type="email" name="email" placeholder="Email" required>
