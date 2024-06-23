@@ -18,6 +18,7 @@ include("php/config.php");
 </head>
 <body>
     
+    
     <div class="container py-5 px-4">
         <div class="forms">
         <?php 
@@ -137,9 +138,14 @@ include("php/config.php");
                         <a href="#" class="text signup-link">Signup now</a>
                     </span>
                 </div>
-                <div class="login-signup mb-3">
+                <div class="login-signup ">
                     <span class="text">Are you an Employer?
                         <a href="employer-login.php" class="text">Click Here</a>
+                    </span>
+                </div>
+                <div class="text-center mb-3">
+                    <span class="text">
+                        <a href="../index.php">Back to Home</a>
                     </span>
                 </div>
             </div>

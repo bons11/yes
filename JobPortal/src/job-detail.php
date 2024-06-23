@@ -288,19 +288,19 @@ if(isset($_GET['job_number'])) {
                         <p><?php echo $job_description; ?></p> <!-- it should fetch in mysql table "tbl_vacancy" in column job_description -->
                         <h4 class="mb-3">Responsibility</h4>
                         <p><?php echo $responsibility_detail; ?></p> <!-- it should fetch in mysql table "tbl_responsibility" in column responisibility_detail -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub1; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub1 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub2; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub2 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub3; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub3 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub4; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub4 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>: <?php echo $responsibility_sub5; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub5 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub1; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub1 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub2; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub2 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub3; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub3 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub4; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub4 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub5; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub5 -->
 
                         <h4 class="mb-3">Qualifications</h4>
                         <p><?php echo $qualification_detail; ?></p> <!-- it should fetch in mysql table "tbl_qualification" in column qualification_detail -->
-                        <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub1; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub1 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub2; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub2 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub3; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub3 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub4; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub4 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>: <?php echo $qualification_sub5; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub5 -->
+                        <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub1; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub1 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub2; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub2 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub3; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub3 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub4; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub4 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub5; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub5 -->
                     </div>
 
                     <div class="">
@@ -308,20 +308,30 @@ if(isset($_GET['job_number'])) {
                         <form action="submit_application.php" id="submitform" method="post" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                              <label for="name">Your Name</label>
+                              <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                              <label for="email">Your Email</label>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="portfolio" placeholder="Portfolio Website (Optional)">
+                              <label for="valid_id">Valid Id</label>
+                              <input type="email" class="form-control" name="valid_id" id="valid_id" placeholder="Valid Id" required>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="file" class="form-control bg-white" name="resume" accept=".pdf" required>
+                              <label for="portfolio">Portfolio Website</label>
+                              <input type="text" class="form-control" name="portfolio" id="portfolio" placeholder="(Optional)">
+                            </div>
+                           <div class="col-12 col-sm-6">
+                              <label for="resume">Resume</label>
+                              <input type="file" class="form-control bg-white" name="resume" id="resume" accept=".pdf" required>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" name="cover_letter" rows="5" placeholder="Cover Letter" required></textarea>
+                              <label for="cover_letter">Cover Letter</label>
+                              <textarea class="form-control" name="cover_letter" id="cover_letter" rows="5" placeholder="Cover Letter" required></textarea>
                             </div>
+
                             <!-- Add hidden input field for company_name -->
                             <input type="hidden" name="company_name" value="<?php echo $company_name; ?>">
                             <!-- End of hidden input field for company_name -->

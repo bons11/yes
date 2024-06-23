@@ -28,7 +28,7 @@ include("php/config.php");
                 $password = mysqli_real_escape_string($con,$_POST['password']);
 
                 // Fetch user from database based on email and password
-                $query = "SELECT * FROM tbl_user WHERE email='$email' AND password='$password'";
+                $query = "SELECT * FROM tbl_job_owner_apply WHERE email='$email' AND password='$password'";
                 $result = mysqli_query($con, $query);
 
                 // Check if the user exists
@@ -36,12 +36,20 @@ include("php/config.php");
                     $row = mysqli_fetch_assoc($result);
                     if ($row['role'] == 'user' || $row['role'] == 'representative') {
                         // Set session variables
-                        $_SESSION['valid'] = $row['email'];
                         $_SESSION['name'] = $row['name'];
-                        $_SESSION['address'] = $row['address'];
-                        $_SESSION['contact'] = $row['contact'];
-                        $_SESSION['birthday'] = $row['birthday'];
+                        $_SESSION['valid'] = $row['email'];
                         $_SESSION['password'] = $row['password'];
+                        $_SESSION['birthday'] = $row['birthday'];
+                        $_SESSION['contact'] = $row['contact'];
+                        $_SESSION['address'] = $row['address'];
+                        $_SESSION['occupation'] = $row['occupation'];
+                        $_SESSION['business_name'] = $row['business_name'];
+                        $_SESSION['company_detail'] = $row['company_detail'];
+                        $_SESSION['company_email'] = $row['company_email'];
+                        $_SESSION['company_contact'] = $row['company_contact'];
+                        $_SESSION['business_location'] = $row['business_location'];
+                        $_SESSION['business_permit'] = $row['business_permit'];
+                        $_SESSION['business_picture'] = $row['business_picture'];
                         $_SESSION['id'] = $row['uid'];
                         $_SESSION['role'] = $row['role']; // Store the user's role in the session
 
@@ -71,7 +79,7 @@ include("php/config.php");
                 }
             }
             ?>
-
+<!-- CONTINUE THIS REFER TO THE SEESSIONS ABOVE -->
             <?php 
             if(isset($_POST['signup_submit'])){
                 $name = mysqli_real_escape_string($con,$_POST['name']);
@@ -139,9 +147,14 @@ include("php/config.php");
                         <a href="#" class="text signup-link">Signup now</a>
                     </span>
                 </div>
-                <div class="login-signup mb-3">
+                <div class="login-signup">
                     <span class="text">Are you an Job seeker?
                         <a href="login.php" class="text">Click here</a>
+                    </span>
+                </div>
+                <div class="text-center mb-3">
+                    <span class="text">
+                        <a href="../index.php">Back to Home</a>
                     </span>
                 </div>
             </div>

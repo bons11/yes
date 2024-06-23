@@ -18,7 +18,7 @@
     <div class="myform">
       <img src="style/images/image.png" alt="Bugallon Seal">
       <form method="post">
-        <h2 class="text-center">Admin Login</h2>
+        <h2 class="text-center"><b>Admin Login</b></h2>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Username or email" name="email" required>
         </div>
