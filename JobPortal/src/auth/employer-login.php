@@ -1,4 +1,4 @@
-<?php
+<b?php
 session_start(); // Start the session
 include("php/config.php");
 ?>
@@ -117,7 +117,7 @@ include("php/config.php");
             }
             ?>
             <div class="form login">
-                <span class="title">Job Owner Login</span>
+                <span class="title">Job <b style="color: #5bc0de;">Owner</b> Login</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="input-field">
                         <input type="email" name="email" placeholder="Email" required>
@@ -161,7 +161,7 @@ include("php/config.php");
 
       
             <div class="form signup" style="overflow: auto;">
-            <span class="title">Job Owner Registration</span>
+            <span class="title">Job <b style="color: #5bc0de;">Owner</b> Registration</span>
 
             <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
                 <div class="input-field">
