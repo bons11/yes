@@ -20,8 +20,8 @@ include("php/config.php");
 </head>
 <body>
 
-    <div class="container py-3 px-4">
-        <div class="forms">
+    <div class="container py-5 px-4">
+        <div class="forms ">
         <?php 
             if(isset($_POST['login_submit'])){
                 $email = mysqli_real_escape_string($con,$_POST['email']);
@@ -109,7 +109,7 @@ include("php/config.php");
             }
             ?>
             <div class="form login">
-                <span class="title">Login</span>
+                <span class="title">Job Owner Login</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="input-field">
                         <input type="email" name="email" placeholder="Email" required>
@@ -148,7 +148,7 @@ include("php/config.php");
 
       
             <div class="form signup" style="overflow: auto;">
-            <span class="title">Registration</span>
+            <span class="title">Job Owner Registration</span>
 
             <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
                 <div class="input-field">

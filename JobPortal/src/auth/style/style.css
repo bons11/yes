@@ -33,7 +33,7 @@ body {
 .container .forms {
   display: flex;
   align-items: center;
-  height: 440px;
+  height: 480px;
   width: 200%;
   transition: height 0.2s ease;
 }
@@ -85,10 +85,11 @@ body {
   position: relative;
   height: 50px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .form .login-signup {
+  margin-top: 2px;
   text-align: center;
 }
 

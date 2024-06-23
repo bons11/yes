@@ -18,7 +18,7 @@ include("php/config.php");
 </head>
 <body>
     
-    <div class="container py-3 px-4">
+    <div class="container py-5 px-4">
         <div class="forms">
         <?php 
             if(isset($_POST['login_submit'])){
@@ -107,7 +107,7 @@ include("php/config.php");
             }
             ?>
             <div class="form login">
-                <span class="title">Login</span>
+                <span class="title">Job Seeker Login</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="input-field">
                         <input type="email" name="email" placeholder="Email" required>
@@ -146,7 +146,7 @@ include("php/config.php");
 
       
             <div class="form signup">
-            <span class="title">Registration</span>
+            <span class="title">Job Seeker Registration</span>
 
             <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
                 <div class="input-field">
@@ -191,7 +191,7 @@ include("php/config.php");
                 </div>
             </form>
 
-            <div class="login-signup mt-3">
+            <div class="login-signup">
                 <span class="text ">Already a member?
                     <a href="#" class="text login-link">Login now</a>
                 </span>
