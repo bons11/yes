@@ -148,17 +148,61 @@ session_start(); // Start the session
                         <select class="form-select" id="job_nature" name="job_nature" required>
                             <option>Full Time</option>
                             <option>Part Time</option>
+                            <option>Day Time</option>
+                            <option>Night Time</option>
+                            <option>On Call</option>
                         </select>
                 </div>
                 <div class="mb-3">
                     <label for="town" class="form-label">Town</label>
                         <select class="form-select" id="town" name="town" required>
-                            <option>Aguilar </option>
+                            <option>Agno</option>
+                            <option>Aguilar</option>
+                            <option>Alaminos</option>
+                            <option>Alcala</option>
+                            <option>Anda</option>
+                            <option>Asingan</option>
+                            <option>Bani</option>
+                            <option>Basista</option>
+                            <option>Bayambang</option>
                             <option>Binmaley</option>
+                            <option>Binalonan</option>
+                            <option>Bolinao</option>
                             <option>Bugallon</option>
-                            <option>Lingayen</option>
-                            <option>Mangatarem</option>
+                            <option>Bullangao</option>
+                            <option>Burgos</option>
+                            <option>Calasiao</option>
+                            <option>Dagupan</option>
+                            <option>Dasol</option>
+                            <option>Infanta</option>
                             <option>Labrador</option>
+                            <option>Laoac</option>
+                            <option>Lingayen</option>
+                            <option>Mabini</option>
+                            <option>Malasiqui</option>
+                            <option>Manaoag</option>
+                            <option>Mangaldan</option>
+                            <option>Mangatarem</option>
+                            <option>Mapandan</option>
+                            <option>Natividad</option>
+                            <option>Pozorrubio</option>
+                            <option>Rosales</option>
+                            <option>San Carlos City</option>
+                            <option>San Fabian</option>
+                            <option>San Jacinto</option>
+                            <option>San Manuel</option>
+                            <option>San Nicolas</option>
+                            <option>San Quintin</option>
+                            <option>Santa Barbara</option>
+                            <option>Santa Maria</option>
+                            <option>Santo Tomas</option>
+                            <option>Sison</option>
+                            <option>Sual</option>
+                            <option>Tayug</option>
+                            <option>Umingan</option>
+                            <option>Urbiztondo</option>
+                            <option>Urdaneta</option>
+                            <option>Villasis</option>
                         </select>
                 </div>
                 <div class="mb-3">
