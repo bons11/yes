@@ -209,11 +209,17 @@ include("php/config.php");
                     <i class="uil uil-phone"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="Company Req" placeholder="Provide all the requirements" required readonly>
-                    <i class="uil uil-file"></i>
+                    <label for="company_logo">Logo</label>
                 </div>
                 <div class="input-field">
                     <input type="file" id="company_logo" name="company_logo" accept="image/*" required>
+                    <i class="uil uil-image"></i>
+                </div>
+                <div class="input-field">
+                    <label for="business_permit">Business Permit</label>
+                </div>
+                <div class="input-field">
+                    <input type="file" id="business_permit" name="business_permit" accept="image/*" required>
                     <i class="uil uil-image"></i>
                 </div>
                 <div class="input-field">
