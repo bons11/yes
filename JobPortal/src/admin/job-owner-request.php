@@ -92,7 +92,7 @@ include 'date_end.php';
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Occupation</th>
+                                    <th scope="col">Job Role</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Business</th>
                                     <th scope="col">Location</th>
@@ -140,7 +140,7 @@ include 'date_end.php';
                                     echo "<tr>";
                                     echo "<th scope='row'>" . $count++ . "</th>";
                                     echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row['occupation']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['job_role']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['company_email']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['business_name']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['business_location']) . "</td>";

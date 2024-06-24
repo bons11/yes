@@ -75,6 +75,7 @@ include("php/config.php");
                 $password = mysqli_real_escape_string($con, $_POST['password']);
                 $confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
                 $business_name = mysqli_real_escape_string($con, $_POST['business_name']);
+                $job_role = mysqli_real_escape_string($con, $_POST['job_role']);
                 $company_detail = mysqli_real_escape_string($con, $_POST['company_detail']);
                 $company_email = mysqli_real_escape_string($con, $_POST['company_email']);
                 $company_contact = mysqli_real_escape_string($con, $_POST['company_contact']);
@@ -94,7 +95,7 @@ include("php/config.php");
                     if(mysqli_num_rows($verify_query) != 0 ){
                         echo "<script>alert('This email is already in use, please try another one.');</script>";
                     } else {
-                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
+                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, job_role, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$job_role', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
 
                         if($insert_query) {
                             echo "<script>alert('Registration successful!');</script>";
@@ -198,17 +199,17 @@ include("php/config.php");
                
                     <div class="col-md-6 mb-3">
                     <div class="input-field">
-                <select name="Job Role" required>
+                <select name="job_role" required>
                     <option value="" disabled selected>Select Job Role</option>
-                    <option value="ceo">CEO</option>
-                    <option value="coo">COO</option>
-                    <option value="cfo">CFO</option>
-                    <option value="cto">CTO</option>
-                    <option value="president">President</option>
-                    <option value="vice_president">Vice President</option>
-                    <option value="senior_director">Senior Director</option>
-                    <option value="assistant_director">Assistant Director</option>
-                    <option value="manger">Manager</option>
+                    <option value="CEO">CEO</option>
+                    <option value="COO">COO</option>
+                    <option value="CFO">CFO</option>
+                    <option value="CTO">CTO</option>
+                    <option value="President">President</option>
+                    <option value="Vice President">Vice President</option>
+                    <option value="Senior Director">Senior Director</option>
+                    <option value="Assistant Director">Assistant Director</option>
+                    <option value="Manager">Manager</option>
                     <!-- Add more options as needed -->
                 </select>
                 </div>
