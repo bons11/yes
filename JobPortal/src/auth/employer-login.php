@@ -79,7 +79,7 @@ include("php/config.php");
                 $company_email = mysqli_real_escape_string($con, $_POST['company_email']);
                 $company_contact = mysqli_real_escape_string($con, $_POST['company_contact']);
                 $business_location = mysqli_real_escape_string($con, $_POST['business_location']);
-                $business_permit = mysqli_real_escape_string($con, $_POST['business_permit']);
+                $business_permit = mysqli_real_escape_string($con, $_FILES['business_permit']['name']);
                 $business_picture = mysqli_real_escape_string($con, $_FILES['business_picture']['name']);
                 $valid_id = mysqli_real_escape_string($con, $_FILES['valid_id']['name']);
                 $logo = mysqli_real_escape_string($con, $_FILES['company_logo']['name']);
@@ -94,7 +94,7 @@ include("php/config.php");
                     if(mysqli_num_rows($verify_query) != 0 ){
                         echo "<script>alert('This email is already in use, please try another one.');</script>";
                     } else {
-                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$occupation', '$business_name', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
+                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
 
                         if($insert_query) {
                             echo "<script>alert('Registration successful!');</script>";
