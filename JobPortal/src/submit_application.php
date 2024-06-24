@@ -80,20 +80,20 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
                         $mail->isSMTP();
                         $mail->Host = 'smtp.gmail.com';
                         $mail->SMTPAuth = true;
-                        $mail->Username = 'arturoyparraguirre01@gmail.com'; // Replace with your Gmail username
-                        $mail->Password = 'noyg pzxf spxg qfks'; // Replace with your Gmail password
+                        $mail->Username = 'bgllnmncplblltnbrd@gmail.com'; // Replace with your Gmail username
+                        $mail->Password = 'feix hmve vsca rpyl'; // Replace with your Gmail password
                         $mail->SMTPSecure = 'ssl';
                         $mail->Port = 465;
 
-                        $mail->setFrom('arturoyparraguirre01@gmail.com'); // Replace with your email address
+                        $mail->setFrom('bgllnmncplblltnbrd@gmail.com'); // Replace with your email address
 
                         $mail->addAddress($receiver_email);
 
                         $mail->isHTML(true);
 
                         $mail->Subject = "New Job Application";
-                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Cover Letter: $cover_letter";
-                        $mail->AltBody = "Name: $name \nEmail: $email \nCover Letter: $cover_letter"; // Plain text version of the email
+                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Message: $cover_letter";
+                        $mail->AltBody = "Name: $name \nEmail: $email \n Message: $cover_letter"; // Plain text version of the email
 
                         // Attach resume file
                         $mail->addAttachment($target_file);

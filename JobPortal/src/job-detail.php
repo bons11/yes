@@ -317,19 +317,19 @@ if(isset($_GET['job_number'])) {
                             </div>
                             <div class="col-12 col-sm-6">
                               <label for="valid_id">Valid Id</label>
-                              <input type="email" class="form-control" name="valid_id" id="valid_id" placeholder="Valid Id" required>
+                              <input type="email" class="form-control" name="valid_id" id="valid_id" placeholder="Valid Id" >
                             </div>
                             <div class="col-12 col-sm-6">
                               <label for="portfolio">Portfolio Website</label>
                               <input type="text" class="form-control" name="portfolio" id="portfolio" placeholder="(Optional)">
                             </div>
-                           <div class="col-12 col-sm-6">
+                           <div class="col-12 col-sm-12">
                               <label for="resume">Resume</label>
                               <input type="file" class="form-control bg-white" name="resume" id="resume" accept=".pdf" required>
                             </div>
                             <div class="col-12">
-                              <label for="cover_letter">Cover Letter</label>
-                              <textarea class="form-control" name="cover_letter" id="cover_letter" rows="5" placeholder="Cover Letter" required></textarea>
+                              <label for="cover_letter">Message</label>
+                              <textarea class="form-control" name="cover_letter" id="cover_letter" rows="5" placeholder="Message" required></textarea>
                             </div>
 
                             <!-- Add hidden input field for company_name -->
