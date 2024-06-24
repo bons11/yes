@@ -36,7 +36,6 @@ include("php/config.php");
                         $_SESSION['birthday'] = $row['birthday'];
                         $_SESSION['contact'] = $row['contact'];
                         $_SESSION['address'] = $row['address'];
-                        $_SESSION['occupation'] = $row['occupation'];
                         $_SESSION['business_name'] = $row['business_name'];
                         $_SESSION['company_detail'] = $row['company_detail'];
                         $_SESSION['company_email'] = $row['company_email'];
@@ -75,7 +74,6 @@ include("php/config.php");
                 $email = mysqli_real_escape_string($con, $_POST['email']);
                 $password = mysqli_real_escape_string($con, $_POST['password']);
                 $confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
-                $occupation = mysqli_real_escape_string($con, $_POST['occupation']);
                 $business_name = mysqli_real_escape_string($con, $_POST['business_name']);
                 $company_detail = mysqli_real_escape_string($con, $_POST['company_detail']);
                 $company_email = mysqli_real_escape_string($con, $_POST['company_email']);
@@ -96,7 +94,7 @@ include("php/config.php");
                     if(mysqli_num_rows($verify_query) != 0 ){
                         echo "<script>alert('This email is already in use, please try another one.');</script>";
                     } else {
-                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, occupation, business_name, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$occupation', '$business_name', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
+                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$occupation', '$business_name', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
 
                         if($insert_query) {
                             echo "<script>alert('Registration successful!');</script>";
