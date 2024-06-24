@@ -42,11 +42,6 @@ include("php/config.php");
                         $_SESSION['company_email'] = $row['company_email'];
                         $_SESSION['company_contact'] = $row['company_contact'];
                         $_SESSION['business_location'] = $row['business_location'];
-                        $_SESSION['business_permit'] = $row['business_permit'];
-                        $_SESSION['business_picture'] = $row['business_picture'];
-                        $_SESSION['dti'] = $row['dti'];
-                        $_SESSION['dir'] = $row['dir'];
-                        $_SESSION['sss'] = $row['sss'];
                         $_SESSION['id'] = $row['uid'];
                         $_SESSION['role'] = $row['role'];
 
