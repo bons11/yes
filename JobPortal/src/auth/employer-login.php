@@ -176,7 +176,7 @@ include("php/config.php");
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="input-field">
-                            <input type="tel" name="contact" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                            <input type="tel" name="contact" placeholder="Phone Number" pattern="[0-9]{11}" required>
                             <i class="uil uil-phone"></i>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ include("php/config.php");
 
                     <div class="col-md-6 mb-3">
                         <div class="input-field">
-                            <input type="tel" name="company_contact" placeholder="Business Contact" pattern="[0-9]{10}" required>
+                            <input type="tel" name="company_contact" placeholder="Business Contact" pattern="[0-9]{11}" required>
                             <i class="uil uil-phone"></i>
                         </div>
                     </div>
