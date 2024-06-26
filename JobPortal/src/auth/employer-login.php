@@ -275,8 +275,8 @@ if (isset($_POST['signup_submit'])) {
                     <i class="uil uil-map-marker"></i>
                 </div>
 
-                <div class="p-5">
-                    <select name="occupation" class="custom-select" required>
+                <div class="p-4">
+                    <select name="occupation" class="form-select form-select-lg custom-select" required>
                         <option value="" selected disabled>Select Job Role</option>
                         <option value="CEO">CEO</option>
                         <option value="COO">COO</option>
