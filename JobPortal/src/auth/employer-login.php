@@ -65,7 +65,7 @@ include("php/config.php");
                     echo "<script>alert('Invalid Username or Password');</script>";
                 }
             }
-$upload_dir = '../uploads';
+$upload_dir = '../uploads/';
 
 // Check if the form is submitted
 if (isset($_POST['signup_submit'])) {

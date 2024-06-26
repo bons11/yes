@@ -141,7 +141,7 @@ include 'date_end.php';
                                     echo "Error: " . mysqli_error($con);
                                     exit();
                                 }
-                                $basePath = '../'; // Path to the uploads folder relative to your PHP file
+                                $basePath = '../uploads/'; // Path to the uploads folder relative to your PHP file
                                 // Loop through the fetched data and display in the table
                                 $count = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
