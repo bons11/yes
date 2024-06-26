@@ -169,7 +169,7 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['date_created']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_end']) . "</td>";
                                 echo "<td>";
-                                echo "<button class='btn btn-success btn-sm me-1' onclick='editVacancy(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
+                                echo "<button class='btn btn-success btn-sm ms-1' onclick='editVacancy(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
                                 echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteVacancy(" . $row['job_number'] . ")'><i class='fas fa-trash-alt'></i></button>";
                                 echo "</td>";
                                 echo "</tr>";
