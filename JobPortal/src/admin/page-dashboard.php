@@ -120,10 +120,6 @@ mysqli_close($con);
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
-                <a href="manage-job-owners.php"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fas fa-user-check me-1"></i>Manage Job Owners
-                </a>
                 <a href="page-user-list.php"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
