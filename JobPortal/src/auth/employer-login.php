@@ -20,51 +20,56 @@ include("php/config.php");
     <div class="container py-5 px-4">
         <div class="forms">
         <?php 
-            if(isset($_POST['login_submit'])){
-                $email = mysqli_real_escape_string($con, $_POST['email']);
-                $password = mysqli_real_escape_string($con, $_POST['password']);
+            if (isset($_POST['login_submit'])) {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
 
-                $query = "SELECT * FROM tbl_job_owner_apply WHERE email='$email' AND password='$password'";
-                $result = mysqli_query($con, $query);
+    $query = "SELECT * FROM tbl_job_owner_apply WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($con, $query);
 
-                if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    if ($row['role'] == 'user' || $row['role'] == 'representative') {
-                        $_SESSION['name'] = $row['name'];
-                        $_SESSION['valid'] = $row['email'];
-                        $_SESSION['password'] = $row['password'];
-                        $_SESSION['birthday'] = $row['birthday'];
-                        $_SESSION['contact'] = $row['contact'];
-                        $_SESSION['address'] = $row['address'];
-                        $_SESSION['business_name'] = $row['business_name'];
-                        $_SESSION['company_detail'] = $row['company_detail'];
-                        $_SESSION['company_email'] = $row['company_email'];
-                        $_SESSION['company_contact'] = $row['company_contact'];
-                        $_SESSION['business_location'] = $row['business_location'];
-                        $_SESSION['id'] = $row['id'];
-                        $_SESSION['role'] = $row['role'];
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
 
-                        if(isset($_POST['remember'])) {
-                            setcookie('email', $email, time() + (86400 * 30), "/");
-                            setcookie('password', $password, time() + (86400 * 30), "/");
-                        } else {
-                            if(isset($_COOKIE['email'])) {
-                                setcookie('email', '', time() - 3600, '/');
-                            }
-                            if(isset($_COOKIE['password'])) {
-                                setcookie('password', '', time() - 3600, '/');
-                            }
-                        }
+        // Check if 'role' is empty
+        if (empty($row['role'])) {
+            // Display an alert if the account is not approved
+            echo "<script>alert('Your account is not approved by an admin yet.');</script>";
+        } elseif ($row['role'] == 'user' || $row['role'] == 'representative') {
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['valid'] = $row['email'];
+            $_SESSION['password'] = $row['password'];
+            $_SESSION['birthday'] = $row['birthday'];
+            $_SESSION['contact'] = $row['contact'];
+            $_SESSION['address'] = $row['address'];
+            $_SESSION['business_name'] = $row['business_name'];
+            $_SESSION['company_detail'] = $row['company_detail'];
+            $_SESSION['company_email'] = $row['company_email'];
+            $_SESSION['company_contact'] = $row['company_contact'];
+            $_SESSION['business_location'] = $row['business_location'];
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['role'] = $row['role'];
 
-                        header("Location: ../index.php");
-                        exit();
-                    } else {
-                        echo "<script>alert('Invalid Username or Password');</script>";
-                    }
-                } else {
-                    echo "<script>alert('Invalid Username or Password');</script>";
+            if (isset($_POST['remember'])) {
+                setcookie('email', $email, time() + (86400 * 30), "/");
+                setcookie('password', $password, time() + (86400 * 30), "/");
+            } else {
+                if (isset($_COOKIE['email'])) {
+                    setcookie('email', '', time() - 3600, '/');
+                }
+                if (isset($_COOKIE['password'])) {
+                    setcookie('password', '', time() - 3600, '/');
                 }
             }
+
+            header("Location: ../index.php");
+            exit();
+        } else {
+            echo "<script>alert('Invalid Username or Password');</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid Username or Password');</script>";
+    }
+}
 $upload_dir = '../uploads/';
 
 // Check if the form is submitted
