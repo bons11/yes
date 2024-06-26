@@ -188,33 +188,9 @@ include("php/config.php");
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="input-field">
-                            <input type="email" name="email" placeholder="Email" required>
-                            <i class="uil uil-envelope"></i>
-                        </div>
-                    </div>
-
-               
-                    <div class="col-md-6 mb-3">
-                    <div class="input-field">
-                <select name="job_role" required>
-                    <option value="" disabled selected>Select Job Role</option>
-                    <option value="CEO">CEO</option>
-                    <option value="COO">COO</option>
-                    <option value="CFO">CFO</option>
-                    <option value="CTO">CTO</option>
-                    <option value="President">President</option>
-                    <option value="Vice President">Vice President</option>
-                    <option value="Senior Director">Senior Director</option>
-                    <option value="Assistant Director">Assistant Director</option>
-                    <option value="Manager">Manager</option>
-                    <!-- Add more options as needed -->
-                </select>
-                </div>
-                </div>
-          
+                <div class="input-field">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <i class="uil uil-envelope"></i>
                 </div>
 
                 <div class="row">
@@ -244,6 +220,7 @@ include("php/config.php");
                             <i class="uil uil-briefcase"></i>
                         </div>
                     </div>
+                    
 
                     <div class="col-md-6 mb-3">
                         <div class="input-field">
@@ -272,6 +249,22 @@ include("php/config.php");
                 <div class="input-field">
                     <input type="text" name="business_location" placeholder="Business Location" required>
                     <i class="uil uil-map-marker"></i>
+                </div>
+
+                <div class="p-5">
+                    <select name="job_role" class="custom-select" required>
+                        <option value="" disabled selected>Select Job Role</option>
+                        <option value="CEO">CEO</option>
+                        <option value="COO">COO</option>
+                        <option value="CFO">CFO</option>
+                        <option value="CTO">CTO</option>
+                        <option value="President">President</option>
+                        <option value="Vice President">Vice President</option>
+                        <option value="Senior Director">Senior Director</option>
+                        <option value="Assistant Director">Assistant Director</option>
+                        <option value="Manager">Manager</option>
+                        <!-- Add more options as needed -->
+                    </select>
                 </div>
 
                 <div class="input-field">
