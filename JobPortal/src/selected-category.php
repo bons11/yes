@@ -13,7 +13,7 @@ session_start();
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/bugallon-seal.png" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
