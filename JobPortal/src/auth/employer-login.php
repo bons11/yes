@@ -41,7 +41,7 @@ include("php/config.php");
                         $_SESSION['company_email'] = $row['company_email'];
                         $_SESSION['company_contact'] = $row['company_contact'];
                         $_SESSION['business_location'] = $row['business_location'];
-                        $_SESSION['id'] = $row['uid'];
+                        $_SESSION['id'] = $row['id'];
                         $_SESSION['role'] = $row['role'];
 
                         if(isset($_POST['remember'])) {
@@ -65,48 +65,67 @@ include("php/config.php");
                     echo "<script>alert('Invalid Username or Password');</script>";
                 }
             }
+$upload_dir = '../uploads/';
 
-            if(isset($_POST['signup_submit'])){
-                $name = mysqli_real_escape_string($con, $_POST['name']);
-                $address = mysqli_real_escape_string($con, $_POST['address']);
-                $contact = mysqli_real_escape_string($con, $_POST['contact']);
-                $birthday = mysqli_real_escape_string($con, $_POST['birthday']);
-                $email = mysqli_real_escape_string($con, $_POST['email']);
-                $password = mysqli_real_escape_string($con, $_POST['password']);
-                $confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
-                $business_name = mysqli_real_escape_string($con, $_POST['business_name']);
-                $job_role = mysqli_real_escape_string($con, $_POST['job_role']);
-                $company_detail = mysqli_real_escape_string($con, $_POST['company_detail']);
-                $company_email = mysqli_real_escape_string($con, $_POST['company_email']);
-                $company_contact = mysqli_real_escape_string($con, $_POST['company_contact']);
-                $business_location = mysqli_real_escape_string($con, $_POST['business_location']);
-                $business_permit = mysqli_real_escape_string($con, $_FILES['business_permit']['name']);
-                $business_picture = mysqli_real_escape_string($con, $_FILES['business_picture']['name']);
-                $valid_id = mysqli_real_escape_string($con, $_FILES['valid_id']['name']);
-                $logo = mysqli_real_escape_string($con, $_FILES['company_logo']['name']);
-                $dti = mysqli_real_escape_string($con, $_FILES['dti_permit']['name']);
-                $dir = mysqli_real_escape_string($con, $_FILES['dir']['name']);
-                $sss = mysqli_real_escape_string($con, $_FILES['sss']['name']);
+// Check if the form is submitted
+if (isset($_POST['signup_submit'])) {
+    // Handle file uploads
+    $business_permit_path = $upload_dir . basename($_FILES['business_permit']['name']);
+    $business_picture_path = $upload_dir . basename($_FILES['business_picture']['name']);
+    $valid_id_path = $upload_dir . basename($_FILES['valid_id']['name']);
+    $logo_path = $upload_dir . basename($_FILES['company_logo']['name']); // Logo path
+    $dti_path = $upload_dir . basename($_FILES['dti_permit']['name']);
+    $dir_path = $upload_dir . basename($_FILES['dir']['name']);
+    $sss_path = $upload_dir . basename($_FILES['sss']['name']);
 
-                if($password !== $confirm_password) {
-                    echo "<script>alert('Passwords do not match');</script>";
+    // Move uploaded files to the upload directory
+    if (move_uploaded_file($_FILES['business_permit']['tmp_name'], $business_permit_path) &&
+        move_uploaded_file($_FILES['business_picture']['tmp_name'], $business_picture_path) &&
+        move_uploaded_file($_FILES['valid_id']['tmp_name'], $valid_id_path) &&
+        move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_path) &&
+        move_uploaded_file($_FILES['dti_permit']['tmp_name'], $dti_path) &&
+        move_uploaded_file($_FILES['dir']['tmp_name'], $dir_path) &&
+        move_uploaded_file($_FILES['sss']['tmp_name'], $sss_path)) {
+
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $address = mysqli_real_escape_string($con, $_POST['address']);
+        $contact = mysqli_real_escape_string($con, $_POST['contact']);
+        $birthday = mysqli_real_escape_string($con, $_POST['birthday']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
+        $business_name = mysqli_real_escape_string($con, $_POST['business_name']);
+        $job_role = mysqli_real_escape_string($con, $_POST['occupation']);
+        $company_detail = mysqli_real_escape_string($con, $_POST['company_detail']);
+        $company_email = mysqli_real_escape_string($con, $_POST['company_email']);
+        $company_contact = mysqli_real_escape_string($con, $_POST['company_contact']);
+        $business_location = mysqli_real_escape_string($con, $_POST['business_location']);
+
+        if ($password !== $confirm_password) {
+            echo "<script>alert('Passwords do not match');</script>";
+        } else {
+            $verify_query = mysqli_query($con, "SELECT email FROM tbl_job_owner_apply WHERE email='$email'");
+            if (mysqli_num_rows($verify_query) != 0) {
+                echo "<script>alert('This email is already in use, please try another one.');</script>";
+            } else {
+                $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, occupation, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$job_role', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit_path', '$business_picture_path', '$valid_id_path', '$logo_path', '$dti_path', '$dir_path', '$sss_path')") or die("Error Occurred: " . mysqli_error($con));
+
+                if ($insert_query) {
+                    echo "<script>alert('Registration successful!');</script>";
+                    echo "<script>window.location.href = 'login.php';</script>";
                 } else {
-                    $verify_query = mysqli_query($con, "SELECT email FROM tbl_job_owner_apply WHERE email='$email'");
-                    if(mysqli_num_rows($verify_query) != 0 ){
-                        echo "<script>alert('This email is already in use, please try another one.');</script>";
-                    } else {
-                        $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, job_role, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$job_role', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit', '$business_picture', '$valid_id', '$logo', '$dti', '$dir', '$sss')") or die("Error Occurred: " . mysqli_error($con));
-
-                        if($insert_query) {
-                            echo "<script>alert('Registration successful!');</script>";
-                            echo "<script>window.location.href = 'login.php';</script>";
-                        } else {
-                            echo "<script>alert('Error registering user');</script>";
-                        }
-                    }
+                    echo "<script>alert('Error registering user');</script>";
                 }
             }
-        ?>
+        }
+    } else {
+        echo "File upload failed.";
+    }
+
+    // Close the database connection
+    mysqli_close($con);
+}
+?>
             <div class="form login">
                 <span class="title">Job <b style="color: #5bc0de;">Owner</b> Login</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
