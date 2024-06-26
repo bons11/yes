@@ -127,7 +127,7 @@ if(isset($_GET['job_number'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -173,7 +173,7 @@ if(isset($_GET['job_number'])) {
        
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">MBB</h1>
+                <h1 class="m-0 text-primary">EBB</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
