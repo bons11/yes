@@ -271,8 +271,8 @@ if (isset($_POST['signup_submit'])) {
                 </div>
 
                 <div class="p-5">
-                    <select name="job_role" class="custom-select" required>
-                        <option value="" disabled selected>Select Job Role</option>
+                    <select name="occupation" class="custom-select" required>
+                        <option value="" selected disabled>Select Job Role</option>
                         <option value="CEO">CEO</option>
                         <option value="COO">COO</option>
                         <option value="CFO">CFO</option>
