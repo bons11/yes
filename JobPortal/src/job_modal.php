@@ -52,7 +52,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Add Vacancy</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <form action="add-vacancy.php" method="post" enctype="multipart/form-data">
@@ -117,17 +117,61 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 <select class="form-control" id="job_nature" name="job_nature" required>
                     <option value="Full Time">Full Time</option>
                     <option value="Part Time">Part Time</option>
+                    <option value="Day Time">Day Time</option>
+                    <option value="Night Time">Night Time</option>
+                    <option value="On CALL">On Call</option>
                 </select>
             </div>
             <div class="mb-3">
                     <label for="town" class="form-label">Town</label>
                         <select class="form-select" id="town" name="town" required>
-                            <option>Aguilar </option>
+                            <option>Agno</option>
+                            <option>Aguilar</option>
+                            <option>Alaminos</option>
+                            <option>Alcala</option>
+                            <option>Anda</option>
+                            <option>Asingan</option>
+                            <option>Bani</option>
+                            <option>Basista</option>
+                            <option>Bayambang</option>
                             <option>Binmaley</option>
+                            <option>Binalonan</option>
+                            <option>Bolinao</option>
                             <option>Bugallon</option>
-                            <option>Lingayen</option>
-                            <option>Mangatarem</option>
+                            <option>Bullangao</option>
+                            <option>Burgos</option>
+                            <option>Calasiao</option>
+                            <option>Dagupan</option>
+                            <option>Dasol</option>
+                            <option>Infanta</option>
                             <option>Labrador</option>
+                            <option>Laoac</option>
+                            <option>Lingayen</option>
+                            <option>Mabini</option>
+                            <option>Malasiqui</option>
+                            <option>Manaoag</option>
+                            <option>Mangaldan</option>
+                            <option>Mangatarem</option>
+                            <option>Mapandan</option>
+                            <option>Natividad</option>
+                            <option>Pozorrubio</option>
+                            <option>Rosales</option>
+                            <option>San Carlos City</option>
+                            <option>San Fabian</option>
+                            <option>San Jacinto</option>
+                            <option>San Manuel</option>
+                            <option>San Nicolas</option>
+                            <option>San Quintin</option>
+                            <option>Santa Barbara</option>
+                            <option>Santa Maria</option>
+                            <option>Santo Tomas</option>
+                            <option>Sison</option>
+                            <option>Sual</option>
+                            <option>Tayug</option>
+                            <option>Umingan</option>
+                            <option>Urbiztondo</option>
+                            <option>Urdaneta</option>
+                            <option>Villasis</option>
                         </select>
                 </div>
 
@@ -176,7 +220,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
       
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
       
     </div>
@@ -242,7 +286,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 <input type="text" class="form-control" id="company_contact" name="company_contact" required>
             </div>
             <div class="form-group">
-                <label for="valid_id">Company Logo:</label>
+                <label for="logo">Company Logo:</label>
                 <input type="file" class="form-control" id="logo" name="logo">
             </div>
             <div class="form-group">
@@ -265,7 +309,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
       
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
       
     </div>
