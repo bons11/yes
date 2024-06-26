@@ -182,7 +182,7 @@ include 'date_end.php';
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function approveUser(uid) {
+        function approveUser(id) {
             Swal.fire({
                 title: 'Are you sure you want to approve?',
                 icon: 'question',
@@ -206,7 +206,7 @@ include 'date_end.php';
                             });
                         }
                     };
-                    xhr.send("uid=" + uid);
+                    xhr.send("id=" + id);
                 }
             });
         }
