@@ -107,8 +107,8 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
                 </div>
             <!-- Job Salary -->
             <div class="form-group">
-                <label for="job_salary">Job Salary:</label>
-                <input type="number" class="form-control" id="job_salary" name="job_salary" placeholder="Optional">
+                <label for="job_salary">Job Range:</label>
+                <input type="text" class="form-control" id="job_salary" name="job_salary" placeholder="ex: 1000-5500">
             </div>
 
             <!-- Job Nature -->
