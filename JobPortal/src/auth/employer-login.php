@@ -36,7 +36,7 @@ include("php/config.php");
             echo "<script>alert('Your account is not approved by an admin yet.');</script>";
         } elseif ($row['role'] == 'representative') {
             $_SESSION['name'] = $row['name'];
-            $_SESSION['valid'] = $row['email'];
+            $_SESSION['email'] = $row['email'];
             $_SESSION['password'] = $row['password'];
             $_SESSION['birthday'] = $row['birthday'];
             $_SESSION['contact'] = $row['contact'];
@@ -46,7 +46,7 @@ include("php/config.php");
             $_SESSION['company_email'] = $row['company_email'];
             $_SESSION['company_contact'] = $row['company_contact'];
             $_SESSION['business_location'] = $row['business_location'];
-            $_SESSION['id'] = $row['id'];
+            $_SESSION['id'] = $row['uid'];
             $_SESSION['role'] = $row['role'];
 
             if (isset($_POST['remember'])) {
