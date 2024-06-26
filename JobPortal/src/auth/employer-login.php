@@ -336,11 +336,6 @@ if (isset($_POST['signup_submit'])) {
                     <a href="#" class="text login-link">Login now</a>
                 </span>
             </div>
-            <div class="login-signup">
-                <span class="text">Are you a Job seeker?
-                    <a href="register.php" class="text">Click here</a>
-                </span>
-            </div>
             <div class="text-center mb-3">
                 <span class="text">
                     <a href="../index.php">Back to Home</a>
