@@ -140,8 +140,8 @@ session_start(); // Start the session
                         <input type="text" class="form-control" id="responsibility_sub5" name="responsibility_sub5" placeholder="•" required>
                     </div>
                 <div class="mb-3">
-                    <label for="job_salary" class="form-label">Job Salary</label>
-                    <input type="number" class="form-control" placeholder="Optional" id="job_salary" name="job_salary">
+                    <label for="job_salary" class="form-label">Job Salary Range</label>
+                    <input type="number" class="form-control" placeholder="Salary Range (ex: 11,700-30,000)" id="job_salary" name="job_salary">
                 </div>
                 <div class="mb-3">
                     <label for="job_nature" class="form-label">Job Nature</label>
