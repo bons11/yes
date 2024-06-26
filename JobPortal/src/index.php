@@ -340,6 +340,7 @@ session_start();
                                             <div class="d-flex mb-3">
                                                 <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
                                             </div>
+                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo $row['date_created']; ?></small>
                                             <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: <?php echo $row['date_end']; ?></small>
                                         </div>
                                     </div>
