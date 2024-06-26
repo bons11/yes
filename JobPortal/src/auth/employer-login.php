@@ -24,7 +24,7 @@ include("php/config.php");
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    $query = "SELECT * FROM tbl_job_owner_apply WHERE email='$email' AND password='$password'";
+    $query = "SELECT * FROM tbl_user WHERE email='$email' AND password='$password'";
     $result = mysqli_query($con, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -34,7 +34,7 @@ include("php/config.php");
         if (empty($row['role'])) {
             // Display an alert if the account is not approved
             echo "<script>alert('Your account is not approved by an admin yet.');</script>";
-        } elseif ($row['role'] == 'user' || $row['role'] == 'representative') {
+        } elseif ($row['role'] == 'representative') {
             $_SESSION['name'] = $row['name'];
             $_SESSION['valid'] = $row['email'];
             $_SESSION['password'] = $row['password'];

@@ -48,7 +48,7 @@
                     ?>
                     <a href="#" id="applyJobOwner" class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal" >Post a job</a>
                    <?php
-                 } elseif (isset ($_SESSION['name'])) {
+                 } else  {
                     ?>
                     
                    <?php

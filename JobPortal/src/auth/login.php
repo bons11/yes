@@ -33,7 +33,7 @@ include("php/config.php");
                 // Check if the user exists
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
-                    if ($row['role'] == 'user' || $row['role'] == 'representative') {
+                    if ($row['role'] == 'user') {
                         // Set session variables
                         $_SESSION['valid'] = $row['email'];
                         $_SESSION['name'] = $row['name'];
