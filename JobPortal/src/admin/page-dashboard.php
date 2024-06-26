@@ -120,6 +120,10 @@ mysqli_close($con);
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
+                <a href="manage-job-owners.php"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fas fa-user-check me-1"></i>Manage Job Owners
+                </a>
                 <a href="page-user-list.php"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
@@ -210,106 +214,7 @@ mysqli_close($con);
                     </a>
                 </div>
 
-                <div id="page-content-wrapper">
-                    <div class="d-flex align-items-center">
-                        <h2 class="fs-1 mb-3 "><b>Announcements</b></h2>
-                    </div>
-                    <!-- <a id="" class="btn btn-primary">
-                   <i class="fas fa-user-plus"></i>Create Announcement
-                </a> -->
-                    <div class="container-fluid px-4">
-                        <div class="row my-5">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#createEventModal">
-                                    <i class="fas fa-user-plus me-1"></i>Create Announcement
-                                </button>
-
-                                <?php include 'event-modal.php'; ?>
-
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <!-- Add User button -->
-                                        <!-- <a href="page-add-user.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</a> -->
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <!-- Search form -->
-                                        <form class="d-flex me-3" method="GET"
-                                            action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                            <input class="form-control me-2" type="search" name="search"
-                                                placeholder="Search..." aria-label="Search" onchange="clearSearch()">
-                                            <button class="btn btn-outline-primary" type="submit"><i
-                                                    class="fas fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <table class="table bg-white rounded shadow-sm  table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include '../auth/php/config.php'; // Include config.php file
-                                        
-                                        // Check if $con variable is defined and valid
-                                        if (!$con) {
-                                            die("Connection failed: " . mysqli_connect_error());
-                                        }
-
-                                        // Fetch data from tbl_users
-                                        if (isset($_GET['search'])) {
-                                            $search = mysqli_real_escape_string($con, $_GET['search']);
-                                            $query = "SELECT * FROM tbl_announcement WHERE 
-                                    event_name LIKE '%$search%' OR 
-                                    event_details LIKE '%$search%' OR ";
-                                        } else {
-                                            $query = "SELECT * FROM tbl_announcement";
-                                        }
-
-                                        $result = mysqli_query($con, $query);
-
-                                        // Check if query was successful
-                                        if (!$result) {
-                                            echo "Error: " . mysqli_error($con);
-                                            exit();
-                                        }
-                                        $basePath = '../uploads/'; // Path to the uploads folder relative to your PHP file
-                                        // Loop through the fetched data and display in the table
-                                        $count = 1;
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>";
-                                            echo "<th scope='row'>" . $count++ . "</th>";
-                                            echo "<td>" . htmlspecialchars($row['event_name']) . "</td>";
-                                            // Limit cover_letter to specified amount of characters
-                                            $event_details = htmlspecialchars($row['event_details']);
-                                            $short_event_details = strlen($event_details) > 80 ? substr($event_details, 0, 80) . '...' : $event_details;
-                                            echo "<td><span title='" . $event_details . "'>" . $short_event_details . "</span></td>";
-                                            echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['event_image']) . "\")'><i class='fas fa-eye'></i></button> </td>";
-
-                                            echo "<td>";
-
-                                            echo "<button class='btn btn-success btn-sm me-1' onclick='editEvent(" . $row['id'] . ")'><i class='fas fa-edit'></i></button>";
-                                            echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteEvent(" . $row['id'] . ")'><i class='fas fa-trash-alt'></i></button>";
-                                            echo "</td>";
-                                            echo "</tr>";
-                                        }
-
-                                        // Close database connection
-                                        mysqli_close($con);
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
             <a id="sortButton" class="btn btn-primary" onclick="toggleSortOrder()">
