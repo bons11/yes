@@ -10,7 +10,7 @@
   <style>
     
   </style>
-  <title>Bugallon Admin</title>
+  <title>EBB Admin</title>
 </head>
 <body>
 
