@@ -54,7 +54,18 @@
                    <?php
                 }
                 ?>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
+                <?php
+                if (isset ($_SESSION['name'])) {
+                    ?>
+                   <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply job<i class="fa fa-arrow-right ms-3"></i></a>
+                   <?php
+                 } else  {
+                    ?>
+                    <a href="auth/login.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Create account<i class="fa fa-arrow-right ms-3"></i></a>
+                   <?php
+                }
+                ?>
+                    
                 </div>
             </div>
         </nav>
