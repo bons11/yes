@@ -235,7 +235,7 @@ session_start();
                                 <h6 class="mt-n1 mb-0">Featured</h6>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="full_time_jobs.php">
                                 <h6 class="mt-n1 mb-0">Full Time</h6>
                             </a>
@@ -244,7 +244,7 @@ session_start();
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="part_time_jobs.php">
                                 <h6 class="mt-n1 mb-0">Part Time</h6>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
