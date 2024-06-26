@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = mysqli_real_escape_string($con, $row['name']);
         $address = mysqli_real_escape_string($con, $row['address']);
         $birthday = mysqli_real_escape_string($con, $row['birthday']);
+        $password = mysqli_real_escape_string($con, $row['password']);
+        $email = mysqli_real_escape_string($con, $row['email']);
         $business_name = mysqli_real_escape_string($con, $row['business_name']);
         $business_location = mysqli_real_escape_string($con, $row['business_location']);
         $company_detail = mysqli_real_escape_string($con, $row['company_detail']);
@@ -32,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 VALUES ('$company_owner', '$company_name', '$company_address', '$company_detail', '$company_email', '$company_contact', '$logo')";
         if (mysqli_query($con, $query_insert_company)) {
             // Update user role and company in tbl_user
-            $query_insert_user = "INSERT INTO tbl_user (name, address, birthday, company, role, email, contact, logo) 
-                              VALUES ('$name', '$address', '$birthday','$business_name',  'representative', '$company_email', '$contact', '$logo')";
+            $query_insert_user = "INSERT INTO tbl_user (name, address, birthday, password, company, role, email, contact, logo) 
+                              VALUES ('$name', '$address', '$birthday', '$password', '$business_name',  'representative', '$email', '$contact', '$logo')";
             if (mysqli_query($con, $query_insert_user)) {
                 // Remove user from tbl_job_owner_apply
                 $query_remove_user = "DELETE FROM tbl_job_owner_apply WHERE id='$id'";
