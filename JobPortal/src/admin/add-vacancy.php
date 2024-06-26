@@ -51,28 +51,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query_qualification = "INSERT INTO tbl_qualification (job_number, qualification_detail, qualification_sub1, qualification_sub2, qualification_sub3, qualification_sub4, qualification_sub5) VALUES ('$job_number', '$qualification_detail', '$qualification_sub1' , '$qualification_sub2' , '$qualification_sub3' , '$qualification_sub4' , '$qualification_sub5')";
 
         // Perform the queries
-        if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == "representative" && mysqli_query($con, $query_vacancy) && mysqli_query($con, $query_responsibility) && mysqli_query($con, $query_qualification)) {
-                echo "<script>alert('Vacancy added successfully.');</script>";
-                // Exit the script
-                exit();
-            } elseif ($_SESSION['role'] == "admin" && mysqli_query($con, $query_vacancy) && mysqli_query($con, $query_responsibility) && mysqli_query($con, $query_qualification)) {
-                // Redirect back to page-vacancy.php
-                echo "<script>window.location.href='page-vacancy.php';</script>";
-                // Show success message in popup alert
-                echo "<script>alert('Vacancy added successfully');</script>";
-                // Exit the script
-                exit();
-            } else {
-                // Show error message in popup alert
-                echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
-            }
+        if (mysqli_query($con, $query_vacancy) && mysqli_query($con, $query_responsibility) && mysqli_query($con, $query_qualification)) {
+            // Redirect back to page-vacancy.php
+            echo "<script>window.location.href='page-vacancy.php';</script>";
+            // Show success message in popup alert
+            echo "<script>alert('Vacancy added successfully.');</script>";
+            // Exit the script
+            exit();
         } else {
-            // If there are validation errors, output them
-            $error_message = implode("<br>", $errors);
             // Show error message in popup alert
-            echo "<script>alert('$error_message');</script>";
-        }        
+            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+        }
+    } else {
+        // If there are validation errors, output them
+        $error_message = implode("<br>", $errors);
+        // Show error message in popup alert
+        echo "<script>alert('$error_message');</script>";
     }
 }
 
