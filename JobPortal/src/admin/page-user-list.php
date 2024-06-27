@@ -203,6 +203,14 @@ include 'date_end.php';
         });
     }
 
+    function openModal(imagePath) {
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = imagePath; // Set the image source to the fetched image path
+            var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show(); // Show the modal
+        }
+
+
     // Function to reload overall table data when search field is cleared
     function clearSearch() {
         var searchInput = document.querySelector('input[name="search"]');
@@ -210,6 +218,7 @@ include 'date_end.php';
             window.location.href = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>";
         }
     }
+    
 
     function confirmLogout() {
         Swal.fire({
