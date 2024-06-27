@@ -12,6 +12,8 @@ include 'date_end.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/bugallon-seal.png" rel="icon">
 </head>
 
 <body>
@@ -166,7 +168,7 @@ include 'date_end.php';
                                     echo "<td>";
                                     echo "<button class='btn btn-outline-dark btn-sm me-1' onclick='showUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
                                     echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['id'] . ")'><i class='fas fa-check'></i></button>";
-                                    echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
+                                    echo "<button class='btn btn-danger btn-sm ms' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }

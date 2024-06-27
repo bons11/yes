@@ -171,57 +171,7 @@ session_start();
 
  
 
-        <!-- Category Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
-                <div class="row g-4">
-                <?php
-                    // Include config.php file
-                    include 'auth/php/config.php';
-
-                    // Fetch data from tbl_category where status is available
-                    $query = "SELECT category, logo FROM tbl_category WHERE status = 'available'";
-                    $result = mysqli_query($con, $query);
-
-                    // Check if query was successful
-                    if ($result) {
-                        // Check if there are any rows returned
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $categoryName = $row['category'];
-                                $queryVacancyCount = "SELECT COUNT(*) as vacancy_count FROM tbl_vacancy WHERE company_category = '$categoryName'";
-                                $resultVacancyCount = mysqli_query($con, $queryVacancyCount);
-                                $vacancyCount = 0;
-                                if ($resultVacancyCount) {
-                                    $rowVacancyCount = mysqli_fetch_assoc($resultVacancyCount);
-                                    $vacancyCount = $rowVacancyCount['vacancy_count'];
-                                }
-                                ?>
-                                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                                    <a class="cat-item rounded p-4" href="selected-category.php?category=<?php echo urlencode($categoryName); ?>">
-                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" class="img-fluid" alt="" style="width: 100px; height: 100px;">
-                                        <h6 class="mb-3"><?php echo $categoryName; ?></h6>
-                                        <p class="mb-0"><?php echo $vacancyCount; ?> Vacancy</p>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                        } else {
-                            echo "No categories found.";
-                        }
-                    } else {
-                        // Print any error messages
-                        echo "Error: " . mysqli_error($con);
-                    }
-
-                    // Close database connection
-                    mysqli_close($con);
-                ?>
-                </div>
-            </div>
-        </div>
-        <!-- Category End -->
+        
 
 
         <!-- Jobs Start -->
@@ -235,7 +185,7 @@ session_start();
                                 <h6 class="mt-n1 mb-0">Featured</h6>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="full_time_jobs.php">
                                 <h6 class="mt-n1 mb-0">Full Time</h6>
                             </a>
@@ -244,7 +194,7 @@ session_start();
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="part_time_jobs.php">
                                 <h6 class="mt-n1 mb-0">Part Time</h6>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                     <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">

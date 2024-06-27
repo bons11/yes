@@ -13,6 +13,8 @@ include 'date_end.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 
@@ -161,10 +163,14 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['company_category']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['company_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['job_title']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['job_description']) . "</td>";
+                                $job_description = htmlspecialchars($row['job_description']);
+                                $job_description = strlen($job_description) > 20 ? substr($job_description, 0, 20) . '...' : $job_description;
+                                echo "<td><span title='" . $job_description . "'>" . $job_description . "</span></td>";
                                 echo "<td>" . htmlspecialchars($row['job_salary']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['job_nature']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                $location = htmlspecialchars($row['location']);
+                                $location = strlen($location) > 30 ? substr($location, 0, 30) . '...' : $location;
+                                echo "<td><span title='" . $location . "'>" . $location . "</span></td>";
                                 echo "<td>" . htmlspecialchars($row['town']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_created']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_end']) . "</td>";

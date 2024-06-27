@@ -12,7 +12,8 @@ session_start(); // Start the session
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>EBB Admin</title>
-    <link href="img/bugallon-seal.png" rel="icon">
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 
