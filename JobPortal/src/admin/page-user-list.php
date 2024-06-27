@@ -130,7 +130,7 @@ include 'date_end.php';
                                 echo "Error: " . mysqli_error($con);
                                 exit();
                             }
-
+                            $basePath = '../uploads/';
                             // Loop through the fetched data and display in the table
                             $count = 1;
                             while ($row = mysqli_fetch_assoc($result)) {
