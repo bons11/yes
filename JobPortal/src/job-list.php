@@ -167,7 +167,7 @@ session_start(); // Start the session
                     <?php
 
                     include 'auth/php/config.php';
-
+                                    // show vacancy
                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY uid DESC LIMIT 10";
                     $result = mysqli_query($con, $sql);
 

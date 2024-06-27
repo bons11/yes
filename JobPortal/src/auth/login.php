@@ -35,13 +35,14 @@ include("php/config.php");
                     $row = mysqli_fetch_assoc($result);
                     if ($row['role'] == 'user') {
                         // Set session variables
-                        $_SESSION['valid'] = $row['email'];
+                        $_SESSION['email'] = $row['email'];
                         $_SESSION['name'] = $row['name'];
                         $_SESSION['address'] = $row['address'];
                         $_SESSION['contact'] = $row['contact'];
                         $_SESSION['birthday'] = $row['birthday'];
                         $_SESSION['password'] = $row['password'];
                         $_SESSION['id'] = $row['uid'];
+                        $_SESSION['uuid'] = $row['uuid'];
                         $_SESSION['role'] = $row['role']; // Store the user's role in the session
 
                         // Remember Me functionality
@@ -69,10 +70,13 @@ include("php/config.php");
                     echo "<script>alert('Invalid Username or Password');</script>";
                 }
             }
-            ?>
-
-            <?php 
+            $upload_dir = '../uploads/';
+           
             if(isset($_POST['signup_submit'])){
+                $valid_id_path = $upload_dir . basename($_FILES['valid_id']['name']);
+
+                if (move_uploaded_file($_FILES['valid_id']['tmp_name'], $valid_id_path)){
+
                 $name = mysqli_real_escape_string($con,$_POST['name']);
                 $address = mysqli_real_escape_string($con,$_POST['address']);
                 $contact = mysqli_real_escape_string($con,$_POST['contact']);
@@ -92,7 +96,7 @@ include("php/config.php");
                         echo "<script>alert('This email is already in use, please try another one.');</script>";
                     } else {
                         // Insert the new user into the database
-                        $insert_query = mysqli_query($con,"INSERT INTO tbl_user(name, address, contact, birthday, email, password) VALUES('$name', '$address', '$contact', '$birthday','$email','$password')") or die("Error Occurred: " . mysqli_error($con));
+                        $insert_query = mysqli_query($con,"INSERT INTO tbl_user(name, address, contact, birthday, email, password, valid_id) VALUES('$name', '$address', '$contact', '$birthday','$email','$password' ,'$valid_id_path')") or die("Error Occurred: " . mysqli_error($con));
 
                         if($insert_query) {
                             // Display registration success message as a pop-up
@@ -105,6 +109,10 @@ include("php/config.php");
                         }
                     }
                 }
+            } else {
+                echo "File upload failed.";
+            }
+            mysqli_close($con);
             }
             ?>
             <div class="form login">
