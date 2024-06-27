@@ -253,7 +253,7 @@ session_start();
 
                     include 'auth/php/config.php';
 
-                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name ORDER BY uid DESC LIMIT 10";
+                     $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_user c ON v.uuid = c.uuid ORDER BY uid DESC LIMIT 10";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {

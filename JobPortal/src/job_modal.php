@@ -59,7 +59,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
             <!-- Company Name -->
             <div class="form-group">
                 <label for="job_title">Company Name:</label>
-                <input type="text" class="form-control" id="company_name" name="company_name" value="<?php echo htmlspecialchars($user['company']); ?>" required>
+                <input type="text" class="form-control" id="company_name" name="company_name" value="<?php echo htmlspecialchars($user['company']); ?>" required readonly>
             </div>
             <div class="mb-3">
                     <label for="company_category" class="form-label">Company Category</label>
@@ -232,7 +232,7 @@ if (isset ($_SESSION['role']) && $_SESSION['role']  == "representative") {
 
 
 <?php
-} elseif(isset ($_SESSION['name'])) {
+} elseif(isset ($_SESSION['role']) && $_SESSION['role']  == "user") {
     ?>
 <div class="modal" id="myModal">
   <div class="modal-dialog">

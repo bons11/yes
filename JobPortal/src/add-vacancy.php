@@ -5,6 +5,9 @@ include 'auth/php/config.php';
 // Initialize an empty array to store validation errors
 $errors = [];
 
+// Start the session to access session variables
+session_start();
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate form inputs
@@ -38,13 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "All fields are required.";
     }
 
+    // Fetch the UUID of the logged-in user from the session
+    $user_uuid = $_SESSION["uuid"] ?? null;
+    if (!$user_uuid) {
+        $errors[] = "User is not logged in.";
+    }
+
     // If there are no validation errors, insert data into tbl_vacancy, tbl_responsibility, and tbl_qualification
     if (empty($errors)) {
         // Generate a job number
         $job_number = generate_job_number();
 
         // Insert into tbl_vacancy
-        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, company_category, company_name, job_title, job_description, job_salary, job_nature, town, location, date_created, date_end) VALUES ('$job_number', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$town', '$location', '$date_created', '$date_end')";
+        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, uuid, company_category, company_name, job_title, job_description, job_salary, job_nature, town, location, date_created, date_end) VALUES ('$job_number', '$user_uuid', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$town', '$location', '$date_created', '$date_end')";
         // Insert into tbl_responsibility
         $query_responsibility = "INSERT INTO tbl_responsibility (job_number, responsibility_detail, responsibility_sub1, responsibility_sub2, responsibility_sub3, responsibility_sub4, responsibility_sub5) VALUES ('$job_number', '$responsibility_detail', '$responsibility_sub1' , '$responsibility_sub2' , '$responsibility_sub3' , '$responsibility_sub4' , '$responsibility_sub5')";
         // Insert into tbl_qualification
@@ -52,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Perform the queries
         if (mysqli_query($con, $query_vacancy) && mysqli_query($con, $query_responsibility) && mysqli_query($con, $query_qualification)) {
-            // Redirect back to page-vacancy.php
+            // Redirect back to index.php
             echo "<script>window.location.href='index.php';</script>";
             // Show success message in popup alert
             echo "<script>alert('Vacancy added successfully.');</script>";

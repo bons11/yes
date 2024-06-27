@@ -21,55 +21,65 @@ include("php/config.php");
         <div class="forms">
         <?php 
             if (isset($_POST['login_submit'])) {
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
-
-    $query = "SELECT * FROM tbl_user WHERE email='$email' AND password='$password'";
-    $result = mysqli_query($con, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-
-        // Check if 'role' is empty
-        if (empty($row['role'])) {
-            // Display an alert if the account is not approved
-            echo "<script>alert('Your account is not approved by an admin yet.');</script>";
-        } elseif ($row['role'] == 'representative') {
-            $_SESSION['name'] = $row['name'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['password'] = $row['password'];
-            $_SESSION['birthday'] = $row['birthday'];
-            $_SESSION['contact'] = $row['contact'];
-            $_SESSION['address'] = $row['address'];
-            $_SESSION['business_name'] = $row['business_name'];
-            $_SESSION['company_detail'] = $row['company_detail'];
-            $_SESSION['company_email'] = $row['company_email'];
-            $_SESSION['company_contact'] = $row['company_contact'];
-            $_SESSION['business_location'] = $row['business_location'];
-            $_SESSION['id'] = $row['uid'];
-            $_SESSION['role'] = $row['role'];
-
-            if (isset($_POST['remember'])) {
-                setcookie('email', $email, time() + (86400 * 30), "/");
-                setcookie('password', $password, time() + (86400 * 30), "/");
-            } else {
-                if (isset($_COOKIE['email'])) {
-                    setcookie('email', '', time() - 3600, '/');
-                }
-                if (isset($_COOKIE['password'])) {
-                    setcookie('password', '', time() - 3600, '/');
+                // Escape user inputs to prevent SQL injection
+                $email = mysqli_real_escape_string($con, $_POST['email']);
+                $password = mysqli_real_escape_string($con, $_POST['password']);
+            
+                // Query to fetch user data based on email and password
+                $query = "SELECT * FROM tbl_user WHERE email='$email' AND password='$password'";
+                $result = mysqli_query($con, $query);
+            
+                // Check if a user with the provided credentials exists
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+            
+                    // Check if the user's role is empty (not approved)
+                    if (empty($row['role'])) {
+                        // Display an alert if the account is not approved
+                        echo "<script>alert('Your account is not approved by an admin yet.');</script>";
+                    } elseif ($row['role'] == 'representative') {
+                        // Set session variables for representative role
+                        $_SESSION['name'] = $row['name'];
+                        $_SESSION['email'] = $row['email'];
+                        $_SESSION['password'] = $row['password'];
+                        $_SESSION['birthday'] = $row['birthday'];
+                        $_SESSION['contact'] = $row['contact'];
+                        $_SESSION['address'] = $row['address'];
+                        $_SESSION['business_name'] = $row['business_name'];
+                        $_SESSION['company_detail'] = $row['company_detail'];
+                        $_SESSION['company_email'] = $row['company_email'];
+                        $_SESSION['company_contact'] = $row['company_contact'];
+                        $_SESSION['business_location'] = $row['business_location'];
+                        $_SESSION['id'] = $row['uid']; // User ID
+                        $_SESSION['uuid'] = $row['uuid']; // UUID
+                        $_SESSION['role'] = $row['role']; // UUID
+            
+                        // Remember Me functionality
+                        if (isset($_POST['remember'])) {
+                            setcookie('email', $email, time() + (86400 * 30), "/");
+                            setcookie('password', $password, time() + (86400 * 30), "/");
+                        } else {
+                            // Clear remember cookies if not checked
+                            if (isset($_COOKIE['email'])) {
+                                setcookie('email', '', time() - 3600, '/');
+                            }
+                            if (isset($_COOKIE['password'])) {
+                                setcookie('password', '', time() - 3600, '/');
+                            }
+                        }
+            
+                        // Redirect to index.php after successful login
+                        header("Location: ../index.php");
+                        exit();
+                    } else {
+                        // Invalid role (neither 'representative' nor approved)
+                        echo "<script>alert('Invalid Username or Password');</script>";
+                    }
+                } else {
+                    // No user found with the provided credentials
+                    echo "<script>alert('Invalid Username or Password');</script>";
                 }
             }
-
-            header("Location: ../index.php");
-            exit();
-        } else {
-            echo "<script>alert('Invalid Username or Password');</script>";
-        }
-    } else {
-        echo "<script>alert('Invalid Username or Password');</script>";
-    }
-}
 $upload_dir = '../uploads/';
 
 // Check if the form is submitted
@@ -109,8 +119,10 @@ if (isset($_POST['signup_submit'])) {
         if ($password !== $confirm_password) {
             echo "<script>alert('Passwords do not match');</script>";
         } else {
-            $verify_query = mysqli_query($con, "SELECT email FROM tbl_job_owner_apply WHERE email='$email'");
-            if (mysqli_num_rows($verify_query) != 0) {
+            $verify_query_apply = mysqli_query($con, "SELECT email FROM tbl_job_owner_apply WHERE email='$email'");
+            $verify_query_user = mysqli_query($con, "SELECT email FROM tbl_user WHERE email='$email'");
+            
+            if (mysqli_num_rows($verify_query_apply) != 0 || mysqli_num_rows($verify_query_user) != 0) {
                 echo "<script>alert('This email is already in use, please try another one.');</script>";
             } else {
                 $insert_query = mysqli_query($con, "INSERT INTO tbl_job_owner_apply (name, address, contact, birthday, email, password, business_name, occupation, company_detail, company_email, company_contact, business_location, business_permit, business_picture, valid_id, logo, dti, dir, sss) VALUES ('$name', '$address', '$contact', '$birthday', '$email', '$password', '$business_name', '$job_role', '$company_detail', '$company_email', '$company_contact', '$business_location', '$business_permit_path', '$business_picture_path', '$valid_id_path', '$logo_path', '$dti_path', '$dir_path', '$sss_path')") or die("Error Occurred: " . mysqli_error($con));
@@ -130,6 +142,7 @@ if (isset($_POST['signup_submit'])) {
     // Close the database connection
     mysqli_close($con);
 }
+
 ?>
             <div class="form login">
                 <span class="title">Job <b style="color: #5bc0de;">Owner</b> Login</span>
