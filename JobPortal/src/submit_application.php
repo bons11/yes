@@ -19,7 +19,7 @@ $portfolio = isset($_POST['portfolio']) ? $_POST['portfolio'] : ""; // Portfolio
 $cover_letter = $_POST['cover_letter'];
 $job_number = $_POST['job_number'];
 $company_name = $_POST['company_name']; // Make sure this is passed in the form data
-
+$valid_id = $_POST['valid_id']; // Make sure this is passed in the form data
 
 // Check if any required field is empty
 if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhitespace($_FILES["resume"]["name"]) || isEmptyOrWhitespace($cover_letter)) {
@@ -43,26 +43,14 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
         } elseif (move_uploaded_file($_FILES["resume"]["tmp_name"], $target_file)) {
             // Prepare and execute SQL statement
             $date_apply = date("Y-m-d");
-            $sql = "INSERT INTO tbl_applicant (job_number, date_apply, name, portfolio, email, resume, cover_letter) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO tbl_applicant (job_number, date_apply, name, portfolio, email, resume, cover_letter, valid_id) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($con, $sql);
             if ($stmt) { // Check if statement is prepared successfully
-                mysqli_stmt_bind_param($stmt, "sssssss", $job_number, $date_apply, $name, $portfolio, $email, $target_file, $cover_letter);
+                mysqli_stmt_bind_param($stmt, "ssssssss", $job_number, $date_apply, $name, $portfolio, $email, $target_file, $cover_letter, $valid_id);
                 if (mysqli_stmt_execute($stmt)) {
                     $message = "Application submitted successfully.";
                     $status = "success";
-
-                    // // Insert inquiry data into tbl_inquiry
-                    // $sql_applicant = "INSERT INTO tbl_applicant (job_number, name, email, portfolio, cover_letter) 
-                    //                 VALUES (?, ?, ?, ?, ?)";
-                    // $stmt_applicant = mysqli_prepare($con, $sql_applicant);
-                    // if ($stmt_applicant) { // Check if statement is prepared successfully
-                    //     mysqli_stmt_bind_param($stmt_applicant, "sssss", $job_number, $name, $email, $portfolio, $cover_letter);
-                    //     mysqli_stmt_execute($stmt_applicant);
-                    // } else {
-                    //     $message = "Error preparing inquiry SQL statement: " . mysqli_error($con); // Capture MySQL error
-                    //     $status = "error";
-                    // }
 
                     // Fetch receiver's email from tbl_company
                     $sql_company_email = "SELECT company_email FROM tbl_company WHERE company_name = ?";
@@ -92,15 +80,15 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
                         $mail->isHTML(true);
 
                         $mail->Subject = "New Job Application";
-                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Message: $cover_letter";
-                        $mail->AltBody = "Name: $name \nEmail: $email \n Message: $cover_letter"; // Plain text version of the email
+                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Cover Letter: $cover_letter <br>Valid ID: $valid_id";
+                        $mail->AltBody = "Name: $name \nEmail: $email \nPortfolio: $portfolio \nCover Letter: $cover_letter \nValid ID: $valid_id"; // Plain text version of the email
 
                         // Attach resume file
                         $mail->addAttachment($target_file);
 
                         $mail->send();
 
-                        $message = "Application Successfully Submitted "; // Capture MySQL error
+                        $message = "Application Successfully Submitted";
                         $status = "success";
                     } else {
                         $message = "Error preparing company email SQL statement: " . mysqli_error($con); // Capture MySQL error

@@ -95,6 +95,7 @@ include 'date_end.php';
                                 <th scope="col">Contact</th>
                                 <th scope="col">Birthday</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Valid Id</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -142,6 +143,7 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['contact']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['birthday']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['valid_id']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                                 echo "<td>";
                                 echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";

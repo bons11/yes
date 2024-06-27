@@ -258,15 +258,15 @@ if(isset($_GET['job_number'])) {
                               <label for="email">Your Email</label>
                               <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                             </div>
-                            <div class="col-12 col-sm-6">
+                            <!-- <div class="col-12 col-sm-6">
                               <label for="valid_id">Valid Id</label>
                               <input type="email" class="form-control" name="valid_id" id="valid_id" placeholder="Valid Id" >
-                            </div>
+                            </div> -->
                             <div class="col-12 col-sm-6">
                               <label for="portfolio">Portfolio Website</label>
                               <input type="text" class="form-control" name="portfolio" id="portfolio" placeholder="(Optional)">
                             </div>
-                           <div class="col-12 col-sm-12">
+                           <div class="col-12 col-sm-6">
                               <label for="resume">Resume</label>
                               <input type="file" class="form-control bg-white" name="resume" id="resume" accept=".pdf" required>
                             </div>
