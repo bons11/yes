@@ -143,7 +143,7 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['contact']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['birthday']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['valid_id']) . "</td>";
+                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                                 echo "<td>";
                                 echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
