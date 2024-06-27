@@ -14,11 +14,8 @@ include("php/config.php");
     <link rel="stylesheet" href="style/style.css">
     <title>Employment Bulletin Board</title>
     <link href="../img/ebb-logo.png" rel="icon">
-
 </head>
 <body>
-    
-    
     <div class="container py-5 px-4">
         <div class="forms">
         <?php 
@@ -162,7 +159,7 @@ include("php/config.php");
             <div class="form signup">
             <span class="title">Job <b style="color:#0275d8;">Seeker</b> Registration</span>
 
-            <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return validateForm()">
+            <form id="signupForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <div class="input-field">
                     <input type="text" name="name" placeholder="Name" required>
                     <i class="uil uil-user"></i>
