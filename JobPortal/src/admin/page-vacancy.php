@@ -13,6 +13,8 @@ include 'date_end.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
     <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 

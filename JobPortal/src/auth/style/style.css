@@ -187,3 +187,6 @@ body {
 .button input:hover {
   background-color: #265df2;
 }
+
+.location-truncate {
+}
