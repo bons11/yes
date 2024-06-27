@@ -19,13 +19,34 @@ $portfolio = isset($_POST['portfolio']) ? $_POST['portfolio'] : ""; // Portfolio
 $cover_letter = $_POST['cover_letter'];
 $job_number = $_POST['job_number'];
 $company_name = $_POST['company_name']; // Make sure this is passed in the form data
-$valid_id = $_POST['valid_id']; // Make sure this is passed in the form data
 
 // Check if any required field is empty
 if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhitespace($_FILES["resume"]["name"]) || isEmptyOrWhitespace($cover_letter)) {
     $message = "Please fill in all required fields.";
     $status = "error";
 } else {
+    // Fetch valid_id from tbl_user
+    $sql_valid_id = "SELECT valid_id FROM tbl_user WHERE email = ?";
+    $stmt_valid_id = mysqli_prepare($con, $sql_valid_id);
+    if ($stmt_valid_id) {
+        mysqli_stmt_bind_param($stmt_valid_id, "s", $email);
+        mysqli_stmt_execute($stmt_valid_id);
+        $result_valid_id = mysqli_stmt_get_result($stmt_valid_id);
+        if ($row_valid_id = mysqli_fetch_assoc($result_valid_id)) {
+            $valid_id = $row_valid_id['valid_id'];
+        } else {
+            $message = "User not found.";
+            $status = "error";
+            header("Location: job-detail.php?job_number=$job_number&status=$status&message=$message");
+            exit();
+        }
+    } else {
+        $message = "Error preparing user SQL statement: " . mysqli_error($con);
+        $status = "error";
+        header("Location: job-detail.php?job_number=$job_number&status=$status&message=$message");
+        exit();
+    }
+
     // File upload handling for resume
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["resume"]["name"]);
