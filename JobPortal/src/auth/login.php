@@ -79,6 +79,7 @@ include("php/config.php");
                 $contact = mysqli_real_escape_string($con,$_POST['contact']);
                 $birthday = mysqli_real_escape_string($con,$_POST['birthday']);
                 $email = mysqli_real_escape_string($con,$_POST['email']);
+                $valid_id = mysqli_real_escape_string($con,$_POST['valid_id']);
                 $password = mysqli_real_escape_string($con,$_POST['password']);
                 $confirm_password = mysqli_real_escape_string($con,$_POST['confirm_password']);
 
