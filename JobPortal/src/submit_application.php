@@ -108,7 +108,7 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
                         $mail->addAttachment($target_file);
 
                         // Attach valid_id image
-                        $valid_id_file = "path/to/valid_id/images/" . $valid_id; // Update this path accordingly
+                        $valid_id_file = "uploads/" . $valid_id; // Update this path accordingly
                         if (file_exists($valid_id_file)) {
                             $mail->addAttachment($valid_id_file);
                         }
