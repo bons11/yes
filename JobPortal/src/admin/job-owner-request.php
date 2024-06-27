@@ -166,7 +166,7 @@ include 'date_end.php';
                                     echo "<td>";
                                     echo "<button class='btn btn-outline-dark btn-sm me-1' onclick='showUser(" . $row['id'] . ")'><i class='fas fa-user'></i></button>";
                                     echo "<button class='btn btn-success btn-sm me-1' onclick='approveUser(" . $row['id'] . ")'><i class='fas fa-check'></i></button>";
-                                    echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
+                                    echo "<button class='btn btn-danger btn-sm ms' onclick='deleteUser(" . $row['id'] . ")'><i class='fas fa-times-circle'></i></button>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
