@@ -88,7 +88,7 @@ if (isset($_POST['signup_submit'])) {
     $business_permit_path = $upload_dir . basename($_FILES['business_permit']['name']);
     $business_picture_path = $upload_dir . basename($_FILES['business_picture']['name']);
     $valid_id_path = $upload_dir . basename($_FILES['valid_id']['name']);
-    $logo_path = $upload_dir . basename($_FILES['company_logo']['name']); // Logo path
+    $logo_path = $upload_dir . basename($_FILES['logo']['name']); // Logo path
     $dti_path = $upload_dir . basename($_FILES['dti_permit']['name']);
     $dir_path = $upload_dir . basename($_FILES['dir']['name']);
     $sss_path = $upload_dir . basename($_FILES['sss']['name']);
@@ -97,7 +97,7 @@ if (isset($_POST['signup_submit'])) {
     if (move_uploaded_file($_FILES['business_permit']['tmp_name'], $business_permit_path) &&
         move_uploaded_file($_FILES['business_picture']['tmp_name'], $business_picture_path) &&
         move_uploaded_file($_FILES['valid_id']['tmp_name'], $valid_id_path) &&
-        move_uploaded_file($_FILES['company_logo']['tmp_name'], $logo_path) &&
+        move_uploaded_file($_FILES['logo']['tmp_name'], $logo_path) &&
         move_uploaded_file($_FILES['dti_permit']['tmp_name'], $dti_path) &&
         move_uploaded_file($_FILES['dir']['tmp_name'], $dir_path) &&
         move_uploaded_file($_FILES['sss']['tmp_name'], $sss_path)) {
@@ -322,8 +322,8 @@ if (isset($_POST['signup_submit'])) {
                 </div>
 
                 <div class="input-field">
-                    <label for="company_logo">Company Logo</label>
-                    <input type="file" name="company_logo" required>
+                    <label for="logo">Company Logo</label>
+                    <input type="file" name="logo" required>
                 </div>
 
                 <div class="input-field">
