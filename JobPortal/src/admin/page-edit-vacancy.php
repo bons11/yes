@@ -156,8 +156,8 @@ session_start(); // Start the session
                                     <input type="text" class="form-control" id="responsibility_sub5" name="responsibility_sub5" placeholder="•" value="<?php echo htmlspecialchars($responsibility['responsibility_sub5']); ?>" required>
                                 </div>
                             <div class="mb-3">
-                                <label for="job_salary" class="form-label">Job Salary</label>
-                                <input type="number" class="form-control" placeholder="Optional" id="job_salary" name="job_salary" value="<?php echo htmlspecialchars($vacancy['job_salary']); ?>">
+                                <label for="job_salary" class="form-label">Job Salary Range</label>
+                                <input type="text" class="form-control" placeholder="1000-2000" id="job_salary" name="job_salary" value="<?php echo htmlspecialchars($vacancy['job_salary']); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="job_nature" class="form-label">Job Nature</label>
