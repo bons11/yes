@@ -169,7 +169,7 @@ session_start(); // Start the session
 
                     include 'auth/php/config.php';
 
-                    $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name";
+                    $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.uuid = c.uuid";
                     $result = mysqli_query($con, $sql);
 
                     if (!$result) {

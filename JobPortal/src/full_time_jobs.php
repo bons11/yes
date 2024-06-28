@@ -172,7 +172,7 @@ session_start(); // Start the session
             $sql = "SELECT v.*, c.logo 
             FROM tbl_vacancy v 
             INNER JOIN tbl_company c 
-            ON v.company_name = c.company_name 
+            ON v.uuid = c.uuid 
             WHERE v.job_nature = 'Full Time' 
             ORDER BY v.uid DESC 
             LIMIT 10";
