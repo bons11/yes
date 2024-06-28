@@ -47,13 +47,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "User is not logged in.";
     }
 
+    // Fetch the logo from tbl_company using the user_uuid
+    if (empty($errors)) {
+        $query_logo = "SELECT logo FROM tbl_company WHERE uuid = '$user_uuid'";
+        $result_logo = mysqli_query($con, $query_logo);
+        if ($result_logo && mysqli_num_rows($result_logo) > 0) {
+            $row_logo = mysqli_fetch_assoc($result_logo);
+            $logo = $row_logo['logo'];
+        } else {
+            $errors[] = "Company logo not found.";
+        }
+    }
+
     // If there are no validation errors, insert data into tbl_vacancy, tbl_responsibility, and tbl_qualification
     if (empty($errors)) {
         // Generate a job number
         $job_number = generate_job_number();
 
         // Insert into tbl_vacancy
-        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, uuid, company_category, company_name, job_title, job_description, job_salary, job_nature, town, location, date_created, date_end) VALUES ('$job_number', '$user_uuid', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$town', '$location', '$date_created', '$date_end')";
+        $query_vacancy = "INSERT INTO tbl_vacancy (job_number, uuid, company_category, company_name, job_title, job_description, job_salary, job_nature, town, location, date_created, date_end, logo) VALUES ('$job_number', '$user_uuid', '$company_category', '$company_name', '$job_title', '$job_description', '$job_salary','$job_nature', '$town', '$location', '$date_created', '$date_end', '$logo')";
         // Insert into tbl_responsibility
         $query_responsibility = "INSERT INTO tbl_responsibility (job_number, responsibility_detail, responsibility_sub1, responsibility_sub2, responsibility_sub3, responsibility_sub4, responsibility_sub5) VALUES ('$job_number', '$responsibility_detail', '$responsibility_sub1' , '$responsibility_sub2' , '$responsibility_sub3' , '$responsibility_sub4' , '$responsibility_sub5')";
         // Insert into tbl_qualification
