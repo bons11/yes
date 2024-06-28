@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2024 at 10:24 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Jun 28, 2024 at 08:22 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,6 +56,7 @@ CREATE TABLE `tbl_applicant` (
   `name` varchar(45) NOT NULL,
   `portfolio` varchar(100) DEFAULT 'N/A',
   `email` varchar(45) NOT NULL,
+  `valid_id` varchar(500) NOT NULL,
   `resume` varchar(45) NOT NULL,
   `cover_letter` varchar(200) NOT NULL,
   `status` varchar(45) DEFAULT 'Pending'
@@ -65,17 +66,17 @@ CREATE TABLE `tbl_applicant` (
 -- Dumping data for table `tbl_applicant`
 --
 
-INSERT INTO `tbl_applicant` (`uid`, `uuid`, `job_number`, `date_apply`, `name`, `portfolio`, `email`, `resume`, `cover_letter`, `status`) VALUES
-(113, 0, '247911', '2024-06-10', 'Charlie Tippins', '', 'cp@gmail.com', 'uploads/resume.pdf', 'bangbig156', 'Pending'),
-(114, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', 'uploads/resume.pdf', 'hehe', 'Pending'),
-(115, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', 'uploads/resume.pdf', 'hehe', 'Pending'),
-(116, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', 'uploads/sagotparasasubhehe.pdf', 'hehe Please work', 'Pending'),
-(117, 0, '609515', '2024-06-24', 'Chad Cabo', 'kunwari may laman', 'cahdou23k@gmail.com', 'uploads/resume.pdf', 'Syempre gumana ako pa\r\n', 'Pending'),
-(118, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', 'uploads/Trial.pdf', 'Gumana syempre ako pa', 'Pending'),
-(119, 0, '609515', '2024-06-26', 'charles', 'sae', 'user1@gmail.com', 'uploads/Neuro-Fuzzy and DSM.pdf', 'esa', 'Pending'),
-(120, 0, '726798', '2024-06-27', '123', '123', '123@gmail.com', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdf', 'Pending'),
-(121, 0, '726798', '2024-06-27', 'joe', 'sae', 'joemama@gmail.com', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdfasdf', 'Pending'),
-(122, 0, '726798', '2024-06-27', 'joe', 'sadfiugUUUGH', 'joemama@gmail.com', 'uploads/Neuro-Fuzzy and DSM.pdf', 'yesyesyo wassup', 'Pending');
+INSERT INTO `tbl_applicant` (`uid`, `uuid`, `job_number`, `date_apply`, `name`, `portfolio`, `email`, `valid_id`, `resume`, `cover_letter`, `status`) VALUES
+(113, 0, '247911', '2024-06-10', 'Charlie Tippins', '', 'cp@gmail.com', '', 'uploads/resume.pdf', 'bangbig156', 'Pending'),
+(114, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'hehe', 'Pending'),
+(115, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'hehe', 'Pending'),
+(116, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/sagotparasasubhehe.pdf', 'hehe Please work', 'Pending'),
+(117, 0, '609515', '2024-06-24', 'Chad Cabo', 'kunwari may laman', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'Syempre gumana ako pa\r\n', 'Pending'),
+(118, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/Trial.pdf', 'Gumana syempre ako pa', 'Pending'),
+(119, 0, '609515', '2024-06-26', 'charles', 'sae', 'user1@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'esa', 'Pending'),
+(120, 0, '726798', '2024-06-27', '123', '123', '123@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdf', 'Pending'),
+(121, 0, '726798', '2024-06-27', 'joe', 'sae', 'joemama@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdfasdf', 'Pending'),
+(122, 0, '726798', '2024-06-27', 'joe', 'sadfiugUUUGH', 'joemama@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'yesyesyo wassup', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -200,7 +201,7 @@ CREATE TABLE `tbl_job_owner_apply` (
   `dir` varchar(500) NOT NULL,
   `sss` varchar(500) NOT NULL,
   `valid_id` varchar(500) NOT NULL,
-  `logo` varchar(500) NOT NULL
+  `logo` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -314,7 +315,7 @@ CREATE TABLE `tbl_user` (
   `role` varchar(45) DEFAULT 'user',
   `company` varchar(250) NOT NULL,
   `company_contact` int(45) NOT NULL,
-  `logo` varchar(500) NOT NULL
+  `logo` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -327,7 +328,7 @@ INSERT INTO `tbl_user` (`uid`, `uuid`, `name`, `address`, `contact`, `birthday`,
 (46, 0, 'Charles', '1273 Sitio Cocaoc Poblacion Bugallon Pangasin', '12345678901', 'June 8 2003', 'user1@gmail.com', '123', '', 'representative', 'chady corporations', 0, ''),
 (48, 0, 'Charles Derb', 'Poblacion', '09458016215', 'November 6 2005', 'charlesdervinc@gmail.com', '123', '', 'user', '', 0, ''),
 (49, 0, 'tite', 'tete', 'tetet', '2222-02-22', 'tete@gmail.com', 'tite', '', 'admin', '', 0, ''),
-(55, 0, 'charles', 'dito', '09123123121', '2024-12-31', 'chadycorporations@gmail.com', '123', '', 'representative', 'chady corporations', 0, '../uploads/kdajd.png');
+(55, 0, 'charles', 'dito', '09123123121', '2024-12-31', 'chadycorporations@gmail.com', '123', '', 'representative', 'chady corporations', 0, 0x2e2e2f75706c6f6164732f6b64616a642e706e67);
 
 -- --------------------------------------------------------
 
