@@ -235,19 +235,28 @@ include 'date_end.php';
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "fetch-user-details.php?id=" + id, true);
             xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var user = JSON.parse(xhr.responseText);
-                    document.getElementById("userName").innerText = user.name;
-                    document.getElementById("userEmail").innerText = user.email;
-                    document.getElementById("userBirthday").innerText = user.birthday;
-                    document.getElementById("userContact").innerText = user.contact;
-                    document.getElementById("userAddress").innerText = user.address;
-                    var userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
-                    userDetailsModal.show();
-                }
-            };
-            xhr.send();
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var user = JSON.parse(xhr.responseText);
+                document.getElementById("userName").innerText = user.name;
+                document.getElementById("userEmail").innerText = user.email;
+                document.getElementById("userPassword").innerText = user.password;
+                document.getElementById("userBirthday").innerText = user.birthday;
+                document.getElementById("userContact").innerText = user.contact;
+                document.getElementById("userOccupation").innerText = user.occupation;
+                document.getElementById("userAddress").innerText = user.address;
+                document.getElementById("businessName").innerText = user.business_name;
+                document.getElementById("companyDetail").innerText = user.company_detail;
+                document.getElementById("companyEmail").innerText = user.company_email;
+                document.getElementById("companyContact").innerText = user.company_contact;
+                document.getElementById("businessLocation").innerText = user.business_location;
+                var userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+                userDetailsModal.show();
+            }
+          };
+          xhr.send();
         }
+
+        
 
         // Function to delete a user
         function deleteUser(id) {
@@ -324,13 +333,21 @@ include 'date_end.php';
             <div class="modal-body">
                 <p><strong>Name:</strong> <span id="userName"></span></p>
                 <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Password:</strong> <span id="userPassword"></span></p>
                 <p><strong>Birthday:</strong> <span id="userBirthday"></span></p>
                 <p><strong>Contact:</strong> <span id="userContact"></span></p>
+                <p><strong>Occupation:</strong> <span id="userOccupation"></span></p>
                 <p><strong>Address:</strong> <span id="userAddress"></span></p>
+                <p><strong>Business Name:</strong> <span id="businessName"></span></p>
+                <p><strong>Company Detail:</strong> <span id="companyDetail"></span></p>
+                <p><strong>Company Email:</strong> <span id="companyEmail"></span></p>
+                <p><strong>Company Contact:</strong> <span id="companyContact"></span></p>
+                <p><strong>Business Location:</strong> <span id="businessLocation"></span></p>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">

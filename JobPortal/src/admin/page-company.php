@@ -158,15 +158,25 @@ session_start(); // Start the session
                             echo "<tr>";
                             echo "<th scope='row'>" . $count++ . "</th>";
                             echo "<td>" . htmlspecialchars($row['company_name']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['company_detail']) . "</td>";
+
+                            $company_detail = htmlspecialchars($row['company_detail']);
+                            $company_detail = strlen($company_detail) > 25 ? substr($company_detail, 0, 25) . '...' : $company_detail;
+                            echo "<td><span title='" . $company_detail . "'>" . $company_detail . "</span></td>";
+
                             $company_address = htmlspecialchars($row['company_address']);
                             $company_address = strlen($company_address) > 20 ? substr($company_address, 0, 20) . '...' : $company_address;
                             echo "<td><span title='" . $company_address . "'>" . $company_address . "</span></td>";
-                            echo "<td>" . htmlspecialchars($row['company_email']) . "</td>";
+
+                            $company_email = htmlspecialchars($row['company_email']);
+                            $company_email = strlen($company_email) > 15 ? substr($company_email, 0, 15) . '...' : $company_email;
+                            echo "<td><span title='" . $company_email . "'>" . $company_email . "</span></td>";
+                            
                             echo "<td>" . htmlspecialchars($row['company_contact']) . "</td>";
+
                             $company_owner = htmlspecialchars($row['company_owner']);
                             $company_owner = strlen($company_owner) > 20 ? substr($company_owner, 0, 20) . '...' : $company_owner;
                             echo "<td><span title='" . $company_owner . "'>" . $company_owner . "</span></td>";
+
                             echo "<td>";
                             echo "<button class='btn btn-success btn-sm me-1' onclick='editCompany(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
                             echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteCompany(" . $row['uid'] . ")'><i class='fas fa-trash-alt'></i></button>";

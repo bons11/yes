@@ -100,7 +100,7 @@ include("php/config.php");
                             // Display registration success message as a pop-up
                             echo "<script>alert('Registration successful!');</script>";
                             // Redirect to login page after registration
-                            echo "<script>window.location.href = 'login.php';</script>";
+                            echo "<script>window.location.href = 'employer-login.php';</script>";
                         } else {
                             // Display registration error message as a pop-up
                             echo "<script>alert('Error registering user');</script>";

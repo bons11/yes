@@ -10,7 +10,7 @@ if (!$con) {
 $id = intval($_GET['id']);
 
 // Fetch user details from tbl_job_owner_apply
-$query = "SELECT name, email, birthday, contact, address FROM tbl_job_owner_apply WHERE id = $id";
+$query = "SELECT name, email, password, birthday, contact, occupation, address, business_name, company_detail, company_email, company_contact, business_location FROM tbl_job_owner_apply WHERE id = $id";
 $result = mysqli_query($con, $query);
 
 // Check if query was successful

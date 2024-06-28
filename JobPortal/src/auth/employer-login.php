@@ -304,6 +304,8 @@ if (isset($_POST['signup_submit'])) {
                     </select>
                 </div>
 
+                <h5 class="text-uppercase text-muted mb-3 mt-2">Requirements</h5>
+
                 <div class="input-field">
                     <label for="business_permit">Business Permit</label>
                     <input type="file" name="business_permit" required>
@@ -330,7 +332,7 @@ if (isset($_POST['signup_submit'])) {
                 </div>
 
                 <div class="input-field">
-                    <label for="dir">Dir Permit</label>
+                    <label for="dir">DIR Permit</label>
                     <input type="file" name="dir" required>
                 </div>
 
