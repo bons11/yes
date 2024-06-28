@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2024 at 08:22 PM
+-- Generation Time: Jun 28, 2024 at 10:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,22 +61,6 @@ CREATE TABLE `tbl_applicant` (
   `cover_letter` varchar(200) NOT NULL,
   `status` varchar(45) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_applicant`
---
-
-INSERT INTO `tbl_applicant` (`uid`, `uuid`, `job_number`, `date_apply`, `name`, `portfolio`, `email`, `valid_id`, `resume`, `cover_letter`, `status`) VALUES
-(113, 0, '247911', '2024-06-10', 'Charlie Tippins', '', 'cp@gmail.com', '', 'uploads/resume.pdf', 'bangbig156', 'Pending'),
-(114, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'hehe', 'Pending'),
-(115, 0, '247911', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'hehe', 'Pending'),
-(116, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/sagotparasasubhehe.pdf', 'hehe Please work', 'Pending'),
-(117, 0, '609515', '2024-06-24', 'Chad Cabo', 'kunwari may laman', 'cahdou23k@gmail.com', '', 'uploads/resume.pdf', 'Syempre gumana ako pa\r\n', 'Pending'),
-(118, 0, '609515', '2024-06-24', 'Chad Cabo', 'www.google.com', 'cahdou23k@gmail.com', '', 'uploads/Trial.pdf', 'Gumana syempre ako pa', 'Pending'),
-(119, 0, '609515', '2024-06-26', 'charles', 'sae', 'user1@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'esa', 'Pending'),
-(120, 0, '726798', '2024-06-27', '123', '123', '123@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdf', 'Pending'),
-(121, 0, '726798', '2024-06-27', 'joe', 'sae', 'joemama@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'asdfasdf', 'Pending'),
-(122, 0, '726798', '2024-06-27', 'joe', 'sadfiugUUUGH', 'joemama@gmail.com', '', 'uploads/Neuro-Fuzzy and DSM.pdf', 'yesyesyo wassup', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -170,7 +154,7 @@ CREATE TABLE `tbl_inquiry` (
 --
 
 INSERT INTO `tbl_inquiry` (`uid`, `name`, `email`, `subject`, `message`, `role`, `status`) VALUES
-(9, 'Arturo Yparraguirre', 'arturoyparraguirre01@gmail.com', 'Testing rani uy', 'Dear Admin, Please hire me!', 'Job seeker', 'Pending'),
+(9, 'Arturo Yparraguirre', 'arturoyparraguirre01@gmail.com', 'Testing rani uy', 'Dear Admin, Please hire me!', 'Job seeker', 'Read'),
 (12, 'Charles', 'user1@gmail.com', 'test', 'test', 'Job recruiter', 'Pending');
 
 -- --------------------------------------------------------
@@ -229,26 +213,7 @@ INSERT INTO `tbl_qualification` (`uid`, `job_number`, `qualification_detail`, `q
 (40, '210', 'Bachelor\'s degree in Business Administration or related field', 'Knowledge of business analysis techniques', 'Experience in strategic planning and market research', 'Strong analytical and problem-solving skills', 'Excellent communication and presentation abilities', 'Ability to make data-driven decisions'),
 (64, '567040', 'Male/Female', 'High School Graduate', '*', '*', '*', '*'),
 (68, '969858', 'Previous experience in a delivery role, particularly in the gas or related industry, is preferred. Familiarity with local routes and neighborhoods is advantageous.', 'Valid driver’s license with a clean driving record. Ability to operate a delivery vehicle safely and responsibly.', 'Ability to lift and carry heavy gas cylinders (up to [weight] lbs) regularly. Capable of performing physically demanding tasks for extended periods.', 'Excellent interpersonal and communication skills. Ability to handle customer inquiries and complaints professionally and courteously.', 'Strong attention to detail to ensure accurate deliveries and proper handling of gas cylinders. Ability to maintain precise records and documentation.', 'Knowledge of safety protocols related to handling and transporting gas cylinders. Commitment to following safety guidelines to prevent accidents and ensure customer safety.'),
-(69, '247911', 'High school diploma or equivalent', 'Excellent interpersonal and communication skills', 'Ability to make quick and accurate calculations.', 'High level of accuracy and attention to detail in handling transactions and processing payments.', 'Familiarity with point-of-sale (POS) systems and cash registers. Basic computer skills, including proficiency in Microsoft Office.', 'Ability to stand for extended periods and handle physical tasks such as lifting and stocking.'),
-(71, '609515', 'w', 'w', 'w', 'w', 'w', 'w'),
-(73, '584762', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(74, '471734', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(75, '850240', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(76, '573844', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(77, '430593', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(78, '457375', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(79, '621179', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(80, '475739', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(81, '485583', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(82, '223293', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(85, '289337', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(86, '774923', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(87, '782564', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(88, '266688', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(89, '774296', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(90, '553020', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(91, '696610', 'test', 'icles', 'I', 'lick', 'very', 'hard'),
-(92, '726798', 'test', 'icles', 'I', 'lick', 'very', 'hard');
+(69, '247911', 'High school diploma or equivalent', 'Excellent interpersonal and communication skills', 'Ability to make quick and accurate calculations.', 'High level of accuracy and attention to detail in handling transactions and processing payments.', 'Familiarity with point-of-sale (POS) systems and cash registers. Basic computer skills, including proficiency in Microsoft Office.', 'Ability to stand for extended periods and handle physical tasks such as lifting and stocking.');
 
 -- --------------------------------------------------------
 
@@ -294,7 +259,8 @@ INSERT INTO `tbl_responsibility` (`uid`, `job_number`, `responsibility_detail`, 
 (92, '774296', 'test', 'test', 'icles', 'in', 'my', 'ass'),
 (93, '553020', 'test', 'test', 'icles', 'in', 'my', 'ass'),
 (94, '696610', 'test', 'test', 'icles', 'in', 'my', 'ass'),
-(95, '726798', 'test', 'test', 'icles', 'in', 'my', 'ass');
+(95, '726798', 'test', 'test', 'icles', 'in', 'my', 'ass'),
+(96, '990713', 'Perform Routine Maintenance: Inspect and maintain equipment and building systems regularly to prevent issues.', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ');
 
 -- --------------------------------------------------------
 
@@ -324,10 +290,6 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`uid`, `uuid`, `name`, `address`, `contact`, `birthday`, `email`, `password`, `valid_id`, `role`, `company`, `company_contact`, `logo`) VALUES
 (38, 0, 'Admin', 'Admin', 'Admin', '2024-02-25', 'admin@gmail.com', 'admin', '', 'admin', '', 0, ''),
-(43, 0, 'Arturo Yparraguirre', 'Bangkal', '09099366481', '2001-11-30', 'arturoyparraguirre01@gmail.com', '1234', '', 'user', '', 0, ''),
-(46, 0, 'Charles', '1273 Sitio Cocaoc Poblacion Bugallon Pangasin', '12345678901', 'June 8 2003', 'user1@gmail.com', '123', '', 'representative', 'chady corporations', 0, ''),
-(48, 0, 'Charles Derb', 'Poblacion', '09458016215', 'November 6 2005', 'charlesdervinc@gmail.com', '123', '', 'user', '', 0, ''),
-(49, 0, 'tite', 'tete', 'tetet', '2222-02-22', 'tete@gmail.com', 'tite', '', 'admin', '', 0, ''),
 (55, 0, 'charles', 'dito', '09123123121', '2024-12-31', 'chadycorporations@gmail.com', '123', '', 'representative', 'chady corporations', 0, 0x2e2e2f75706c6f6164732f6b64616a642e706e67);
 
 -- --------------------------------------------------------
@@ -357,7 +319,7 @@ CREATE TABLE `tbl_vacancy` (
 --
 
 INSERT INTO `tbl_vacancy` (`uid`, `uuid`, `job_number`, `company_category`, `company_name`, `job_title`, `job_description`, `job_salary`, `job_nature`, `location`, `date_created`, `date_end`, `town`) VALUES
-(265, 1328, '553020', 'Household Work', 'chady corporations', 'test', 'test', '', 'Part Time', 'here', '2024-12-31', '2024-12-31', 'Aguilar');
+(265, 1328, '553020', 'Household Work', 'chady corporations', 'test', 'test', '5000-7800', 'Part Time', 'here', '2024-12-31', '2024-12-31', 'Aguilar');
 
 --
 -- Indexes for dumped tables
@@ -449,7 +411,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_company`
 --
 ALTER TABLE `tbl_company`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tbl_inquiry`
@@ -461,31 +423,31 @@ ALTER TABLE `tbl_inquiry`
 -- AUTO_INCREMENT for table `tbl_job_owner_apply`
 --
 ALTER TABLE `tbl_job_owner_apply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1330;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1333;
 
 --
 -- AUTO_INCREMENT for table `tbl_qualification`
 --
 ALTER TABLE `tbl_qualification`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `tbl_responsibility`
 --
 ALTER TABLE `tbl_responsibility`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `tbl_vacancy`
 --
 ALTER TABLE `tbl_vacancy`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
