@@ -144,7 +144,7 @@ session_start(); // Start the session
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="job-list.php">
                         <h6 class="mt-n1 mb-0">Featured</h6>
                     </a>
@@ -158,7 +158,12 @@ session_start(); // Start the session
                     <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active"  href="part_time_jobs.php">
                         <h6 class="mt-n1 mb-0">Part Time</h6>
                     </a>
-                </li> -->
+                </li>
+                <li class="nav-item">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="job_list_others.php">
+                        <h6 class="mt-n1 mb-0">Other</h6>
+                    </a>
+                </li>
             </ul>
             <div class="tab-content">
             <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -182,10 +187,10 @@ session_start(); // Start the session
                                         <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
-                                            <span class="text-truncate me-3"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
-                                            <span class="text-truncate me-3"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
+                                            <span class="text-truncate location-truncate me-2"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
+                                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
+                                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">

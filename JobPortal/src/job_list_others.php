@@ -1,7 +1,5 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start();
+ <?php
+session_start(); // Start the session
 ?>
 
 <!DOCTYPE html>
@@ -48,22 +46,14 @@ session_start();
         <!-- Spinner End -->
 
 
-        <!-- Navbar Start -->
+<!-- Navbar Start -->
        
-        <?php include 'navbar.php'; ?>
+<?php include 'navbar.php'; ?>
         
         <!-- Navbar End -->
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-        $(document).ready(function(){
-            $("#applyJobOwner").click(function(event){
-            event.preventDefault();
-            $("#jobOwnerModal").modal('show');
-            });
-        });
-        </script>
         <script>
         function confirmLogout() {
             Swal.fire({
@@ -82,99 +72,72 @@ session_start();
         </script>
 
 
-        <!-- Carousel Start -->
-        <div class="container-fluid p-0">
-            <div class="owl-carousel header-carousel position-relative">
-                <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="images/pexels-anamul-rezwan-1216589.jpg" alt="">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-10 col-lg-8">
-                                    <h1 class="display-3 text-white animated slideInDown mb-4">Welcome to Employment Bulletin Board</h1>
-                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Find The Perfect Job That You Deserved</p>
-                                    <a href="job-search.php" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="images/pexels-sora-shimazaki-5668842.jpg" alt="">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-10 col-lg-8">
-                                    <h1 class="display-3 text-white animated slideInDown mb-4">Employment Bulletin Board</h1>
-                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Find the best startup job that fit you</p>
-                                    <a href="" class="btn btn-primary py-md-3 px-md-5 m-3 me-3 animated slideInLeft">Search A Job</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Carousel End -->
+        <!-- Header End -->
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Job List</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Job List</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
 
-
-                <!-- Search Start -->
-                <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
-            <div class="container">
+<!-- Search Start -->
+<div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-md-10">
                 <div class="row g-2">
-                    <div class="col-md-10">
-                        <div class="row g-2">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control border-0" id="keyword" placeholder="Keyword" />
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0" id="category">
-                                    <option value="">Category</option>
-                                    <?php
-
-                                    include 'auth/php/config.php';
-                                    // Fetch categories from tbl_category
-                                    $categoryQuery = "SELECT category FROM tbl_category";
-                                    $categoryResult = mysqli_query($con, $categoryQuery);
-                                    if ($categoryResult) {
-                                        while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
-                                            echo "<option value='" . $categoryRow['category'] . "'>" . $categoryRow['category'] . "</option>";
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0" id="company">
-                                    <option value="">Company</option>
-                                    <?php
-                                    // Fetch company names from tbl_company
-                                    $companyQuery = "SELECT company_name FROM tbl_company";
-                                    $companyResult = mysqli_query($con, $companyQuery);
-                                    if ($companyResult) {
-                                        while ($companyRow = mysqli_fetch_assoc($companyResult)) {
-                                            echo "<option value='" . $companyRow['company_name'] . "'>" . $companyRow['company_name'] . "</option>";
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control border-0" id="keyword" placeholder="Keyword" />
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-dark border-0 w-100" onclick="searchJobs()">Search</button>
+                    <div class="col-md-4">
+                        <select class="form-select border-0" id="category">
+                            <option value="">Category</option>
+                            <?php
+                            include 'auth/php/config.php';
+                            // Fetch categories from tbl_category
+                            $categoryQuery = "SELECT category FROM tbl_category";
+                            $categoryResult = mysqli_query($con, $categoryQuery);
+                            if ($categoryResult) {
+                                while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
+                                    echo "<option value='" . $categoryRow['category'] . "'>" . $categoryRow['category'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select border-0" id="company">
+                            <option value="">Company</option>
+                            <?php
+                            // Fetch company names from tbl_company
+                            $companyQuery = "SELECT company_name FROM tbl_company";
+                            $companyResult = mysqli_query($con, $companyQuery);
+                            if ($companyResult) {
+                                while ($companyRow = mysqli_fetch_assoc($companyResult)) {
+                                    echo "<option value='" . $companyRow['company_name'] . "'>" . $companyRow['company_name'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
             </div>
+            <div class="col-md-2">
+                <button class="btn btn-dark border-0 w-100" onclick="searchJobs()">Search</button>
+            </div>
         </div>
-        <!-- Search End -->
+    </div>
+</div>
+<!-- Search End -->
 
- 
-
-        
-
-
-        <!-- Jobs Start -->
+<!-- Jobs Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
@@ -205,10 +168,18 @@ session_start();
                     <div id="tab-1" class="tab-pane fade show p-0 active">
 
                     <?php
-                    include 'auth/php/config.php';
+include 'auth/php/config.php';
 
-                    $basePath = 'uploads/';
-$sql = "SELECT * FROM tbl_vacancy ORDER BY uid DESC LIMIT 10";
+// Determine the job nature to fetch
+$job_nature_filter = "Day Time', 'Night Time', 'On Call";
+
+// Construct the SQL query
+$sql = "SELECT v.*, c.logo 
+        FROM tbl_vacancy v 
+        INNER JOIN tbl_company c ON v.uuid = c.uuid 
+        WHERE v.job_nature IN ('$job_nature_filter')
+        ORDER BY v.uid DESC LIMIT 10";
+
 $result = mysqli_query($con, $sql);
 
 if (!$result) {
@@ -220,27 +191,29 @@ if (!$result) {
             <div class="job-item p-4 mb-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                        <!-- Fetch vacancy logo dynamically -->
-                        <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo $basePath . htmlspecialchars($row['logo']); ?>" alt="Company Logo" style="width: 80px; height: 80px;">
+                        <!-- Fetch company logo dynamically -->
+                        <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
-                            <h5 class="mb-3"><?php echo htmlspecialchars($row['job_title']); ?></h5>
-                            <span class="text-truncate me-2 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo htmlspecialchars($row['location']); ?></span>
-                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo htmlspecialchars($row['job_nature']); ?></span>
-                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo htmlspecialchars($row['job_salary']); ?></span>
-                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo htmlspecialchars($row['company_name']); ?></span>
+                            <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
+                            <span class="text-truncate location-truncate me-2"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
+                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                         <div class="d-flex mb-3">
                             <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
                         </div>
-                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo htmlspecialchars($row['date_created']); ?></small>
-                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Expiry: <?php echo htmlspecialchars($row['date_end']); ?></small>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo $row['date_created']; ?></small>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Expiry: <?php echo $row['date_end']; ?></small>
                     </div>
                 </div>
             </div>
 <?php
         }
+    } else {
+        echo "<p>No jobs found.</p>";
     }
 }
 
@@ -248,13 +221,9 @@ mysqli_close($con);
 ?>
 
 
-                        <a class="btn btn-primary py-3 px-5" href="job_list_all.php">Browse More Jobs</a>
 
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -307,22 +276,18 @@ mysqli_close($con);
         <!-- Footer End -->
 
 
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!-- Bootstrap Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Other libraries -->
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
-
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
