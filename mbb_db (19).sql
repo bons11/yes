@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2024 at 10:27 PM
+-- Generation Time: Jun 28, 2024 at 10:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -131,7 +131,8 @@ CREATE TABLE `tbl_company` (
 --
 
 INSERT INTO `tbl_company` (`uid`, `uuid`, `company_name`, `company_detail`, `company_address`, `company_email`, `company_contact`, `company_owner`, `logo`) VALUES
-(72, 1328, 'chady corporations', 'test', 'yes', 'chadycorporations@gmail.com', '09217465928', 'joe', 0x2e2e2f75706c6f6164732f6b64616a642e706e67);
+(72, 1328, 'chady corporations', 'test', 'yes', 'chadycorporations@gmail.com', '09217465928', 'joe', 0x2e2e2f75706c6f6164732f6b64616a642e706e67),
+(78, 1333, 'Crod\'s Grill', 'Discover Crod\'s Grill, where passion meets flavor. Our diverse menu features fresh, innovative dishes that cater to every palate, from succulent steaks to delightful vegetarian options. Enjoy a welcom', 'AB Navato Street', 'cahdou23k@gmail.com', '09458016215', 'Crodie Bellenic', 0x2e2e2f75706c6f6164732f6772696c6c2e706e67);
 
 -- --------------------------------------------------------
 
@@ -213,7 +214,9 @@ INSERT INTO `tbl_qualification` (`uid`, `job_number`, `qualification_detail`, `q
 (40, '210', 'Bachelor\'s degree in Business Administration or related field', 'Knowledge of business analysis techniques', 'Experience in strategic planning and market research', 'Strong analytical and problem-solving skills', 'Excellent communication and presentation abilities', 'Ability to make data-driven decisions'),
 (64, '567040', 'Male/Female', 'High School Graduate', '*', '*', '*', '*'),
 (68, '969858', 'Previous experience in a delivery role, particularly in the gas or related industry, is preferred. Familiarity with local routes and neighborhoods is advantageous.', 'Valid driver’s license with a clean driving record. Ability to operate a delivery vehicle safely and responsibly.', 'Ability to lift and carry heavy gas cylinders (up to [weight] lbs) regularly. Capable of performing physically demanding tasks for extended periods.', 'Excellent interpersonal and communication skills. Ability to handle customer inquiries and complaints professionally and courteously.', 'Strong attention to detail to ensure accurate deliveries and proper handling of gas cylinders. Ability to maintain precise records and documentation.', 'Knowledge of safety protocols related to handling and transporting gas cylinders. Commitment to following safety guidelines to prevent accidents and ensure customer safety.'),
-(69, '247911', 'High school diploma or equivalent', 'Excellent interpersonal and communication skills', 'Ability to make quick and accurate calculations.', 'High level of accuracy and attention to detail in handling transactions and processing payments.', 'Familiarity with point-of-sale (POS) systems and cash registers. Basic computer skills, including proficiency in Microsoft Office.', 'Ability to stand for extended periods and handle physical tasks such as lifting and stocking.');
+(69, '247911', 'High school diploma or equivalent', 'Excellent interpersonal and communication skills', 'Ability to make quick and accurate calculations.', 'High level of accuracy and attention to detail in handling transactions and processing payments.', 'Familiarity with point-of-sale (POS) systems and cash registers. Basic computer skills, including proficiency in Microsoft Office.', 'Ability to stand for extended periods and handle physical tasks such as lifting and stocking.'),
+(94, '744424', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.'),
+(95, '252871', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.');
 
 -- --------------------------------------------------------
 
@@ -260,7 +263,9 @@ INSERT INTO `tbl_responsibility` (`uid`, `job_number`, `responsibility_detail`, 
 (93, '553020', 'test', 'test', 'icles', 'in', 'my', 'ass'),
 (94, '696610', 'test', 'test', 'icles', 'in', 'my', 'ass'),
 (95, '726798', 'test', 'test', 'icles', 'in', 'my', 'ass'),
-(96, '990713', 'Perform Routine Maintenance: Inspect and maintain equipment and building systems regularly to prevent issues.', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ');
+(96, '990713', 'Perform Routine Maintenance: Inspect and maintain equipment and building systems regularly to prevent issues.', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain ', 'Perform Routine Maintenance: Inspect and maintain '),
+(97, '744424', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.'),
+(98, '252871', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.', 'To maintain the machines used to run our business.');
 
 -- --------------------------------------------------------
 
@@ -290,7 +295,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`uid`, `uuid`, `name`, `address`, `contact`, `birthday`, `email`, `password`, `valid_id`, `role`, `company`, `company_contact`, `logo`) VALUES
 (38, 0, 'Admin', 'Admin', 'Admin', '2024-02-25', 'admin@gmail.com', 'admin', '', 'admin', '', 0, ''),
-(55, 0, 'charles', 'dito', '09123123121', '2024-12-31', 'chadycorporations@gmail.com', '123', '', 'representative', 'chady corporations', 0, 0x2e2e2f75706c6f6164732f6b64616a642e706e67);
+(55, 0, 'charles', 'dito', '09123123121', '2024-12-31', 'chadycorporations@gmail.com', '123', '', 'representative', 'chady corporations', 0, 0x2e2e2f75706c6f6164732f6b64616a642e706e67),
+(74, 1333, 'Crodie Bellenic', 'Poblacion', '09458016215', '2002-11-06', 'crod@gmail.com', '123', '../uploads/valid_ID.png', 'representative', 'Crod\'s Grill', 0, 0x2e2e2f75706c6f6164732f6772696c6c2e706e67);
 
 -- --------------------------------------------------------
 
@@ -311,15 +317,18 @@ CREATE TABLE `tbl_vacancy` (
   `location` varchar(100) NOT NULL,
   `date_created` varchar(100) NOT NULL,
   `date_end` varchar(100) NOT NULL,
-  `town` varchar(100) NOT NULL
+  `town` varchar(100) NOT NULL,
+  `logo` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_vacancy`
 --
 
-INSERT INTO `tbl_vacancy` (`uid`, `uuid`, `job_number`, `company_category`, `company_name`, `job_title`, `job_description`, `job_salary`, `job_nature`, `location`, `date_created`, `date_end`, `town`) VALUES
-(265, 1328, '553020', 'Household Work', 'chady corporations', 'test', 'test', '5000-7800', 'Part Time', 'here', '2024-12-31', '2024-12-31', 'Aguilar');
+INSERT INTO `tbl_vacancy` (`uid`, `uuid`, `job_number`, `company_category`, `company_name`, `job_title`, `job_description`, `job_salary`, `job_nature`, `location`, `date_created`, `date_end`, `town`, `logo`) VALUES
+(265, 1328, '553020', 'Household Work', 'chady corporations', 'test', 'test', '5000-7800', 'Part Time', 'here', '2024-12-31', '2024-12-31', 'Aguilar', ''),
+(269, 1333, '744424', 'Household Work', 'Crod&#039;s Grill', 'Maintenance Worker', 'To maintain the machines used to run our business.', '1300-2500', 'On CALL', 'X649+27V, Bugallon, Pangasinan', '2024-06-29', '2024-07-29', 'Bugallon', ''),
+(270, 1333, '252871', 'Household Work', 'Crod&#039;s Grill', 'Maintenance Workersesese', 'To maintain the machines used to run our business.', '6000-9000', 'Day Time', 'To maintain the machines used to run our business.', '2024-06-29', '2024-07-29', 'Bugallon', 0x2e2e2f75706c6f6164732f6772696c6c2e706e67);
 
 --
 -- Indexes for dumped tables
@@ -411,7 +420,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_company`
 --
 ALTER TABLE `tbl_company`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `tbl_inquiry`
@@ -423,31 +432,31 @@ ALTER TABLE `tbl_inquiry`
 -- AUTO_INCREMENT for table `tbl_job_owner_apply`
 --
 ALTER TABLE `tbl_job_owner_apply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1333;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1334;
 
 --
 -- AUTO_INCREMENT for table `tbl_qualification`
 --
 ALTER TABLE `tbl_qualification`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `tbl_responsibility`
 --
 ALTER TABLE `tbl_responsibility`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `tbl_vacancy`
 --
 ALTER TABLE `tbl_vacancy`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
