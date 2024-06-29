@@ -187,12 +187,14 @@ if (!$result) {
 } else {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
+            $logo = htmlspecialchars($row['logo'] ?? '');
+
 ?>
             <div class="job-item p-4 mb-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
                         <!-- Fetch company logo dynamically -->
-                        <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo $basePath . $logo; ?>" alt="Company Logo" style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
                             <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
                             <span class="text-truncate location-truncate me-2"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>

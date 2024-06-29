@@ -205,9 +205,9 @@ session_start();
                     <div id="tab-1" class="tab-pane fade show p-0 active">
 
                     <?php
-                    include 'auth/php/config.php';
+include 'auth/php/config.php';
 
-                    $basePath = 'uploads/';
+$basePath = 'uploads/';
 $sql = "SELECT * FROM tbl_vacancy ORDER BY uid DESC LIMIT 10";
 $result = mysqli_query($con, $sql);
 
@@ -216,26 +216,34 @@ if (!$result) {
 } else {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
+            $logo = htmlspecialchars($row['logo'] ?? '');
+            $jobTitle = htmlspecialchars($row['job_title'] ?? '');
+            $location = htmlspecialchars($row['location'] ?? '');
+            $jobNature = htmlspecialchars($row['job_nature'] ?? '');
+            $jobSalary = htmlspecialchars($row['job_salary'] ?? '');
+            $companyName = htmlspecialchars($row['company_name'] ?? '');
+            $dateCreated = htmlspecialchars($row['date_created'] ?? '');
+            $dateEnd = htmlspecialchars($row['date_end'] ?? '');
 ?>
             <div class="job-item p-4 mb-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
                         <!-- Fetch vacancy logo dynamically -->
-                        <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo $basePath . htmlspecialchars($row['logo']); ?>" alt="Company Logo" style="width: 80px; height: 80px;">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo $basePath . $logo; ?>" alt="Company Logo" style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
-                            <h5 class="mb-3"><?php echo htmlspecialchars($row['job_title']); ?></h5>
-                            <span class="text-truncate me-2 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo htmlspecialchars($row['location']); ?></span>
-                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo htmlspecialchars($row['job_nature']); ?></span>
-                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo htmlspecialchars($row['job_salary']); ?></span>
-                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo htmlspecialchars($row['company_name']); ?></span>
+                            <h5 class="mb-3"><?php echo $jobTitle; ?></h5>
+                            <span class="text-truncate me-2 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo $jobNature; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $jobSalary; ?></span>
+                            <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $companyName; ?></span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                         <div class="d-flex mb-3">
                             <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
                         </div>
-                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo htmlspecialchars($row['date_created']); ?></small>
-                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Expiry: <?php echo htmlspecialchars($row['date_end']); ?></small>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo $dateCreated; ?></small>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Expiry: <?php echo $dateEnd; ?></small>
                     </div>
                 </div>
             </div>
