@@ -1,15 +1,20 @@
+<?php
+session_start(); // Start the session
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,55 +109,9 @@
 
 
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link active">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item">Job List</a>
-                        </div>
-                    </div>
-                    <a href="contacts.php" class="nav-item nav-link">Contact</a>
-                    <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // User is logged in, display their name
-                            echo $_SESSION['name'];
-                        } else {
-                            // User is not logged in, show default "Signin"
-                            echo "Login";
-                        }
-                        ?>
-                    </a>
-
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
-                            echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
-                        } else {
-                            // If user is not logged in, show regular signin options
-                            echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </nav>
+       
+        <?php include 'navbar.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -210,32 +169,58 @@
         <div class="container text-center">
           <h1 class="center">About MBB</h1>
             <div class="d-flex justify-content-center">
-              <p>-----?aboutthesystem?-----</p>
+
+ <!-- About Start -->
+            <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="row g-0 about-bg rounded overflow-hidden">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-100" src="images/20130907_094226.png">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid" src="images/ourladyoflourdesparish.jpg" style="width: 85%; margin-top: 15%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid" src="images/4053406072_f14e79cd12_z.jpg" style="width: 85%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-100" src="images/mtzionpilgrimage.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="mb-4">We help to get the best job suited for the people of Bugallon</h1>
+                        <p><i class="fa fa-check text-primary me-3"></i>Professionalism and expertise guide our exceptional client services.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Innovation and creativity fuel our continuous improvement and problem-solving.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
+                        <!-- <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a> -->
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- About End -->
+
+            </div>
+
+        </div>
+
         <!-- Gallery end -->
 
         <!-- Gallery start-->
-        <div class="container text-center">
+        
+        <!-- <div class="container text-center">
           <h1 class="center">Gallery</h1>
             <div class="d-flex justify-content-center">
               <p>-----?gridgallery?-----</p>
             </div>
-        </div>
+        </div> -->
         <!-- Gallery end -->
 
-        <!-- GPS -->
-        <div class="container text-center">
-          <h1 class="center">Location</h1>
-            <div class="d-flex justify-content-center">
-              <iframe class="position-relative rounded w-75" 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
-                frameborder="0" style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0">
-              </iframe>
-            </div>
-        </div>
-        <!-- GPS -->
+        
 
         <!-- Video Player Start -->
         <div class="video-container">
@@ -245,6 +230,24 @@
             </video>
         </div>
         <!-- Video Player End -->
+
+
+        <!-- GPS -->
+        <div class="container text-center p-3">
+            <br>
+            <br>
+          <h1 class="center">Location</h1>
+          <br>
+            <br>
+            <div class="d-flex justify-content-center">
+              <iframe class="position-relative rounded w-75 p-5" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
+                frameborder="0" style="min-height: 500px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0">
+              </iframe>
+            </div>
+        </div>
+        <!-- GPS -->
 
 
  <!-- Footer Start -->
@@ -257,7 +260,7 @@
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>

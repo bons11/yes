@@ -13,14 +13,14 @@ if (isset($_POST['uid']) && !empty($_POST['uid'])) {
     // Execute the delete statement
     if (mysqli_query($con, $query)) {
         // User deleted successfully
-        echo "Category deleted successfully";
+        echo "Company deleted successfully";
     } else {
         // Error occurred while deleting user
-        echo "Error deleting category: " . mysqli_error($con);
+        echo "Error deleting Company: " . mysqli_error($con);
     }
 } else {
     // Return an error if user ID is not provided
-    echo "Category ID not provided";
+    echo "Company ID not provided";
 }
 
 // Close database connection

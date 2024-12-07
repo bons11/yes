@@ -10,7 +10,9 @@ include 'date_end.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Admin Dashboard</title>
+    <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 
@@ -46,6 +48,9 @@ include 'date_end.php';
                 </a>
                 <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
+                </a>
+                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
                 <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text active">
                     <i class="fas fa-users me-2"></i>Manage Users
@@ -90,6 +95,7 @@ include 'date_end.php';
                                 <th scope="col">Contact</th>
                                 <th scope="col">Birthday</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Valid Id</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -124,17 +130,20 @@ include 'date_end.php';
                                 echo "Error: " . mysqli_error($con);
                                 exit();
                             }
-
+                            $basePath = '../uploads/';
                             // Loop through the fetched data and display in the table
                             $count = 1;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
                                 echo "<th scope='row'>" . $count++ . "</th>";
                                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['address']) . "</td>";
+                                $address = htmlspecialchars($row['address']);
+                                $short_address = strlen($address) > 20 ? substr($address, 0, 20) . '...' : $address;
+                                echo "<td><span title='" . $address . "'>" . $short_address . "</span></td>";
                                 echo "<td>" . htmlspecialchars($row['contact']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['birthday']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td> <button class='btn btn-outline-primary btn-sm me-1' onclick='openModal(\"" . $basePath . htmlspecialchars($row['valid_id']) . "\")'><i class='fas fa-eye'></i></button> </td>";
                                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                                 echo "<td>";
                                 echo "<button class='btn btn-success btn-sm me-1' onclick='editUser(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
@@ -194,6 +203,14 @@ include 'date_end.php';
         });
     }
 
+    function openModal(imagePath) {
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = imagePath; // Set the image source to the fetched image path
+            var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show(); // Show the modal
+        }
+
+
     // Function to reload overall table data when search field is cleared
     function clearSearch() {
         var searchInput = document.querySelector('input[name="search"]');
@@ -201,6 +218,7 @@ include 'date_end.php';
             window.location.href = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>";
         }
     }
+    
 
     function confirmLogout() {
         Swal.fire({
@@ -226,4 +244,40 @@ include 'date_end.php';
     };
 </script>
 </body>
+
+
+<!-- User Details Modal -->
+<div class="modal fade" id="userDetailsModal" tabindex="-1" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> <span id="userName"></span></p>
+                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Birthday:</strong> <span id="userBirthday"></span></p>
+                <p><strong>Contact:</strong> <span id="userContact"></span></p>
+                <p><strong>Address:</strong> <span id="userAddress"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="#" alt="Image Preview" style="max-width: 100%; max-height: 80vh;">
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>

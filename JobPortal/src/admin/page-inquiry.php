@@ -13,7 +13,9 @@ session_start(); // Start the session
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Admin Dashboard</title>
+    <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 
 <body>
@@ -50,6 +52,9 @@ session_start(); // Start the session
             </a>
             <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-layer-group me-2"></i>Category
+            </a>
+            <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fas fa-envelope me-2"></i>Owner Requests
             </a>
             <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-users me-2"></i>Manage Users
@@ -136,7 +141,9 @@ session_start(); // Start the session
                             echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['subject']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+                            $message = htmlspecialchars($row['message']);
+                            $short_message = strlen($message) > 25 ? substr($message, 0, 25) . '...' : $message;
+                            echo "<td><span title='" . $message . "'>" . $short_message . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>";

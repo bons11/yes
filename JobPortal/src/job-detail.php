@@ -127,7 +127,7 @@ if(isset($_GET['job_number'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -136,7 +136,7 @@ if(isset($_GET['job_number'])) {
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,55 +170,9 @@ if(isset($_GET['job_number'])) {
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item">Job List</a>
-                        </div>
-                    </div>
-                    <a href="contacts.php" class="nav-item nav-link">Contact</a>
-                    <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // User is logged in, display their name
-                            echo $_SESSION['name'];
-                        } else {
-                            // User is not logged in, show default "Signin"
-                            echo "Login";
-                        }
-                        ?>
-                    </a>
-
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
-                            echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
-                        } else {
-                            // If user is not logged in, show regular signin options
-                            echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </nav>
+       
+<?php include 'navbar.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -249,7 +203,7 @@ if(isset($_GET['job_number'])) {
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Job Detail</li>
+                        <li class="breadcrumb-item active" aria-current="page">Job Detail</li>
                     </ol>
                 </nav>
             </div>
@@ -266,7 +220,7 @@ if(isset($_GET['job_number'])) {
                         <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($logo); ?>" alt="Company Logo" style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
                             <h3 class="mb-3"><?php echo $job_title; ?></h3> <!-- it should fetch in mysql table "tbl_vacancy" in column job_title -->
-                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column location -->
+                            <span class="text-truncate me-3 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column location -->
                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $job_nature; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column job_nature -->
                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $job_salary; ?></span> <!-- it should fetch in mysql table "tbl_vacancy" in column job_salary -->
                         </div>
@@ -277,19 +231,19 @@ if(isset($_GET['job_number'])) {
                         <p><?php echo $job_description; ?></p> <!-- it should fetch in mysql table "tbl_vacancy" in column job_description -->
                         <h4 class="mb-3">Responsibility</h4>
                         <p><?php echo $responsibility_detail; ?></p> <!-- it should fetch in mysql table "tbl_responsibility" in column responisibility_detail -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub1; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub1 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub2; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub2 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub3; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub3 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $responsibility_sub4; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub4 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>: <?php echo $responsibility_sub5; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub5 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub1; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub1 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub2; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub2 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub3; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub3 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub4; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub4 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $responsibility_sub5; ?></p> <!--  it should fetch in mysql table "tbl_responsibility" in column responsibility_sub5 -->
 
-                        <h4 class="mb-3">Qaulifications</h4>
+                        <h4 class="mb-3">Qualifications</h4>
                         <p><?php echo $qualification_detail; ?></p> <!-- it should fetch in mysql table "tbl_qualification" in column qualification_detail -->
-                        <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub1; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub1 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub2; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub2 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub3; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub3 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i> <?php echo $qualification_sub4; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub4 -->
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>: <?php echo $qualification_sub5; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub5 -->
+                        <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub1; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub1 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub2; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub2 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub3; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub3 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub4; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub4 -->
+                            <p><i class="fa fa-circle text-primary me-2"></i> <?php echo $qualification_sub5; ?></p> <!--  it should fetch in mysql table "tbl_qualification" in column qualification_sub5 -->
                     </div>
 
                     <div class="">
@@ -297,20 +251,30 @@ if(isset($_GET['job_number'])) {
                         <form action="submit_application.php" id="submitform" method="post" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                              <label for="name">Your Name</label>
+                              <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                              <label for="email">Your Email</label>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                             </div>
+                            <!-- <div class="col-12 col-sm-6">
+                              <label for="valid_id">Valid Id</label>
+                              <input type="email" class="form-control" name="valid_id" id="valid_id" placeholder="Valid Id" >
+                            </div> -->
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="portfolio" placeholder="Portfolio Website (Optional)">
+                              <label for="portfolio">Portfolio Website</label>
+                              <input type="text" class="form-control" name="portfolio" id="portfolio" placeholder="(Optional)">
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="file" class="form-control bg-white" name="resume" accept=".pdf" required>
+                           <div class="col-12 col-sm-6">
+                              <label for="resume">Resume</label>
+                              <input type="file" class="form-control bg-white" name="resume" id="resume" accept=".pdf" required>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" name="cover_letter" rows="5" placeholder="Cover Letter" required></textarea>
+                              <label for="cover_letter">Message</label>
+                              <textarea class="form-control" name="cover_letter" id="cover_letter" rows="5" placeholder="Message" required></textarea>
                             </div>
+
                             <!-- Add hidden input field for company_name -->
                             <input type="hidden" name="company_name" value="<?php echo $company_name; ?>">
                             <!-- End of hidden input field for company_name -->

@@ -9,12 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $subject = $_POST['subject'];
+    $contact_number = $_POST['contact_number'];
     $message = $_POST['message'];
     $role = $_POST['role'];
 
     // Prepare and bind the SQL statement
-    $stmt = $con->prepare("INSERT INTO tbl_inquiry (name, email, subject, message, role) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $name, $email, $subject, $message, $role);
+    $stmt = $con->prepare("INSERT INTO tbl_inquiry (name, email, subject, contact_number,message, role) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $name, $email, $subject, $contact_number, $message, $role);
 
     // Execute the statement
     if ($stmt->execute()) {

@@ -15,7 +15,8 @@ session_start(); // Start the session
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Admin Dashboard</title>
+    <title>EBB Admin</title>
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 
 <body>
@@ -54,6 +55,9 @@ session_start(); // Start the session
                 <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
                 </a>
+                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fas fa-envelope me-2"></i>Owner Requests
+                </a>
                 <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
                 </a>
@@ -79,6 +83,18 @@ session_start(); // Start the session
                         <div>
                             <!-- Add User button -->
                             <a href="page-add-company.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Company</a>
+                            
+                        </div>
+                        <!-- Dropdown-->
+                        <div class="dropdown me-2">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter by
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="page-company.php">Default</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('Company Alphabetical')">Company Alphabetical</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="applyFilter('Owner Alphabetical')">Owner Alphabetical</a></li>
+                            </ul>
                         </div>
                         <div class="d-flex">
                             <!-- Search form -->
@@ -121,7 +137,11 @@ session_start(); // Start the session
                                     company_contact LIKE '%$search%' OR 
                                     company_owner LIKE '%$search%'";
                         } else {
-                            $query = "SELECT * FROM tbl_company";
+                          // Fetch the current sort order from URL parameters, default to DESC
+                          $order = isset($_GET['order']) && $_GET['order'] == 'ASC' ? 'ASC' : 'DESC';
+
+                          // Fetch data from tbl_company
+                          $query = "SELECT * FROM tbl_company ORDER BY company_name $order"; // Replace 'some_column' with the column you want to sort by
                         }
 
                         $result = mysqli_query($con, $query);
@@ -138,11 +158,25 @@ session_start(); // Start the session
                             echo "<tr>";
                             echo "<th scope='row'>" . $count++ . "</th>";
                             echo "<td>" . htmlspecialchars($row['company_name']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['company_detail']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['company_address']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['company_email']) . "</td>";
+
+                            $company_detail = htmlspecialchars($row['company_detail']);
+                            $company_detail = strlen($company_detail) > 25 ? substr($company_detail, 0, 25) . '...' : $company_detail;
+                            echo "<td><span title='" . $company_detail . "'>" . $company_detail . "</span></td>";
+
+                            $company_address = htmlspecialchars($row['company_address']);
+                            $company_address = strlen($company_address) > 20 ? substr($company_address, 0, 20) . '...' : $company_address;
+                            echo "<td><span title='" . $company_address . "'>" . $company_address . "</span></td>";
+
+                            $company_email = htmlspecialchars($row['company_email']);
+                            $company_email = strlen($company_email) > 15 ? substr($company_email, 0, 15) . '...' : $company_email;
+                            echo "<td><span title='" . $company_email . "'>" . $company_email . "</span></td>";
+                            
                             echo "<td>" . htmlspecialchars($row['company_contact']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['company_owner']) . "</td>";
+
+                            $company_owner = htmlspecialchars($row['company_owner']);
+                            $company_owner = strlen($company_owner) > 20 ? substr($company_owner, 0, 20) . '...' : $company_owner;
+                            echo "<td><span title='" . $company_owner . "'>" . $company_owner . "</span></td>";
+
                             echo "<td>";
                             echo "<button class='btn btn-success btn-sm me-1' onclick='editCompany(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
                             echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteCompany(" . $row['uid'] . ")'><i class='fas fa-trash-alt'></i></button>";
@@ -234,6 +268,97 @@ session_start(); // Start the session
         });
     }
     </script>
+
+    <script>
+        function applyFilter(filter) {
+    // Get the table body
+    var tableBody = document.querySelector('tbody');
+
+    // Get all table rows
+    var rows = tableBody.querySelectorAll('tr');
+
+    // Retrieve the default order of rows by their initial index
+    var defaultOrder = Array.from(rows).sort(function(rowA, rowB) {
+        return Array.from(rowA.parentNode.children).indexOf(rowA) - Array.from(rowB.parentNode.children).indexOf(rowB);
+    });
+
+    // Check if the selected filter is "Default"
+    if (filter === 'Default') {
+        // Clear the table body
+        tableBody.innerHTML = '';
+
+        // Append the default order of rows back to the table body
+        defaultOrder.forEach(function(row) {
+            tableBody.appendChild(row.cloneNode(true)); // Clone the node to preserve event listeners
+        });
+    } else {
+        // Sort the rows based on the selected filter
+        var rowsArray = Array.from(rows);
+        rowsArray.sort(function(rowA, rowB) {
+            var valueA, valueB;
+
+            // Adjust the index based on the column you want to sort by
+            switch (filter) {
+                case 'Company Alphabetical':
+                    valueA = rowA.querySelector('td:nth-child(2)').textContent.trim(); // Category column
+                    valueB = rowB.querySelector('td:nth-child(2)').textContent.trim(); // Category column
+                    break;
+                case 'Owner Alphabetical':
+                    valueA = rowA.querySelector('td:nth-child(7)').textContent.trim(); // Company Name column
+                    valueB = rowB.querySelector('td:nth-child(7)').textContent.trim(); // Company Name column
+                    break;
+                // case 'Category Date Created':
+                //     valueA = rowA.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                //     valueB = rowB.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                //     break;
+                default:
+                    return 0; // For other cases, return 0 to maintain the order
+            }
+
+            // Perform sorting based on the values
+            if (filter === 'Owner Alphabetical' || filter === 'Company Alphabetical') {
+                return valueA.localeCompare(valueB);
+            } else if (filter === 'Category Date Created') {
+                var dateA = new Date(valueA);
+                var dateB = new Date(valueB);
+                return dateA - dateB;
+            }
+        });
+
+        // Clear the table body
+        tableBody.innerHTML = '';
+
+        // Append sorted rows back to the table body
+        rowsArray.forEach(function(row) {
+            tableBody.appendChild(row);
+        });
+       }
+    }
+    </script>
+
+    <!-- <script>
+      function toggleSortOrder() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order');
+        const newOrder = currentOrder === 'ASC' ? 'DESC' : 'ASC';
+        urlParams.set('order', newOrder);
+
+        // Update the button text
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = newOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Alphabetical (Z-A)' : '<i class="fas fa-user-plus"></i> Alphabetical (A-Z)';
+
+        // Redirect to the new URL with updated order parameter
+        window.location.search = urlParams.toString();
+    }
+
+    // Update button text on page load based on the current order
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentOrder = urlParams.get('order') || 'DESC'; // Default to DESC if not set
+        const sortButton = document.getElementById('sortButton');
+        sortButton.innerHTML = currentOrder === 'ASC' ? '<i class="fas fa-user-plus"></i> Alphabetical (A-Z)' : '<i class="fas fa-user-plus"></i> Alphabetical (Z-A)';
+    };
+    </script> -->
 </body>
 
 </html>

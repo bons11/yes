@@ -7,13 +7,13 @@ session_start(); // Start the session
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,56 +47,11 @@ session_start(); // Start the session
 
 
 <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="mission.php" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item">Job List</a>
-                        </div>
-                    </div>
-                    <a href="contacts.php" class="nav-item nav-link">Contact</a>
-                    <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // User is logged in, display their name
-                            echo $_SESSION['name'];
-                        } else {
-                            // User is not logged in, show default "Signin"
-                            echo "Login";
-                        }
-                        ?>
-                    </a>
+       
+<?php include 'navbar.php'; ?>
 
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
-                            echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
-                        } else {
-                            // If user is not logged in, show regular signin options
-                            echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </nav>
+        <?php include 'job_modal.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -127,7 +82,7 @@ session_start(); // Start the session
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Job List</li>
+                        <li class="breadcrumb-item active" aria-current="page">Job List</li>
                     </ol>
                 </nav>
             </div>
@@ -207,51 +162,77 @@ session_start(); // Start the session
                         <h6 class="mt-n1 mb-0">Part Time</h6>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3"  href="job_list_others.php">
+                        <h6 class="mt-n1 mb-0">Other</h6>
+                    </a>
+                </li>
             </ul>
             <div class="tab-content">
             <div id="tab-1" class="tab-pane fade show p-0 active">
 
             <?php
+include 'auth/php/config.php';
 
-            include 'auth/php/config.php';
-            $sql = "SELECT v.*, c.logo FROM tbl_vacancy v INNER JOIN tbl_company c ON v.company_name = c.company_name WHERE v.job_nature = 'Full Time' LIMIT 10";
-            $result = mysqli_query($con, $sql);
+$sql = "SELECT v.*, c.logo 
+        FROM tbl_vacancy v 
+        INNER JOIN tbl_company c 
+        ON v.uuid = c.uuid 
+        WHERE v.job_nature = 'Full Time' 
+        ORDER BY v.uid DESC 
+        LIMIT 10";
+$result = mysqli_query($con, $sql);
 
-            if (!$result) {
-                echo "Error: " . mysqli_error($con);
-            } else {
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <!-- Fetch company logo dynamically -->
-                                    <img class="flex-shrink-0 img-fluid border rounded" src="data:image/jpeg;base64,<?php echo base64_encode($row['logo']); ?>" alt="" style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3"><?php echo $row['job_title']; ?></h5>
-                                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $row['location']; ?></span>
-                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i><?php echo $row['job_nature']; ?></span>
-                                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $row['job_salary']; ?></span>
-                                        <span class="text-truncate me-0"><i class="far fas fa-building text-primary me-2"></i><?php echo $row['company_name']; ?></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                        <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
-                                    </div>
-                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: <?php echo $row['date_end']; ?></small>
-                                </div>
-                            </div>
+if (!$result) {
+    echo "Error: " . mysqli_error($con);
+} else {
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Use null coalescing operator to handle null values
+            $logo = htmlspecialchars($row['logo'] ?? '');
+            $jobTitle = htmlspecialchars($row['job_title'] ?? '');
+            $location = htmlspecialchars($row['location'] ?? '');
+            $jobNature = htmlspecialchars($row['job_nature'] ?? '');
+            $jobSalary = htmlspecialchars($row['job_salary'] ?? '');
+            $companyName = htmlspecialchars($row['company_name'] ?? '');
+            $dateCreated = htmlspecialchars($row['date_created'] ?? '');
+            $dateEnd = htmlspecialchars($row['date_end'] ?? '');
+?>
+            <div class="job-item p-4 mb-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                        <!-- Fetch company logo dynamically -->
+                        <?php if ($logo): ?>
+                            <img class="flex-shrink-0 img-fluid border rounded" src="<?php echo $basePath . $logo; ?>" alt="Company Logo" style="width: 80px; height: 80px;">
+                            <?php else: ?>
+                            <img class="flex-shrink-0 img-fluid border rounded" src="uploads/default_logo.png" alt="Default Logo" style="width: 80px; height: 80px;">
+                        <?php endif; ?>
+                        <div class="text-start ps-4">
+                            <h5 class="mb-3"><?php echo $jobTitle; ?></h5>
+                            <span class="text-truncate me-2 location-truncate"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $location; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-clock text-primary me-2"></i><?php echo $jobNature; ?></span>
+                            <span class="text-truncate me-2"><i class="far fa-money-bill-alt text-primary me-2"></i><?php echo $jobSalary; ?></span>
+                            <span class="text-truncate me-0"><i class="fas fa-building text-primary me-2"></i><?php echo $companyName; ?></span>
                         </div>
-                        <?php
-                    }
-                }
-            }
+                    </div>
+                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                        <div class="d-flex mb-3">
+                            <a class="btn btn-primary" href="job-detail.php?job_number=<?php echo $row['job_number']; ?>">Apply Now</a>
+                        </div>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Created: <?php echo $dateCreated; ?></small>
+                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: <?php echo $dateEnd; ?></small>
+                    </div>
+                </div>
+            </div>
+<?php
+        }
+    }
+}
 
-            mysqli_close($con);
-            ?>
+mysqli_close($con);
+?>
+
+
 
                 <a class="btn btn-primary py-3 px-5" href="full_time_jobs_all.php">Browse More Jobs</a>
 

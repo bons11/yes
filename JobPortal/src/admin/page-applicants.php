@@ -13,7 +13,9 @@ session_start(); // Start the session
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Admin Dashboard</title>
+    <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 
 <body>
@@ -50,6 +52,9 @@ session_start(); // Start the session
             </a>
             <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-layer-group me-2"></i>Category
+            </a>
+            <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <i class="fas fa-envelope me-2"></i>Owner Requests
             </a>
             <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="fas fa-users me-2"></i>Manage Users
@@ -140,7 +145,9 @@ session_start(); // Start the session
                             echo "<td>" . htmlspecialchars($row['portfolio']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['resume']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['cover_letter']) . "</td>";
+                            $cover_letter = htmlspecialchars($row['cover_letter']);
+                            $short_cover_letter = strlen($cover_letter) > 35 ? substr($cover_letter, 0, 35) . '...' : $cover_letter;
+                            echo "<td><span title='" . $cover_letter . "'>" . $short_cover_letter . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>";
                             echo "<button class='btn btn-success btn-sm me-1' onclick='viewApplicant(" . $row['uid'] . ")'><i class='fas fa-eye'></i></button>";
@@ -197,7 +204,7 @@ session_start(); // Start the session
             window.location.href = "../page-view-applicant.php?uid=" + uid;
         }
 
-            // Function to delete a user
+        // Function to delete a user
         function deleteApplicant(uid) {
             Swal.fire({
                 title: 'Are you sure you want to delete?',

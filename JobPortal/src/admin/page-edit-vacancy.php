@@ -11,7 +11,9 @@ session_start(); // Start the session
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Edit Vacancy</title>
+    <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 
@@ -48,6 +50,9 @@ session_start(); // Start the session
                 </a>
                 <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
+                </a>
+                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
                 <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
@@ -151,8 +156,8 @@ session_start(); // Start the session
                                     <input type="text" class="form-control" id="responsibility_sub5" name="responsibility_sub5" placeholder="•" value="<?php echo htmlspecialchars($responsibility['responsibility_sub5']); ?>" required>
                                 </div>
                             <div class="mb-3">
-                                <label for="job_salary" class="form-label">Job Salary</label>
-                                <input type="number" class="form-control" placeholder="Optional" id="job_salary" name="job_salary" value="<?php echo htmlspecialchars($vacancy['job_salary']); ?>">
+                                <label for="job_salary" class="form-label">Job Salary Range</label>
+                                <input type="text" class="form-control" placeholder="1000-2000" id="job_salary" name="job_salary" value="<?php echo htmlspecialchars($vacancy['job_salary']); ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="job_nature" class="form-label">Job Nature</label>
@@ -164,6 +169,19 @@ session_start(); // Start the session
                             <div class="mb-3">
                                 <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location" value="<?php echo htmlspecialchars($vacancy['location']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                <label for="town" class="form-label">Town</label>
+                              <select class="form-select" id="town" name="town" value="<?php echo htmlspecialchars($vacancy['town']); ?>" required>
+                                <option <?php if($vacancy['town'] == 'Aguilar') echo 'selected'; ?>>Aguilar </option>
+                                <option <?php if($vacancy['town'] == 'Binmaley') echo 'selected'; ?>>Binmaley</option>
+                                <option <?php if($vacancy['town'] == 'Bugallon') echo 'selected'; ?>>Bugallon</option>
+                                <option <?php if($vacancy['town'] == 'Lingayen') echo 'selected'; ?>>Lingayen</option>
+                                <option <?php if($vacancy['town'] == 'Mangatarem') echo 'selected'; ?>>Mangatarem</option>
+                                <option <?php if($vacancy['town'] == 'Labrador') echo 'selected'; ?>>Labrador</option>
+                              </select>
+                            </div>
                             </div>
                             <div class="mb-3">
                                 <label for="qualification_detail" class="form-label">Qualifications</label>

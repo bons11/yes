@@ -1,0 +1,6 @@
+.custom-carousel-caption {
+  background-color: black;
+  color: white;
+  opacity: 0.7; /* optional: makes the background slightly transparent */
+  border-radius: 15px; /* optional: adds rounded corners */
+}

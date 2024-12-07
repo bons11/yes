@@ -20,12 +20,33 @@ $cover_letter = $_POST['cover_letter'];
 $job_number = $_POST['job_number'];
 $company_name = $_POST['company_name']; // Make sure this is passed in the form data
 
-
 // Check if any required field is empty
 if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhitespace($_FILES["resume"]["name"]) || isEmptyOrWhitespace($cover_letter)) {
     $message = "Please fill in all required fields.";
     $status = "error";
 } else {
+    // Fetch valid_id from tbl_user
+    $sql_valid_id = "SELECT valid_id FROM tbl_user WHERE email = ?";
+    $stmt_valid_id = mysqli_prepare($con, $sql_valid_id);
+    if ($stmt_valid_id) {
+        mysqli_stmt_bind_param($stmt_valid_id, "s", $email);
+        mysqli_stmt_execute($stmt_valid_id);
+        $result_valid_id = mysqli_stmt_get_result($stmt_valid_id);
+        if ($row_valid_id = mysqli_fetch_assoc($result_valid_id)) {
+            $valid_id = $row_valid_id['valid_id'];
+        } else {
+            $message = "User not found.";
+            $status = "error";
+            header("Location: job-detail.php?job_number=$job_number&status=$status&message=$message");
+            exit();
+        }
+    } else {
+        $message = "Error preparing user SQL statement: " . mysqli_error($con);
+        $status = "error";
+        header("Location: job-detail.php?job_number=$job_number&status=$status&message=$message");
+        exit();
+    }
+
     // File upload handling for resume
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["resume"]["name"]);
@@ -43,26 +64,14 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
         } elseif (move_uploaded_file($_FILES["resume"]["tmp_name"], $target_file)) {
             // Prepare and execute SQL statement
             $date_apply = date("Y-m-d");
-            $sql = "INSERT INTO tbl_applicant (job_number, date_apply, name, portfolio, email, resume, cover_letter) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO tbl_applicant (job_number, date_apply, name, portfolio, email, resume, cover_letter, valid_id) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($con, $sql);
             if ($stmt) { // Check if statement is prepared successfully
-                mysqli_stmt_bind_param($stmt, "sssssss", $job_number, $date_apply, $name, $portfolio, $email, $target_file, $cover_letter);
+                mysqli_stmt_bind_param($stmt, "ssssssss", $job_number, $date_apply, $name, $portfolio, $email, $target_file, $cover_letter, $valid_id);
                 if (mysqli_stmt_execute($stmt)) {
                     $message = "Application submitted successfully.";
                     $status = "success";
-
-                    // // Insert inquiry data into tbl_inquiry
-                    // $sql_applicant = "INSERT INTO tbl_applicant (job_number, name, email, portfolio, cover_letter) 
-                    //                 VALUES (?, ?, ?, ?, ?)";
-                    // $stmt_applicant = mysqli_prepare($con, $sql_applicant);
-                    // if ($stmt_applicant) { // Check if statement is prepared successfully
-                    //     mysqli_stmt_bind_param($stmt_applicant, "sssss", $job_number, $name, $email, $portfolio, $cover_letter);
-                    //     mysqli_stmt_execute($stmt_applicant);
-                    // } else {
-                    //     $message = "Error preparing inquiry SQL statement: " . mysqli_error($con); // Capture MySQL error
-                    //     $status = "error";
-                    // }
 
                     // Fetch receiver's email from tbl_company
                     $sql_company_email = "SELECT company_email FROM tbl_company WHERE company_name = ?";
@@ -80,27 +89,33 @@ if (isEmptyOrWhitespace($name) || isEmptyOrWhitespace($email) || isEmptyOrWhites
                         $mail->isSMTP();
                         $mail->Host = 'smtp.gmail.com';
                         $mail->SMTPAuth = true;
-                        $mail->Username = 'arturoyparraguirre01@gmail.com'; // Replace with your Gmail username
-                        $mail->Password = 'noyg pzxf spxg qfks'; // Replace with your Gmail password
+                        $mail->Username = 'bgllnmncplblltnbrd@gmail.com'; // Replace with your Gmail username
+                        $mail->Password = 'feix hmve vsca rpyl'; // Replace with your Gmail password
                         $mail->SMTPSecure = 'ssl';
                         $mail->Port = 465;
 
-                        $mail->setFrom('arturoyparraguirre01@gmail.com'); // Replace with your email address
+                        $mail->setFrom('bgllnmncplblltnbrd@gmail.com'); // Replace with your email address
 
                         $mail->addAddress($receiver_email);
 
                         $mail->isHTML(true);
 
                         $mail->Subject = "New Job Application";
-                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Cover Letter: $cover_letter";
-                        $mail->AltBody = "Name: $name \nEmail: $email \nCover Letter: $cover_letter"; // Plain text version of the email
+                        $mail->Body = "Name: $name <br>Email: $email <br>Portfolio: $portfolio <br>Cover Letter: $cover_letter <br>Valid ID: $valid_id";
+                        $mail->AltBody = "Name: $name \nEmail: $email \nPortfolio: $portfolio \nCover Letter: $cover_letter \nValid ID: $valid_id"; // Plain text version of the email
 
                         // Attach resume file
                         $mail->addAttachment($target_file);
 
+                        // Attach valid_id image
+                        $valid_id_file = "uploads/" . $valid_id; // Update this path accordingly
+                        if (file_exists($valid_id_file)) {
+                            $mail->addAttachment($valid_id_file);
+                        }
+
                         $mail->send();
 
-                        $message = "Application Successfully Submitted "; // Capture MySQL error
+                        $message = "Application Successfully Submitted";
                         $status = "success";
                     } else {
                         $message = "Error preparing company email SQL statement: " . mysqli_error($con); // Capture MySQL error

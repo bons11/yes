@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job_salary = mysqli_real_escape_string($con, $_POST['job_salary']);
     $job_nature = mysqli_real_escape_string($con, $_POST['job_nature']);
     $location = mysqli_real_escape_string($con, $_POST['location']);
+    $town = mysqli_real_escape_string($con, $_POST['town']);
     $date_created = mysqli_real_escape_string($con, $_POST['date_created']);
     $date_end = mysqli_real_escape_string($con, $_POST['date_end']);
     $responsibility_detail = mysqli_real_escape_string($con, $_POST['responsibility_detail']);
@@ -29,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $qualification_sub5 = mysqli_real_escape_string($con, $_POST['qualification_sub5']);
 
     // Update tbl_vacancy
-    $query_vacancy = "UPDATE tbl_vacancy SET company_category='$company_category', company_name='$company_name', job_title='$job_title', job_description='$job_description', job_salary='$job_salary', job_nature='$job_nature', location='$location', date_created='$date_created', date_end='$date_end' WHERE job_number='$job_number'";
+    $query_vacancy = "UPDATE tbl_vacancy SET company_category='$company_category', company_name='$company_name', job_title='$job_title', job_description='$job_description', job_salary='$job_salary', job_nature='$job_nature', location='$location', town ='$town', date_created='$date_created', date_end='$date_end' WHERE job_number='$job_number'";
     $result_vacancy = mysqli_query($con, $query_vacancy);
 
     // Update tbl_responsibility

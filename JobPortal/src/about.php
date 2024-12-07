@@ -2,18 +2,19 @@
 session_start(); // Start the session
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +34,13 @@ session_start(); // Start the session
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+
+    <style>
+        
+    </style>
 </head>
+
 
 <body>
     <div class="container-xxl bg-white p-0">
@@ -47,57 +54,11 @@ session_start(); // Start the session
 
 
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Job Portal</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="mission.php" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item">Job List</a>
-                        </div>
-                    </div>
-                    <a href="contacts.php" class="nav-item nav-link">Contact</a>
-                    <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // User is logged in, display their name
-                            echo $_SESSION['name'];
-                        } else {
-                            // User is not logged in, show default "Signin"
-                            echo "Login";
-                        }
-                        ?>
-                    </a>
-
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
-                            echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
-                        } else {
-                            // If user is not logged in, show regular signin options
-                            echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </nav>
+       
+        <?php include 'navbar.php'; ?>
+        
         <!-- Navbar End -->
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -118,25 +79,49 @@ session_start(); // Start the session
         }
         </script>
 
+        <img src="images/bugallon.png" alt="" class="responsive-image">
 
-        <!-- Header End -->
-        <div class="container-xxl py-5 bg-dark page-header mb-5">
-            <div class="container my-5 pt-5 pb-4">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb text-uppercase">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-                    </ol>
-                </nav>
+
+        <!-- Mission, Vision, and Values Start -->
+        <div class="container py-5">
+          <!-- <h1 class="text-center">Our Mission, Vision, and Values</h1> -->
+          <div class="row mt-4 ">
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Mission</h2>
+                    <p class="card-text">The Municipal Government of Bugallon exists to provide quality services and upholds the general welfare of its people through sustainable development, social responsibility, environmental protection, and economic progress in strong partnership with the private sectors.</p>
+                </div>
             </div>
         </div>
-        <!-- Header End -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Vision</h2>
+                    <p class="card-text">Bugallon: A Top-Class Municipality in the field of Governance, Information Technology, Health, Tourism, and Commerce, governed by God-centered and People-oriented Leaders, Home of Globally-competitive and Locally-anchored constituents living in a Sustainable and conducive environment for an Organized, Nurtured and Empowered Community.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                      <h2 class="card-title">Values</h2>
+                      <p class="card-text">Our values revolve around integrity, respect, and commitment. We foster inclusivity, embracing diverse perspectives. Pursuing excellence through innovation, we meet evolving community needs. Committed to sustainability and social responsibility, we aim for a lasting positive impact.</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mission, Vision, and Values End -->
 
 
-        <!-- About Start -->
-        <div class="container-xxl py-5">
+        <!-- Gallery start-->
+        <div class="container text-center">
+          <h1 class="center">About MBB</h1>
+            <div class="d-flex justify-content-center">
+
+ <!-- About Start -->
+            <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -162,12 +147,57 @@ session_start(); // Start the session
                         <p><i class="fa fa-check text-primary me-3"></i>Diversity and inclusivity create a welcoming and collaborative environment for all.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Commitment to quality ensures our services exceed expectations.</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Teamwork and collaboration drive our success and innovation.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a>
+                        <!-- <a class="btn btn-primary py-3 px-5 mt-3" href="mission.php">Read More</a> -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- About End -->
+
+            </div>
+
+        </div>
+
+        <!-- Gallery end -->
+
+        <!-- Gallery start-->
+        
+        <!-- <div class="container text-center">
+          <h1 class="center">Gallery</h1>
+            <div class="d-flex justify-content-center">
+              <p>-----?gridgallery?-----</p>
+            </div>
+        </div> -->
+        <!-- Gallery end -->
+
+        
+
+        <!-- Video Player Start -->
+        <div class="video-container">
+            <video controls loop>
+                <source src="images/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <!-- Video Player End -->
+
+
+        <!-- GPS -->
+        <div class="container text-center p-3">
+            <br>
+            <br>
+          <h1 class="center">Location</h1>
+          <br>
+            <br>
+            <div class="d-flex justify-content-center">
+              <iframe class="position-relative rounded w-75 p-5" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15344.522958659853!2d120.2174292!3d15.9545475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915917835f5103%3A0x4efeba6b6c6d3b86!2sBugallon%20Town%20Hall!5e0!3m2!1sen!2sph!4v1708504541405!5m2!1sen!2sph"
+                frameborder="0" style="min-height: 500px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0">
+              </iframe>
+            </div>
+        </div>
+        <!-- GPS -->
 
 
  <!-- Footer Start -->
@@ -180,7 +210,7 @@ session_start(); // Start the session
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>

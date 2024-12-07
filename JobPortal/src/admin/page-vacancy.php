@@ -12,7 +12,9 @@ include 'date_end.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/styles.css" />
-    <title>Admin Dashboard</title>
+    <title>EBB Admin</title>
+    <!-- Favicon -->
+    <link href="../img/ebb-logo.png" rel="icon">
 </head>
 <body>
 
@@ -48,6 +50,9 @@ include 'date_end.php';
                 </a>
                 <a href="page-category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-layer-group me-2"></i>Category
+                </a>
+                <a href="job-owner-request.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fas fa-envelope me-2"></i>Owner Requests
                 </a>
                 <a href="page-user-list.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-users me-2"></i>Manage Users
@@ -106,6 +111,7 @@ include 'date_end.php';
                                 <th scope="col">Salary</th>
                                 <th scope="col">Nature</th>
                                 <th scope="col">Location</th>
+                                <th scope="col">Municipality</th>
                                 <th scope="col">Date Created</th>
                                 <th scope="col">Date End</th>
                                 <th scope="col">Action</th>
@@ -131,12 +137,13 @@ include 'date_end.php';
                                         job_salary LIKE '%$search%' OR
                                         job_nature LIKE '%$search%' OR
                                         location LIKE '%$search%' OR
+                                        town LIKE '%$search%' OR
                                         date_created LIKE '%$search%' OR
                                         date_end LIKE '%$search%'";
                             } else {
                                 // Define what to do if search parameter is not set
                                 // For example, you might want to provide a default query or handle it differently
-                                $query = "SELECT * FROM tbl_vacancy";
+                                 $query = "SELECT * FROM tbl_vacancy ORDER BY date_created DESC";
                             }
 
                             $result = mysqli_query($con, $query);
@@ -156,14 +163,19 @@ include 'date_end.php';
                                 echo "<td>" . htmlspecialchars($row['company_category']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['company_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['job_title']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['job_description']) . "</td>";
+                                $job_description = htmlspecialchars($row['job_description']);
+                                $job_description = strlen($job_description) > 20 ? substr($job_description, 0, 20) . '...' : $job_description;
+                                echo "<td><span title='" . $job_description . "'>" . $job_description . "</span></td>";
                                 echo "<td>" . htmlspecialchars($row['job_salary']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['job_nature']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                                $location = htmlspecialchars($row['location']);
+                                $location = strlen($location) > 30 ? substr($location, 0, 30) . '...' : $location;
+                                echo "<td><span title='" . $location . "'>" . $location . "</span></td>";
+                                echo "<td>" . htmlspecialchars($row['town']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_created']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['date_end']) . "</td>";
                                 echo "<td>";
-                                echo "<button class='btn btn-success btn-sm me-1' onclick='editVacancy(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
+                                echo "<button class='btn btn-success btn-sm ms-1' onclick='editVacancy(" . $row['uid'] . ")'><i class='fas fa-edit'></i></button>";
                                 echo "<button class='btn btn-danger btn-sm ms-1' onclick='deleteVacancy(" . $row['job_number'] . ")'><i class='fas fa-trash-alt'></i></button>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -291,8 +303,8 @@ include 'date_end.php';
                     valueB = rowB.querySelector('td:nth-child(3)').textContent.trim(); // Company Name column
                     break;
                 case 'Category Date Created':
-                    valueA = rowA.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
-                    valueB = rowB.querySelector('td:nth-child(9)').textContent.trim(); // Date Created column
+                    valueA = rowA.querySelector('td:nth-child(10)').textContent.trim(); // Date Created column
+                    valueB = rowB.querySelector('td:nth-child(10)').textContent.trim(); // Date Created column
                     break;
                 default:
                     return 0; // For other cases, return 0 to maintain the order

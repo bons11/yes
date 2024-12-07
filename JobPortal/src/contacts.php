@@ -7,13 +7,13 @@ session_start(); // Start the session
 
 <head>
     <meta charset="utf-8">
-    <title>Bugallon Municipal Bulletin Board</title>
+    <title>Employment Bulletin Board</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/ebb-logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,56 +46,10 @@ session_start(); // Start the session
         <!-- Spinner End -->
 
 
-<!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">MBB</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="category.php" class="dropdown-item">Job Category</a>
-                            <a href="job-list.php" class="dropdown-item">Job List</a>
-                        </div>
-                    </div>
-                    <a href="contacts.php" class="nav-item nav-link active">Contact</a>
-                    <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // User is logged in, display their name
-                            echo $_SESSION['name'];
-                        } else {
-                            // User is not logged in, show default "Signin"
-                            echo "Login";
-                        }
-                        ?>
-                    </a>
-
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                            // If user is logged in, show profile, settings, and logout options
-                            echo "<a href='#' class='dropdown-item' onclick='confirmLogout()'>Logout</a>";
-                        } else {
-                            // If user is not logged in, show regular signin options
-                            echo "<a href='auth/login.php' class='dropdown-item'>User Login</a>";
-                            echo "<a href='admin/index.php' class='dropdown-item'>Admin Login</a>";
-                        }
-                        ?>
-                    </div>
-                    </div>
-                    <a href="job-list.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply Job<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
-            </div>
-        </nav>
+        <!-- Navbar Start -->
+       
+        <?php include 'navbar.php'; ?>
+        
         <!-- Navbar End -->
 
 
@@ -126,7 +80,7 @@ session_start(); // Start the session
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
                     </ol>
                 </nav>
             </div>
@@ -137,7 +91,7 @@ session_start(); // Start the session
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Contact us for any queries</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Send Us Feedback and any Queries!</h1>
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="row gy-4">
@@ -181,7 +135,7 @@ session_start(); // Start the session
                                         <div class="col-md-6">
                                             <div class="form-floating">
                                                 <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-                                                <label for="name">Business Name</label>
+                                                <label for="name">Name</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -190,18 +144,26 @@ session_start(); // Start the session
                                                 <label for="email">Email</label>
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" >
                                                 <label for="subject">Subject</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="(Optional)" pattern="\d{11}" maxlength="11" minlength="11" required>
+                                                <label for="subject">Contact Number</label>
+                                                <small id="contactNumberError" class="form-text text-danger" style="display: none;">Please enter a valid 11-digit number.</small>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 150px"></textarea>
-                                                <label for="message">Job Details/Qualifications</label>
+                                                <label for="message">Message</label>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-12">
                                             <select class="form-select" name="role" id="role">
                                                 <option value="" selected disabled>Choose</option>
@@ -234,7 +196,7 @@ session_start(); // Start the session
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
                         <a class="btn btn-link text-white-50" href="index.php">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.php">About Us</a>
+                        <a class="btn btn-link text-white-50" href="mission.php">About Us</a>
                         <a class="btn btn-link text-white-50" href="category.php">Job Category</a>
                         <a class="btn btn-link text-white-50" href="job-list.php">Job List</a>
                         <a class="btn btn-link text-white-50" href="contacts.php">Contact Us</a>
@@ -326,6 +288,23 @@ session_start(); // Start the session
         });
     });
 </script>
+
+<script>
+        function validateContactNumber() {
+            var contactNumber = document.getElementById("contact_number").value;
+            var errorElement = document.getElementById("contactNumberError");
+            var isValid = /^\d{11}$/.test(contactNumber);
+
+            if (!isValid) {
+                errorElement.style.display = "block";
+                return false;
+            }
+
+            errorElement.style.display = "none";
+            return true;
+        }
+    </script>
+
 </body>
 
 </html>
